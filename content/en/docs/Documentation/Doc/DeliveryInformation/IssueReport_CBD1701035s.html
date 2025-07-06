@@ -1,0 +1,518 @@
+---
+title: IssueReport_CBD1701035s
+linkTitle: IssueReport_CBD1701035s
+weight: 18
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-1_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>License Number</b><br/>
+<b>Customer</b><br/>
+CBD1701035<br/>
+Nexteer Automotive (Suzhou) Co.<br/>Package: FBL Vector SLP3 - CANfbl license for the&#160;<br/>project&#160;EPS for OEMs without manufacturer specific&#160;<br/>requirements<br/>
+<b>Maintenance Expiry Date</b><br/>
+2018-05-01<br/>
+<b>SIP Version</b><br/>
+07.03.01<br/>
+<b>SLP</b><br/>
+<b>Delivery Number</b><br/>
+FBL Vector SLP3<br/>
+D00<br/>
+<b>Report Creation Date</b><br/>
+2018-03-27<br/>
+<b>Contact</b><br/>
+In case of questions or the need for an update of the basic software delivery, please contact&#160;<br/><a href="mailto:Support@vector.com">Support@vector.com</a>&#160;or your Vector contact person.<br/>
+<b>Table of Contents<br/>1.</b><br/>
+<a href="IssueReport_CBD1701035s.html#2"><b>Introduction</b></a><br/>
+<a href="IssueReport_CBD1701035s.html#2"><b>1.1 Resolving Issues</b></a><br/>
+<a href="IssueReport_CBD1701035s.html#2"><b>1.2 Issue Classification</b></a><br/>
+<b>2.</b><br/>
+<a href="IssueReport_CBD1701035s.html#3"><b>New Issues</b></a><br/>
+<a href="IssueReport_CBD1701035s.html#3"><b>2.1 Safety Relevant Issues:</b></a>&#160;<b>0</b><br/>
+<a href="IssueReport_CBD1701035s.html#3"><b>2.2 Runtime Issues without Workaround:</b></a>&#160;<b>0</b><br/>
+<a href="IssueReport_CBD1701035s.html#3"><b>2.3 Runtime Issues with Workaround:</b></a>&#160;<b>1</b><br/>
+<a href="IssueReport_CBD1701035s.html#4"><b>2.4 Not Released Functionality:</b></a>&#160;<b>0</b><br/>
+<a href="IssueReport_CBD1701035s.html#5"><b>2.5 Apparent Issues:</b></a>&#160;<b>11</b><br/>
+<a href="IssueReport_CBD1701035s.html#16"><b>2.6 Compiler Warnings:</b></a>&#160;<b>6</b><br/>
+<b>3.</b><br/>
+<a href="IssueReport_CBD1701035s.html#23"><b>New Issues for Information:</b></a>&#160;<b>0</b><br/>
+<b>4.</b><br/>
+<a href="IssueReport_CBD1701035s.html#24"><b>Report Legend</b></a><br/>
+<b>5.</b><br/>
+<a href="IssueReport_CBD1701035s.html#25"><b>3rd Party Software Issues</b></a><br/>
+<b>6.</b><br/>
+<a href="IssueReport_CBD1701035s.html#26"><b>Quality Management Contact</b></a><br/>
+1<br/>
+<hr/>
+<a name=2></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-2_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>1. Introduction</b><br/>
+<b>1.1 Resolving Issues</b><br/>
+Reported issues are not automatically fixed with the next update delivery.<br/>If a reported issue shall be fixed, please contact Vector agree on the issues that can be fixed with&#160;<br/>upcoming&#160;deliveries.&#160;<br/>Please note that Vector may fix issues without explicit request.<br/>
+<b>1.2 Issue Classification</b><br/>
+This Issue Report provides issues that have been detected since the last report. The issues have&#160;<br/>been&#160;classified to facilitate the assessment of their impact:<br/>
+The chapter 'New Issues' lists issues that have been detected since the last report and which could&#160;<br/>not&#160;be excluded based on the use-case defined in the questionnaire. The issues are classified as&#160;<br/>follows:<br/>
+•<br/>
+<b>Safety Related Issues:</b>&#160;Safety related issues have impact on the functional safety of the&#160;<br/>software&#160;module. &#160;If this issue interferes with the functional safety concept of the ECU, this&#160;<br/>module&#160;(or module configuration) must not be used for serial production in a safety-related&#160;<br/>project.&#160;The effect of the issue to the ECU functionality and functional safety has to be&#160;<br/>analyzed&#160;by the user as the software usage and its configuration is not known by Vector. The&#160;<br/>risk&#160;of change has also to be taken into account.<br/>
+•<br/>
+<b>Runtime Issues without Workaround:</b>&#160;Runtime issues without a workaround require an&#160;<br/>update&#160;of the software delivery in case the issue affects the ECU overall functionality. The&#160;<br/>effect&#160;of an issue to the ECU functionality has to be analyzed by the customer as the software&#160;<br/>usage&#160;and its configuration is not known by Vector. The risk of change has also to be taken&#160;<br/>into&#160;account.<br/>
+•<br/>
+<b>Runtime Issues with Workaround:</b>&#160;It is not recommended to update a delivery due to a&#160;<br/>runtime&#160;issue with a documented workaround. The effect of an issue to the ECU functionality&#160;<br/>has&#160;to be analyzed by the user as the software usage and its configuration is not known by&#160;<br/>Vector.&#160;The risk of change has also to be taken into account.<br/>
+•<br/>
+<b>Not Released Functionality:</b>&#160;Not released functionalities (BETA) are either complete&#160;<br/>software&#160;modules or features in the software module that have not yet passed a complete&#160;<br/>development&#160;cycle (they are e.g. not or only partly tested). If a BETA issue ticket affects a&#160;<br/>complete&#160;software module, the software module must not be used for serial production. If a&#160;<br/>BETA&#160;issue ticket affects a feature in the software module, the user has to ensure that all&#160;<br/>BETA&#160;features are disabled as indicated for the serial production release of the ECU.<br/>
+•<br/>
+<b>Apparent Issues:</b>&#160;Apparent issues are detected immediately when using the software&#160;<br/>module.&#160;If an issue does not show up while working with the software module, the ECU&#160;<br/>project&#160;is not affected by the issue. Apparent issues may or may not have workarounds.<br/>
+•<br/>
+<b>Compiler Warnings:</b>&#160;As a service we also provide the known compiler warnings. The&#160;<br/>occurrence&#160;of a compiler warning may depend on the used software module configuration and&#160;<br/>compiler&#160;settings.<br/>
+The chapter 'New Issues for Information' lists issues that are not relevant for the use-case that&#160;<br/>has&#160;been documented in the questionnaire provided to Vector. The issues may, however, be&#160;<br/>relevant&#160;for other use-cases. Additionally, issues that have been accepted or are tolerated by the&#160;<br/>OEM&#160;(as defined in the questionnaire) are reported here.<br/>
+2<br/>
+<hr/>
+<a name=3></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-3_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2. New Issues</b><br/>
+<b>2.1 Safety Relevant Issues</b><br/>
+Safety related issues have impact on the functional safety of the software module. &#160;If this issue&#160;<br/>interferes&#160;with the functional safety concept of the ECU, this module (or module configuration)&#160;<br/>must&#160;not be used for serial production in a safety-related project.<br/>
+The effect of the issue to the ECU functionality and functional safety has to be analyzed by the&#160;<br/>user&#160;as the software usage and its configuration is not known by Vector. The risk of change has&#160;<br/>also&#160;to be taken into account.<br/>
+No issue to be reported.<br/>
+<b>2.2 Runtime Issues without Workaround</b><br/>
+Runtime issues without a workaround require an update of the software delivery in case the issue&#160;<br/>affects&#160;the ECU overall functionality. The effect of an issue to the ECU functionality has to be&#160;<br/>analyzed&#160;by the customer as the software usage and its configuration is not known by Vector. The&#160;<br/>risk&#160;of change has also to be taken into account.<br/>
+No issue to be reported.<br/>
+<b>2.3 Runtime Issues with Workaround</b><br/>
+It is not recommended to update a delivery due to a runtime issue with a documented&#160;<br/>workaround.&#160;The effect of an issue to the ECU functionality has to be analyzed by the user as the&#160;<br/>software&#160;usage and its configuration is not known by Vector. The risk of change has also to be&#160;<br/>taken&#160;into account.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1701035s.html#4">ESCAN00097115</a><br/>
+Buffer overflow during gap fill operation<br/>FblLib_Mem@Implementation<br/>
+3<br/>
+<hr/>
+<a name=4></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-4_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00097115</b><br/>
+<b>Buffer overflow during gap fill operation</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblLib_Mem@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>A write to the internal buffer holding the fill pattern for the gap fill operation is outside the array&#160;<br/>bounds.<br/>This can cause other variables to be overwritten, resulting in undefined behavior.<br/>
+When system check is enabled (FBL_ENABLE_SYSTEM_CHECK) the corrupted buffer will be&#160;<br/>detected&#160;afterwards and a general error will be issued.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During the gap fill operation, e.g. during a RequestTransferExit.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When all of the following conditions apply:<br/>
+- Gap fill is enabled (FBL_MEM_ENABLE_GAP_FILL)<br/>- Gap fill segmentation is smaller than the memory segment size&#160;<br/>(FBL_MEM_GAP_FILL_SEGMENTATION&#160;&lt; FBL_MEM_SEGMENT_SIZE)<br/>Typically the gap fill segmentation is equal to the write segmentation&#160;<br/>(FBL_MEM_WRITE_SEGMENTATION).<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Ensure the gap fill segmentation is equal to or larger than the memory segment size&#160;<br/>(FBL_MEM_GAP_FILL_SEGMENTATION&#160;&gt;= FBL_MEM_SEGMENT_SIZE).<br/>Typicall this can be achieve by setting the WriteSegmentation in the configuration tool to at least&#160;<br/>to&#160;the size of the greatest SegmentSize of your memory drivers.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>2.4 Not Released Functionality</b><br/>
+Not released functionalities (BETA) are either complete software modules or features in the&#160;<br/>software&#160;module that have not yet passed a complete development cycle (they are e.g. not or&#160;<br/>only&#160;partly tested). If a BETA issue ticket affects a complete software module, the software&#160;<br/>module&#160;must not be used for serial production. If a BETA issue ticket affects a feature in the&#160;<br/>software&#160;module, the user has to ensure that all BETA features are disabled as indicated for the&#160;<br/>serial&#160;production release of the ECU.<br/>
+No issue to be reported.<br/>
+4<br/>
+<hr/>
+<a name=5></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-5_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.5 Apparent Issues</b><br/>
+Apparent issues are detected immediately when using the software module. If an issue does not&#160;<br/>show&#160;up while working with the software module, the ECU project is not affected by the issue.&#160;<br/>Apparent&#160;issues may or may not have workarounds.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1701035s.html#6">ESCAN00078508</a><br/>
+[depends on derivative] Illegal flash block table configuration cause&#160;<br/>unintended&#160;block erase<br/>FblDrvFlash_Rh850Rv40His@Impl_Base<br/>
+<a href="IssueReport_CBD1701035s.html#7">ESCAN00081436</a><br/>
+Using FlashDriver_SetResetVector() might cause exception<br/>FblDrvFlash_Rh850Rv40His@Impl_Base<br/>
+<a href="IssueReport_CBD1701035s.html#8">ESCAN00086590</a><br/>
+Obsolete generated code in WrapNv_cfg.c does not compile<br/>SysService_WrapperNv@GenTool_Geny<br/>
+<a href="IssueReport_CBD1701035s.html#9">ESCAN00090094</a><br/>
+FblCanWakeup() does not allow to enable Can clock again<br/>FblDrvCan_Rh850RscanCrx@Implementation<br/>
+<a href="IssueReport_CBD1701035s.html#11">ESCAN00095072</a><br/>
+ApplFblSetModulePresence() Cannot write presence pattern to multiple&#160;<br/>memory&#160;devices with different erased values<br/>FblKbApi@Implementation<br/>
+<a href="IssueReport_CBD1701035s.html#12">ESCAN00096436</a><br/>
+The &#34;divide clock frequency by 8&#34; option of the bustiming configuration dialog&#160;<br/>must&#160;not be active if the feature &#34;CanIsoCanFdCapable&#34; is used.<br/>Hw__baseCpuCan@GenTool_Geny<br/>
+<a href="IssueReport_CBD1701035s.html#13">ESCAN00097060</a><br/>
+Compiler error: Unresolved symbol: secCrcZeroValue<br/>SysService_SecModHis@Impl_Verification<br/>
+<a href="IssueReport_CBD1701035s.html#14">ESCAN00097741</a><br/>
+Potential buffer overflow in flashCode buffer<br/>FblDiag_14229_Uds2@Implementation<br/>
+<a href="IssueReport_CBD1701035s.html#14">ESCAN00098666</a><br/>
+Negative values are not accepted in arguments<br/>FblTool_Hexeditor_Hexview@Application_Exe<br/>
+<a href="IssueReport_CBD1701035s.html#15">ESCAN00098670</a><br/>
+Public Key Hash is overwritten when merging VBF files<br/>FblTool_Hexeditor_Hexview@Application_Exe<br/>
+<a href="IssueReport_CBD1701035s.html#16">ESCAN00098693</a><br/>
+'sw_signature written to VBF-file with no content<br/>FblTool_Hexeditor_Hexview@Application_Exe<br/>
+5<br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-6_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00078508</b><br/>
+<b>[depends on derivative] Illegal flash block table&#160;<br/>configuration&#160;cause unintended block erase</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblDrvFlash_Rh850Rv40His@Impl_Base<br/>
+<i><b>First affected version:</b></i><br/>
+0.90.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>If the code flash contains gaps where no flash exists and the user configure a flash block in this&#160;<br/>area,&#160;the flash driver will erase the next valid flash block (first block with start address bigger than&#160;<br/>the&#160;illegal configured block).<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always and immediately<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>all configurations, but not all derivatives<br/>
+Note: The gap between user area and extended user area is not relevant. Until now, no known&#160;<br/>derivative&#160;is affected by this issue!<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Well configured flash block table, which corresponds to the real flash block structure.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+6<br/>
+<hr/>
+<a name=7></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-7_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00081436</b><br/>
+<b>Using FlashDriver_SetResetVector() might cause&#160;<br/>exception</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblDrvFlash_Rh850Rv40His@Impl_Base<br/>
+<i><b>First affected version:</b></i><br/>
+1.02.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>When using FlashDriver_SetResetVector() an exception occurs.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When code called from wdTriggerFct (typically FblLookForWatchdog()) is not located in RAM.<br/>This may apply e.g. to the Communication Wrapper task functions.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>if FLASH_ENABLE_SET_RESETVECTOR_API is enabled.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>&#160;Either manually handle memDrvDeviceActive in the updater or locate any code referenced by&#160;<br/>FblLookForWatchdog()&#160;in RAM<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>None.<br/>
+7<br/>
+<hr/>
+<a name=8></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-8_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00086590</b><br/>
+<b>Obsolete generated code in WrapNv_cfg.c does not&#160;<br/>compile</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_WrapperNv@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Obsolete generated code in WrapNv_cfg.c does not compile, file should no longer be generated.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always and immediately<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any configuration<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The C file is not needed. Do not compile this file and try to link it to your bootloader.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+8<br/>
+<hr/>
+<a name=9></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-9_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090094</b><br/>
+<b>FblCanWakeup() does not allow to enable Can clock&#160;<br/>again</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblDrvCan_Rh850RscanCrx@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.02.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>After call to FblCanSleep and wakup call to FblCanWakeUp, no CAN communicaton is possible any&#160;<br/>more.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When waking up again via FblCanWakeUp.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Configurations that support Can low power mode (FBL_ENABLE_SLEEPMODE defined).<br/>&#160;<br/><i><b>Resolution Description:</b></i><br/>
+9<br/>
+<hr/>
+<a name=10></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-10_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090094</b><br/>
+<b>FblCanWakeup() does not allow to enable Can clock&#160;<br/>again</b><br/>
+Workaround:<br/>-------------------------------------------------------------------<br/>1. Replace calls to FblCanWakeUp() by calls to ApplFblCanWakeUp() in user callback context.<br/>2. Add code to ApplFblCanWakeUp() to wake up again:<br/>
+void ApplFblCanWakeUp( void )<br/>{<br/>&#160;/* Clear error flags */<br/>&#160;Can-&gt;ChCtrl[kFblCanChannel].EF &amp;= FblInvert32Bit(kCanEfMask);<br/>
+&#160;/* Clear rx full pending buffers 0 - 31*/<br/>&#160;Can-&gt;CRBRCF[0] = 0;<br/>
+&#160;/* Set channel reset mode (currently in stop or reset mode) */<br/>&#160;CanLL_ModeReq_Phys(kFblCanChannel,kCanResetMode);<br/>&#160;while ((!CanLL_ModeCheck_Phys(kFblCanChannel,kCanResetMode)))<br/>&#160;{<br/>&#160;;<br/>&#160;}<br/>
+&#160;/* Switch to operation mode (and wait till it is reached) */<br/>&#160;CanLL_ModeReq_Phys(kFblCanChannel,kCanOperationMode);<br/>
+&#160;while (!CanLL_ModeCheck_Phys(kFblCanChannel,kCanOperationModeCheck))<br/>&#160;{<br/>&#160;;<br/>&#160;}<br/>}<br/>
+3. Define these macros so that they are available within ApplFblCanWakeUp():<br/>
+&#160;/**&lt; Requests a on a physical channel */<br/>#define CanLL_ModeReq_Phys(pch,mode) (Can-&gt;ChCtrl[pch].CR = ((Can-&gt;ChCtrl[pch].CR &amp;&#160;<br/>kCanModeMask)&#160;| (mode)))<br/>#define CanLL_ModeCheck_Phys(pch,mode) ((Can-&gt;ChCtrl[pch].SR &amp; kCanModeBits) == ((mode)&#160;<br/>&amp;&#160;kCanModeBits))<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+10<br/>
+<hr/>
+<a name=11></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-11_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00095072</b><br/>
+<b>ApplFblSetModulePresence() Cannot write presence&#160;<br/>pattern&#160;to multiple memory devices with different&#160;<br/>erased&#160;values</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblKbApi@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>ApplFblSetModulePresence() errantly returns kFblFailed when it has written a valid presence&#160;<br/>pattern.&#160;Download will be halted.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During the validation of a block of memory down loaded to secondary device type with a different&#160;<br/>erased&#160;value than primary memory<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>FBL_ENABLE_PRESENCE_PATTERN<br/>&#160;AND<br/>FBL_ENABLE_MULTIPLE_MEM_DEVICES<br/>&#160;AND<br/>FBL_FLASH_DELETED is a different value than the deleted value of the secondary device driver.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>ApplFblSetModulePresence() has to be adapted according to the erased code.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+11<br/>
+<hr/>
+<a name=12></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-12_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00096436</b><br/>
+<b>The &#34;divide clock frequency by 8&#34; option of the&#160;<br/>bustiming&#160;configuration dialog must not be active if&#160;<br/>the&#160;feature &#34;CanIsoCanFdCapable&#34; is used.</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Hw__baseCpuCan@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+2.30.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+2.31.02, 3.00.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The &#34;divide clock frequency by 8&#34; option of the bustiming configuration dialog is active allthough&#160;<br/>the&#160;feature &#34;CanIsoCanFdCapable&#34; is used. This combination is not supported by the hardware and&#160;<br/>results&#160;into incorrect bustiming settings!<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always but only under specific circumstances<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>&#34;CanIsoCanFdCapable&#34; is selected<br/>&#160;<br/>AND<br/>
+&#34;Non ISO Operation&#34; is selected<br/>OR<br/>&#34;Protocol Exception Disable&#34; is selected<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+12<br/>
+<hr/>
+<a name=13></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-13_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00097060</b><br/>
+<b>Compiler error: Unresolved symbol: secCrcZeroValue</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_SecModHis@Impl_Verification<br/>
+<i><b>First affected version:</b></i><br/>
+2.06.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+2.08.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Global secCrcZeroValue is not available, linkage therefore fails.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during linkage.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If no CRC is present.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>
+Create missing variable in fbl_ap.c &#34;Globals&#34; section:<br/>
+/<br/>***********************************************************************************************************************<br/>
+&#160;* GLOBAL DATA<br/>&#160;<br/>**********************************************************************************************************************/<br/>
+V_MEMROM0 V_MEMROM1 SecM_CRCType V_MEMROM2 secCrcZeroValue = 0u;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+13<br/>
+<hr/>
+<a name=14></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-14_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00097741</b><br/>
+<b>Potential buffer overflow in flashCode buffer</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblDiag_14229_Uds2@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+7.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+7.01.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Data located behind the flashCode buffer may be overwritten.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When the flash driver is initialized<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If configuration switch FBL_DIAG_ENABLE_FLASHDRV_ROM is set (either driver from ROM only or&#160;<br/>optional&#160;flash driver download).<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Verify that all static flash driver images are smaller than the configured buffers. This has to be&#160;<br/>done&#160;by a manual review before the ECU software is released.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>ESCAN00098666</b><br/>
+<b>Negative values are not accepted in arguments</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblTool_Hexeditor_Hexview@Application_Exe<br/>
+<i><b>First affected version:</b></i><br/>
+1.10.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>A negative offset cannot be applied when merging a file through commandline<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When using argument values, e.g. merging a file with offset (/MT:merge.hex;-0x1000)<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens in all configurations.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Use two's complement instead of '-' in front of the value.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+14<br/>
+<hr/>
+<a name=15></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-15_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00098670</b><br/>
+<b>Public Key Hash is overwritten when merging VBF&#160;<br/>files</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblTool_Hexeditor_Hexview@Application_Exe<br/>
+<i><b>First affected version:</b></i><br/>
+1.10.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The Public_Key_Hash is not generated when merging two VBF files.<br/>OR<br/>When loading a VBF file and performing some operations, then writing the VBF file back, the&#160;<br/>PUBLIC_KEY_HASH&#160;is not generated.&#160;<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens when the associated INI file does not contain a PUBLIC_KEY_HASH entry.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Always when loading an existing VBF into Hexview, an output is generated and no INI file is&#160;<br/>available&#160;resp. the associated INI file doesn't contain a public key hash.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Use an INI for the VBF that contains a PUBLIC_KEY_HASH value.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+15<br/>
+<hr/>
+<a name=16></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-16_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00098693</b><br/>
+<b>'sw_signature written to VBF-file with no content</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblTool_Hexeditor_Hexview@Application_Exe<br/>
+<i><b>First affected version:</b></i><br/>
+1.10.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The key &#34;sw_signature&#34; is written to VBF without key value.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When insufficient information is provided through the INI-file to generate a valid signature and the&#160;<br/>VBF&#160;version allows to write signatures.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Always.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>2.6 Compiler Warnings&#160;</b><br/>
+As a service we also provide the known compiler warnings. The occurrence of a compiler warning&#160;<br/>may&#160;depend on the used software module configuration and compiler settings.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1701035s.html#17">ESCAN00069885</a><br/>
+Compiler warning: statement is unreachable<br/>FblTp_Iso@Implementation<br/>
+<a href="IssueReport_CBD1701035s.html#18">ESCAN00077761</a><br/>
+Compiler warning: Conversion from integer to smaller pointer<br/>SysService_SecModHis@Impl_Verification<br/>
+<a href="IssueReport_CBD1701035s.html#19">ESCAN00083332</a><br/>
+Compiler warning: Wrong spelling of include SecM_Inc.h in SecM_Par.*<br/>SysService_SecModHis@GenTool_Geny<br/>
+<a href="IssueReport_CBD1701035s.html#20">ESCAN00087058</a><br/>
+Compiler warning: Condition is always false<br/>FblTp_Iso@Implementation<br/>
+<a href="IssueReport_CBD1701035s.html#21">ESCAN00092073</a><br/>
+Compiler warning: condition is always true<br/>SysService_SecModHis@Impl_SeedKey<br/>
+<a href="IssueReport_CBD1701035s.html#22">ESCAN00092074</a><br/>
+Compiler warning: condition is always false<br/>SysService_SecModHis@Impl_SeedKey<br/>
+16<br/>
+<hr/>
+<a name=17></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-17_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00069885</b><br/>
+<b>Compiler warning: statement is unreachable</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblTp_Iso@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.12.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns for a code statement which will never be executed.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Queued Requests enabled (FBL_TP_ENABLE_QUEUED_REQUESTS)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+17<br/>
+<hr/>
+<a name=18></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-18_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00077761</b><br/>
+<b>Compiler warning: Conversion from integer to&#160;<br/>smaller&#160;pointer</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_SecModHis@Impl_Verification<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns: Conversion from integer to smaller pointer<br/>
+Example for IAR compiler:<br/>pWorkspace = (V_MEMRAM1 SEC_VERIFY_CLASS_CCC_WORKSPACE_TYPE V_MEMRAM2&#160;<br/>V_MEMRAM3&#160;*)pVerifyParam-&gt;currentHash.sigResultBuffer;&#160;<br/>D:\usr\usage\Delivery\CBD14x\CBD1400332\D01\external\BSW\SecMod\Sec_Verification.c&#34;,1335&#160;<br/>Warning[Pe1053]:&#160;conversion from integer to smaller pointer<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Always.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+18<br/>
+<hr/>
+<a name=19></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-19_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00083332</b><br/>
+<b>Compiler warning: Wrong spelling of include&#160;<br/>SecM_Inc.h&#160;in SecM_Par.*</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_SecModHis@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+1.03.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns for a differently spelled file name.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any configuration that checks the case of includes.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>If your operating system has case sensitive file names you can create a SecM_inc.h which includes&#160;<br/>a&#160;SecM_Inc.h.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+19<br/>
+<hr/>
+<a name=20></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-20_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087058</b><br/>
+<b>Compiler warning: Condition is always false</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+FblTp_Iso@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns for &#34;condition is always false&#34;: This may happen depending on configuration<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It happens when&#160;<br/>FBL_TP_ENABLE_CONFIRMATION_INTERRUPT<br/>is set.<br/>
+&#160;<br/>
+Hint:<br/>-------------------------------------------------------------------<br/>The compiler warning is known and has been analyzed thoroughly for its impact on the code.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The warning can be ignored because the issue results in additional code only.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+20<br/>
+<hr/>
+<a name=21></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-21_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00092073</b><br/>
+<b>Compiler warning: condition is always true</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_SecModHis@Impl_SeedKey<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler: Tasking 3.0r3:<br/>c166 W549: [&#34;../../../BSW/SecMod/Sec_SeedKey.c&#34; 370/19] condition is always true<br/>
+SecM_StatusType SecM_GenerateSeed( V_MEMRAM1 SecM_SeedType V_MEMRAM2 V_MEMRAM3&#160;<br/>*&#160;seed )<br/>{<br/>
+&#160;/* Generate pseudo random numbers */<br/>&#160;result = SEC_PRNG_GENERATE_RANDOM(SEC_PRNG_POOL, pRandom, SEC_WORD_TYPE_SIZE);&#160;<br/>&lt;--------------------&#160;SecM_GenerateRandomLcg () returns always SECM_OK<br/>
+&#160;if (SECM_OK == result) &lt;---------- always true<br/>&#160;{<br/>&#160;/* Generate pseudo random numbers */<br/>&#160;result = SEC_PRNG_GENERATE_RANDOM(SEC_PRNG_POOL, pRandom, SEC_WORD_TYPE_SIZE);<br/>&#160;pBaseSeed-&gt;seedY = SecM_GetInteger(SEC_WORD_TYPE_SIZE, pRandom);<br/>
+&#160;}<br/>}<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When utilized random number generator always succeeds and therefore always returns SECM_OK.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+21<br/>
+<hr/>
+<a name=22></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-22_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00092074</b><br/>
+<b>Compiler warning: condition is always false</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_SecModHis@Impl_SeedKey<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler: Tasking 3.0r3:<br/>c166 W549: [&#34;../../../BSW/SecMod/Sec_SeedKey.c&#34; 221/18] condition is always false<br/>
+#define SEC_WORD_TYPE_SIZE 4u<br/>
+SecM_StatusType SecM_GenerateSeed( V_MEMRAM1 SecM_SeedType V_MEMRAM2 V_MEMRAM3&#160;<br/>*&#160;seed )<br/>{<br/>result = SEC_PRNG_GENERATE_RANDOM(SEC_PRNG_POOL, pRandom, SEC_WORD_TYPE_SIZE);&#160;<br/>&lt;---------<br/>}<br/>
+static SecM_StatusType SecM_GenerateRandomLcg( V_MEMRAM1 SecM_ByteType V_MEMRAM2&#160;<br/>V_MEMRAM3&#160;* pRandom, SecM_LengthType length )<br/>{<br/>
+&#160;byteCount = length;<br/>
+&#160;if (byteCount &gt; SEC_WORD_TYPE_SIZE)&lt;------------------- always false since we always pass&#160;<br/>&#34;SEC_WORD_TYPE_SIZE&#34;<br/>&#160;{<br/>&#160;byteCount = SEC_WORD_TYPE_SIZE;<br/>&#160;}<br/>
+}<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>For all configurations where LCG random number generator is used and seed length doesn't&#160;<br/>exceed&#160;size of word type (32 bit / 4 byte).<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+&#160;<br/>
+22<br/>
+<hr/>
+<a name=23></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-23_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>3. New Issues for Information</b><br/>
+Issues which should not have an effect on the usage of the license as the issues are relevant for&#160;<br/>use&#160;cases other than those defined in the questionnaire. The list contains issues that have been&#160;<br/>detected&#160;since the last report.<br/>
+Issues listed in this section are not relevant for the use case that has been documented in the&#160;<br/>questionnaire&#160;provided to Vector. However, the issues may be relevant for other use cases. &#160;Also&#160;<br/>issues&#160;that have been accepted or are tolerated by the OEM (as defined in the questionnaire) are&#160;<br/>reported&#160;here.&#160;<br/>
+No issue to be reported.<br/>
+23<br/>
+<hr/>
+<a name=24></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-24_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-24_2.png"/><br/>
+<b>Issue Report</b><br/>
+<b>4. Report Legend</b><br/>
+24<br/>
+<hr/>
+<a name=25></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-25_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>5. 3rd Party Software Issues</b><br/>
+This issue report does not include issues of 3rd party software. If 3rd party software was included&#160;<br/>in&#160;the SIP, the documentation of the issue reporting process is included in the SIP: .\Doc<br/>\DeliveryInformation\IssueHandling_&lt;Name&gt;.pdf. Please follow the given instructions.<br/>
+25<br/>
+<hr/>
+<a name=26></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/IssueReport_CBD1701035-26_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>6. Quality Management Contact</b><br/>
+Quality Management&#160;<br/>Productline Embedded Software (PES) &#160;<br/>&#160;<br/>Vector Informatik GmbH &#160;<br/>Ingersheimer Str. 24 &#160;<br/>D-70499 Stuttgart &#160;<br/>&#160;<br/>Phone: +49 711 80670-3700<br/>Fax: +49 711 80670-399 &#160;<br/>eMail: QualityPES@vector.com<br/>
+26<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="IssueReport_CBD1701035s.html#4">ESCAN00097115 (Buffer overflow during gap fill operation)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#6">ESCAN00078508 ([depends on derivative] Illegal flash block table configuration cause unintended block erase)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#7">ESCAN00081436 (Using FlashDriver_SetResetVector() might cause exception)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#8">ESCAN00086590 (Obsolete generated code in WrapNv_cfg.c does not compile)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#9">ESCAN00090094 (FblCanWakeup() does not allow to enable Can clock again)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#11">ESCAN00095072 (ApplFblSetModulePresence() Cannot write presence pattern to multiple memory devices with different erased values)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#12">ESCAN00096436 (The &#34;divide clock frequency by 8&#34; option of the bustiming configuration dialog must not be active if the feature &#34;CanIsoCanFdCapable&#34; is used.)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#13">ESCAN00097060 (Compiler error: Unresolved symbol: secCrcZeroValue)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#14">ESCAN00097741 (Potential buffer overflow in flashCode buffer)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#14">ESCAN00098666 (Negative values are not accepted in arguments)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#15">ESCAN00098670 (Public Key Hash is overwritten when merging VBF files)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#16">ESCAN00098693 ('sw_signature written to VBF-file with no content)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#17">ESCAN00069885 (Compiler warning: statement is unreachable)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#18">ESCAN00077761 (Compiler warning: Conversion from integer to smaller pointer)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#19">ESCAN00083332 (Compiler warning: Wrong spelling of include SecM_Inc.h in SecM_Par.*)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#20">ESCAN00087058 (Compiler warning: Condition is always false)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#21">ESCAN00092073 (Compiler warning: condition is always true)</a></li>
+<li><a href="IssueReport_CBD1701035s.html#22">ESCAN00092074 (Compiler warning: condition is always false)</a></li>
+</ul>
+<hr/>
+</body>
+</html>

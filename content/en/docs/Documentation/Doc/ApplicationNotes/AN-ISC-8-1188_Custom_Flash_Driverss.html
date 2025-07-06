@@ -1,0 +1,285 @@
+---
+title: AN-ISC-8-1188_Custom_Flash_Driverss
+linkTitle: AN-ISC-8-1188_Custom_Flash_Driverss
+weight: 13
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-1_1.png"/><br/>
+&#160;<br/>&#160;<br/>
+<b>Custom&#160;Flash&#160;Drivers&#160;<br/></b>Version&#160;1.0&#160;<br/>2016-02-16&#160;<br/>Application&#160;Note&#160;AN-ISC-8-1188&#160;<br/>
+<b>Author</b>&#160;<br/>
+Alexander&#160;Starke&#160;<br/>
+<b>Restrictions</b>&#160;<br/>
+Customer&#160;confidential&#160;–&#160;Vector&#160;decides&#160;<br/>
+<b>Abstract</b>&#160;<br/>
+This&#160;application&#160;note&#160;describes&#160;the&#160;steps&#160;to&#160;be&#160;taken&#160;when&#160;embedding a custom&#160;flash&#160;<br/>driver&#160;into a&#160;Vector&#160;Bootloader&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Table of&#160;Contents&#160;</b><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2"><b>1</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2"><b>Overview&#160;........................................................................................................................................&#160;2</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2"><b>2</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2"><b>HIS&#160;Flash&#160;Driver&#160;Interface&#160;............................................................................................................&#160;2</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#3"><b>3</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#3"><b>Polling&#160;Function&#160;............................................................................................................................&#160;3</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#3">General&#160;Information&#160;.............................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">Internal&#160;Bootloader&#160;Time Base&#160;............................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.3&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">Watchdog Handling&#160;..............................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.4&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">(Adaptive)&#160;RCR-RP&#160;Handling&#160;..............................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">3.5&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">Pipelined Programming&#160;(Early&#160;Acknowledge)&#160;.....................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">3.6&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">Pipelined Verification&#160;...........................................................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#6"><b>4</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#6"><b>Downloadable&#160;Flash&#160;Driver&#160;..........................................................................................................&#160;6</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7"><b>5</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7"><b>Additional&#160;Resources&#160;...................................................................................................................&#160;7</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7"><b>6</b>&#160;</a><br/>
+<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7"><b>Contacts&#160;.........................................................................................................................................&#160;7</b>&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+<hr/>
+<a name=2></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-2_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-2_2.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+<b>1&#160;</b><br/>
+<b>Overview&#160;</b><br/>
+The Vector&#160;Bootloader&#160;uses&#160;a standardized flash API,&#160;which&#160;has&#160;been&#160;developed&#160;by&#160;the HIS&#160;<br/>consortium.&#160;This&#160;standardized flash&#160;API&#160;offers&#160;the possibility&#160;to easily&#160;extend&#160;a&#160;Vector&#160;Bootloader&#160;by&#160;<br/>custom&#160;flash&#160;drivers.&#160;<br/>
+Custom&#160;flash drivers&#160;might&#160;be used for&#160;various&#160;reasons:&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Adding support&#160;for&#160;updating additional&#160;external&#160;flash&#160;memory&#160;devices&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Adding support&#160;for&#160;updating additional&#160;external&#160;EEPROM devices&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Adding support&#160;for&#160;multi-processor&#160;flashing&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Note&#160;<br/></b>Vector&#160;offers&#160;implementation services&#160;for&#160;any&#160;of&#160;the above&#160;options.&#160;Please&#160;state&#160;your&#160;use-<br/>
+&#160;<br/>
+case and&#160;we&#160;will&#160;help&#160;you judge&#160;whether&#160;to implement&#160;a solution on&#160;your&#160;own&#160;or&#160;use our&#160;<br/>services.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+This&#160;document&#160;is&#160;intended to provide OEM&#160;independent&#160;information.&#160;If&#160;the following explanations&#160;do&#160;<br/>not&#160;fit&#160;with&#160;your&#160;use-case please do not&#160;hesitate to&#160;ask&#160;for&#160;our&#160;support.&#160;<br/>
+<b>2&#160;</b><br/>
+<b>HIS&#160;Flash&#160;Driver&#160;Interface&#160;</b><br/>
+A&#160;thorough description of&#160;the HIS&#160;flash driver&#160;interface can be found online.&#160;Please check&#160;secti<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7">on&#160;0.</a>&#160;<br/>
+Typically&#160;your&#160;delivery&#160;is&#160;going&#160;to contain one or&#160;more HIS-compliant&#160;drivers&#160;which can be treated&#160;as&#160;<br/>a blueprint&#160;for&#160;an&#160;own&#160;implementation.&#160;Please&#160;check&#160;the following folders:&#160;<br/>
+.\BSW\Fbl\fbl_flio.*&#160;<br/>
+.\BSW\Flash\flashdrv.*&#160;<br/>
+.\BSW\Eep&#160;<br/>
+The flash API&#160;consists&#160;of&#160;the following functions:&#160;<br/>
+IO_ErrorType FlashDriver_InitSync( void * );&#160;<br/>
+IO_ErrorType FlashDriver_DeinitSync( void * );&#160;<br/>
+IO_ErrorType FlashDriver_RReadSync( IO_MemPtrType, IO_SizeType, IO_PositionType );&#160;<br/>
+IO_ErrorType FlashDriver_RWriteSync( IO_MemPtrType, IO_SizeType, IO_PositionType );&#160;<br/>
+IO_ErrorType FlashDriver_REraseSync( IO_SizeType, IO_PositionType );&#160;<br/>
+IO_ErrorType FlashDriver_VerifySync( void * );&#160;<br/>
+IO_U32&#160;FlashDriver_GetVersionOfDriver( void );&#160;<br/>
+If&#160;you&#160;implement&#160;your&#160;own&#160;driver&#160;you&#160;will&#160;have to replace “Flash”&#160;with&#160;you&#160;own&#160;unique memory&#160;device&#160;<br/>descriptor&#160;in most&#160;cases&#160;to avoid&#160;name collisions.&#160;<br/>
+The functions&#160;InitSync()&#160;and&#160;DeinitSync()&#160;implement&#160;the memory&#160;device initialization,&#160;which&#160;<br/>might&#160;include the&#160;initialization of&#160;additional&#160;peripherals,&#160;e.g.&#160;SPI&#160;or&#160;I²C.&#160;<br/>
+The function&#160;RReadSync()&#160;is&#160;responsible to&#160;read&#160;the&#160;requested amount&#160;of&#160;data from&#160;the provided&#160;<br/>
+address&#160;into the&#160;given&#160;buffer.&#160;The Bootloader&#160;assumes&#160;that&#160;read&#160;accesses&#160;do&#160;not&#160;require any&#160;address&#160;<br/>alignment.&#160;If&#160;that&#160;is&#160;the&#160;case such behavior&#160;must&#160;be abstracted by&#160;this&#160;function.&#160;<br/>
+Please note,&#160;that&#160;the&#160;function&#160;RReadSync()&#160;deserves&#160;special&#160;attention.&#160;Most,&#160;if&#160;not&#160;all,&#160;Bootloader&#160;<br/>
+flash drivers&#160;will&#160;implement&#160;the&#160;RReadSync()&#160;function&#160;in the flash&#160;driver&#160;wrapper&#160;(fbl_flio.*).&#160;This&#160;is&#160;to&#160;<br/>allow&#160;presence pattern or&#160;version checks&#160;during start-up,&#160;when&#160;a downloaded&#160;flash driver&#160;is&#160;not&#160;(yet)&#160;<br/>available.&#160;Nevertheless&#160;it&#160;is&#160;absolutely&#160;valid to solely&#160;implement&#160;the read&#160;logic&#160;in&#160;the&#160;downloadable&#160;<br/>part,&#160;if&#160;the previously&#160;mentioned&#160;use-case does&#160;not&#160;apply.&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+2<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name=3></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-3_1.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+The&#160;RWriteSync()&#160;is&#160;responsible&#160;to&#160;actually&#160;write the provided&#160;data.&#160;When programming&#160;<br/>
+downloaded&#160;data the Bootloader&#160;memory&#160;stack&#160;will&#160;take care,&#160;that&#160;write address&#160;and&#160;length&#160;will&#160;<br/>always&#160;be correctly&#160;aligned&#160;(see also segment&#160;size&#160;description&#160;below).&#160;In other&#160;use-cases,&#160;e.g.&#160;when&#160;<br/>the driver&#160;is&#160;called by&#160;custom&#160;code,&#160;this&#160;may&#160;not&#160;be guaranteed.&#160;Hence&#160;the&#160;driver&#160;should ensure only&#160;<br/>correctly&#160;aligned address&#160;and length parameters&#160;are accepted.&#160;Additionally&#160;this&#160;function&#160;must&#160;verify&#160;<br/>that&#160;the&#160;provided buffer&#160;contents&#160;have actually&#160;been&#160;written,&#160;e.g.&#160;by&#160;implementing&#160;a read-back&#160;of&#160;the&#160;<br/>data.&#160;<br/>
+The&#160;REraseSync()&#160;function shall&#160;erase the provided&#160;memory&#160;range.&#160;The Bootloader&#160;will&#160;provide&#160;<br/>erase regions&#160;with&#160;the segmentation configured&#160;in&#160;the&#160;flash block&#160;table in the configuration tool.&#160;If&#160;<br/>multiple&#160;physical&#160;flash sectors&#160;are grouped&#160;together&#160;in&#160;the flash&#160;block&#160;table this&#160;function&#160;is&#160;responsible&#160;<br/>to abstract&#160;the&#160;underlying hardware&#160;and&#160;erase all&#160;of&#160;them&#160;which&#160;are in range.&#160;Additionally&#160;this&#160;function&#160;<br/>shall&#160;verify&#160;that&#160;the requested memory&#160;range&#160;has&#160;actually&#160;been erased,&#160;e.g.&#160;by&#160;implementing a read-<br/>back&#160;of&#160;the data.&#160;<br/>
+The function&#160;VerifySync()is&#160;a Vector&#160;extension to&#160;the API.&#160;VerifySync()&#160;is&#160;used if&#160;a&#160;3rd-party&#160;<br/>
+flash API&#160;requires&#160;that&#160;a&#160;certain&#160;verify&#160;function&#160;is&#160;called&#160;once&#160;programming has&#160;finished.&#160;<br/>
+The function&#160;GetVersionOfDriver()&#160;is&#160;required&#160;by&#160;some OEMs.&#160;For&#160;a statically&#160;linked driver&#160;this&#160;<br/>
+version is&#160;fixed,&#160;if&#160;the&#160;driver&#160;is&#160;downloadable this&#160;function shall&#160;provide the&#160;version&#160;information of&#160;the&#160;<br/>downloaded&#160;driver&#160;if&#160;it&#160;is&#160;available.&#160;<br/>
+An&#160;important&#160;property&#160;of&#160;each memory&#160;device&#160;is&#160;the so&#160;called segment&#160;size.&#160;The segment&#160;size&#160;is&#160;the&#160;<br/>minimum&#160;number&#160;of&#160;bytes&#160;that&#160;has&#160;to&#160;be&#160;written at&#160;once.&#160;It&#160;has&#160;to&#160;be&#160;defined by&#160;each memory&#160;driver&#160;<br/>with&#160;a&#160;value that&#160;depends&#160;on the&#160;hardware characteristics.&#160;<br/>
+#define FLASH_SEGMENT_SIZE &#160; &#160;0x08u&#160;<br/>
+Another&#160;important&#160;property&#160;is&#160;the&#160;erase (deleted)&#160;value&#160;of&#160;a memory&#160;cell.&#160;Most&#160;devices&#160;implement&#160;<br/>0xFF&#160;but&#160;some hardware&#160;platforms&#160;deviate from&#160;the convention.&#160;<br/>
+#define FBL_FLASH_DELETED &#160; &#160; 0xFFu&#160;<br/>
+The string FLASH&#160;in&#160;the&#160;previous&#160;defines&#160;needs&#160;to be&#160;replaced by&#160;the name of&#160;your&#160;custom&#160;flash&#160;<br/>driver.&#160;<br/>
+Depending&#160;on&#160;your&#160;environment&#160;(hardware platform,&#160;compiler)&#160;a flash driver&#160;might&#160;be&#160;either&#160;<br/>relocatable or&#160;non-relocatable.&#160;<br/>
+Relocatable flash&#160;drivers&#160;can be downloaded&#160;into a&#160;RAM&#160;buffer&#160;which&#160;is&#160;linked to&#160;an arbitrary&#160;RAM&#160;<br/>address.&#160;The Bootloader&#160;enforces&#160;that&#160;such kind of&#160;flash drivers&#160;are always&#160;downloaded&#160;to address&#160;<br/>0x00000000 (address&#160;based download).&#160;See chapter<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#6">&#160;4&#160;</a>for&#160;additional&#160;information regarding&#160;the&#160;RAM&#160;<br/>buffer&#160;handling.&#160;<br/>
+For&#160;non-relocatable flash drivers&#160;the RAM&#160;buffer&#160;needs&#160;to be linked to the same address&#160;the flash&#160;<br/>driver&#160;is&#160;linked to.&#160;The Bootloader&#160;cross-checks&#160;the flash driver&#160;download address&#160;with&#160;the&#160;RAM buffer&#160;<br/>address&#160;(address&#160;based&#160;download).&#160;<br/>
+Typically&#160;you do not&#160;need to set&#160;this&#160;attribute for&#160;your&#160;custom&#160;driver&#160;as&#160;it&#160;is&#160;inherited by&#160;the flash&#160;driver&#160;<br/>in&#160;your&#160;delivery.&#160;<br/>
+#define FLASH_DRIVER_(NOT_)RELOCATABLE&#160;<br/>
+<b>3&#160;</b><br/>
+<b>Polling Function&#160;</b><br/>
+<b>3.1&#160;&#160;General&#160;Information&#160;</b><br/>
+Depending&#160;on the OEM&#160;and project&#160;requirements&#160;the&#160;Bootloader&#160;needs&#160;to execute certain tasks&#160;<br/>during flash programming,&#160;e.g.:&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Handle the&#160;watchdog&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+3<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name=4></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-4_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-4_2.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Receive&#160;bus&#160;messages,&#160;e.g.&#160;the next&#160;transfer&#160;data (see also<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">&#160;3.5)</a>&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Trigger&#160;RCR-RP&#160;messages&#160;(request&#160;correctly&#160;received,&#160;response&#160;pending)&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Answer&#160;diagnostic&#160;status&#160;requests&#160;<br/>
+The Bootloader&#160;internally&#160;uses&#160;the function&#160;FblLookForWatchdog()&#160;to implement&#160;the above&#160;listed&#160;<br/>functionalities.&#160;In order&#160;to&#160;avoid any&#160;interferences&#160;of&#160;your&#160;flash driver&#160;with&#160;the&#160;Bootloaders&#160;core&#160;<br/>functionality&#160;please check&#160;that&#160;this&#160;function:&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Is&#160;unconditionally&#160;called&#160;by&#160;your&#160;driver&#160;while it&#160;is&#160;waiting for&#160;a hardware operation&#160;to complete&#160;<br/>(write,&#160;erase,&#160;SPI&#160;transfer&#160;…)&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Is&#160;called by&#160;your&#160;driver&#160;at&#160;a&#160;“reasonable rate”&#160;in each data processing&#160;loop&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Caution&#160;<br/></b>Implementing&#160;a custom&#160;flash driver&#160;without&#160;verifying that&#160;the call&#160;rate&#160;matches&#160;the&#160;projects&#160;<br/>
+<b>&#160;</b><br/>
+requirements&#160;introduces&#160;significant&#160;risks.&#160;The Bootloader&#160;may&#160;work&#160;as&#160;expected&#160;on&#160;your&#160;<br/>desk,&#160;but&#160;might&#160;fail&#160;later&#160;on&#160;in the field.&#160;You&#160;should&#160;also&#160;take performance&#160;degradation&#160;into&#160;<br/>account,&#160;e.g.&#160;caused&#160;by&#160;flash memory&#160;aging.&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+You&#160;have to&#160;verify&#160;the call&#160;rate of&#160;FblLookForWatchdog()&#160;in&#160;your&#160;custom&#160;flash driver.&#160;Vector&#160;<br/>
+typically&#160;adds&#160;a GPIO&#160;pin toggle&#160;in&#160;ApplFblWdTrigger()&#160;which&#160;is&#160;expected to&#160;be called&#160;with a&#160;fixed&#160;<br/>interval&#160;(configurable in the&#160;configuration&#160;tool&#160;with a&#160;resolution of&#160;1 ms).&#160;We observe the&#160;pin&#160;toggle&#160;<br/>using&#160;appropriate measurement&#160;hardware (e.g.&#160;a scope&#160;with statistical&#160;functions)&#160;to verify&#160;the&#160;<br/>implementation.&#160;Deviations&#160;from&#160;the expected&#160;toggle&#160;rate are&#160;documented&#160;in&#160;the&#160;test&#160;report&#160;of&#160;your&#160;<br/>delivery.&#160;<br/>
+<b>3.2&#160;&#160;Internal&#160;Bootloader&#160;Time Base&#160;</b><br/>
+The Bootloader&#160;has&#160;an&#160;internal&#160;1&#160;ms&#160;time base.&#160;Make sure to call&#160;FblLookForWatchdog()&#160;at&#160;least&#160;<br/>
+each 1 ms,&#160;otherwise&#160;the&#160;Bootloader&#160;is&#160;going to&#160;lose&#160;timer&#160;events.&#160;Be&#160;aware,&#160;that&#160;specific&#160;bus&#160;<br/>systems,&#160;e.g.&#160;FlexRay&#160;put&#160;further&#160;constraints&#160;on the required call&#160;rate.&#160;<br/>
+Exception:&#160;Bootloaders&#160;which use a&#160;3rd-party&#160;flash&#160;API&#160;(library)&#160;that&#160;does&#160;not&#160;allow&#160;fulfilling&#160;this&#160;rule.&#160;<br/>Those&#160;Bootloaders&#160;implement&#160;timer&#160;interrupts&#160;to&#160;ensure proper&#160;functionality.&#160;<br/>
+<b>3.3&#160;&#160;Watchdog&#160;Handling&#160;</b><br/>
+The watchdog trigger&#160;interval&#160;depends&#160;on&#160;your&#160;projects&#160;requirements.&#160;Check&#160;that&#160;the call&#160;frequency&#160;of&#160;<br/>
+FblLookForWatchdog()&#160;allows&#160;the Bootloader&#160;to fulfill&#160;those requirements.&#160;Especially&#160;window&#160;<br/>
+watchdogs&#160;might&#160;introduce&#160;constraints&#160;regarding&#160;watchdog trigger&#160;deviations.&#160;<br/>
+<b>3.4&#160;&#160;(Adaptive)&#160;RCR-RP&#160;Handling&#160;</b><br/>
+The RCR-RP&#160;handling&#160;in&#160;our&#160;Bootloaders&#160;has&#160;two&#160;implementation&#160;variants:&#160;<br/>
+1st:&#160;Before starting a&#160;potentially&#160;long-lasting&#160;operation the Bootloader&#160;issues&#160;a RCR-RP&#160;and further&#160;<br/>RCR-RP&#160;messages&#160;are generated using the OEM-specific P2Server&#160;time.&#160;<br/>
+2nd:&#160;The Bootloader&#160;issues&#160;RCR-RP&#160;messages&#160;only&#160;if&#160;required,&#160;which&#160;is&#160;called adaptive&#160;RCR-RP.&#160;This&#160;<br/>requires&#160;that&#160;all&#160;long-lasting&#160;operations&#160;are broken down into small&#160;time chunks.&#160;In between&#160;those&#160;<br/>chunks&#160;the Bootloader&#160;is&#160;able&#160;to check&#160;whether&#160;a RCR-RP&#160;message has&#160;to&#160;be&#160;generated.&#160;See also&#160;<br/>chapter<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">&#160;3.5.</a>&#160;<br/>
+Both&#160;variants&#160;only&#160;affect&#160;the&#160;write&#160;procedure,&#160;which&#160;is&#160;the processing&#160;of&#160;a UDS&#160;TransferData&#160;<br/>message.&#160;During&#160;erase we always&#160;use the 1st&#160;variant.&#160;<br/>
+The 1st&#160;variant&#160;does&#160;not&#160;impose any&#160;additional&#160;constraints&#160;on the&#160;FblLookForWatchdog()&#160;handling&#160;<br/>
+(aside from&#160;those listed i<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">n&#160;3.2).</a>&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+4<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name=5></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-5_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-5_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-5_3.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+The 2nd&#160;variant&#160;has&#160;some caveats.&#160;As&#160;already&#160;outlined&#160;the&#160;data&#160;to&#160;be&#160;written&#160;has&#160;to be&#160;broken into&#160;<br/>small&#160;chunks.&#160;The processing time of&#160;a single&#160;chunk&#160;shall&#160;not&#160;be larger&#160;than&#160;P2Server/2.&#160;Please check&#160;<br/>the data sheet&#160;of&#160;your&#160;memory&#160;device for&#160;the&#160;worst-case&#160;write&#160;timing.&#160;The chunk&#160;size can be&#160;<br/>configured in the&#160;configuration tool&#160;and is&#160;called&#160;“write segmentation”.&#160;This&#160;size&#160;is&#160;currently&#160;used&#160;for&#160;all&#160;<br/>flash drivers&#160;embedded&#160;in&#160;the Bootloader.&#160;Its&#160;size must&#160;be&#160;aligned&#160;with&#160;a flash segment&#160;sizes.&#160;<br/>
+&#160;<br/>
+Figure&#160;3-1&#160;GENy&#160;<br/>
+&#160;<br/>
+Figure&#160;3-2&#160;DaVinci&#160;Configurator&#160;<br/>
+<b>3.5&#160;&#160;Pipelined&#160;Programming (Early&#160;Acknowledge)&#160;</b><br/>
+The feature pipelined&#160;programming is&#160;available for&#160;some OEMs&#160;and platforms.&#160;When&#160;using&#160;pipelined&#160;<br/>programming the&#160;Bootloader&#160;optionally&#160;starts&#160;to receive the&#160;next&#160;UDS&#160;TransferData&#160;while it&#160;is&#160;<br/>processing (i.e.&#160;writing to memory)&#160;the&#160;previous&#160;TransferData,&#160;if&#160;there&#160;is&#160;enough spare time during&#160;<br/>data transfer.&#160;This&#160;is&#160;typically&#160;the case&#160;for&#160;slow&#160;bus&#160;interfaces&#160;or&#160;platforms&#160;with high flash memory&#160;<br/>performance.&#160;It&#160;improves&#160;the total&#160;update time of&#160;an&#160;ECU&#160;as&#160;the available bus&#160;bandwidth can be used&#160;<br/>more efficiently.&#160;<br/>
+The implemented procedure&#160;is&#160;similar&#160;to&#160;the (adaptive)&#160;RCR-RP&#160;handling,&#160;as&#160;outlined in&#160;the previous&#160;<br/>secti<a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">on (3.4, 2</a>nd&#160;variant).&#160;<br/>
+<b>3.6&#160;&#160;Pipelined&#160;Verification&#160;</b><br/>
+The feature pipelined&#160;verification&#160;is&#160;available for&#160;some&#160;OEMs&#160;and&#160;platforms.&#160;When using pipelined&#160;<br/>verification&#160;the&#160;Bootloader&#160;optionally&#160;starts&#160;to compute the checksum&#160;and/or&#160;hash&#160;over&#160;already&#160;written&#160;<br/>data,&#160;if&#160;there&#160;is&#160;enough spare time during data transfer.&#160;This&#160;is&#160;typically&#160;the case&#160;for&#160;slow&#160;bus&#160;<br/>interfaces&#160;or&#160;platforms&#160;with&#160;high computation performance.&#160;It&#160;improves&#160;the&#160;total&#160;update time of&#160;an&#160;<br/>ECU&#160;as&#160;the&#160;final&#160;verification step (e.g.&#160;RoutineControl&#160;CheckMemory)&#160;can&#160;be&#160;executed&#160;very&#160;fast&#160;as&#160;<br/>most&#160;work&#160;has&#160;already&#160;been done.&#160;<br/>
+The basic&#160;procedure is&#160;similar&#160;to&#160;that&#160;used&#160;by&#160;(adaptive)&#160;RCR-RP&#160;handling and pipelined&#160;<br/>programming.&#160;The Bootloader&#160;takes&#160;small&#160;chunks&#160;of&#160;data and starts&#160;to compute a&#160;checksum&#160;and/or&#160;<br/>hash.&#160;In between the chunks&#160;the Bootloader&#160;checks&#160;if&#160;the next&#160;UDS&#160;TransferData message has&#160;been&#160;<br/>received.&#160;The chunk&#160;size is&#160;configurable&#160;in&#160;the&#160;generation&#160;tool,&#160;using the parameter&#160;“verification&#160;<br/>segmentation”.&#160;This&#160;size&#160;is&#160;currently&#160;used&#160;for&#160;all&#160;flash drivers&#160;embedded in the&#160;Bootloader.&#160;In most&#160;<br/>cases&#160;the read performance of&#160;a memory&#160;device does&#160;not&#160;deviate over&#160;its&#160;live time.&#160;The processing&#160;<br/>time of&#160;a single chunk&#160;shall&#160;not&#160;be&#160;larger&#160;than&#160;P2Server/2.&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+5<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-6_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-6_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-6_3.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+<b>4&#160;</b><br/>
+<b>Downloadable&#160;Flash&#160;Driver&#160;</b><br/>
+Some OEMs&#160;specify&#160;a&#160;downloadable&#160;flash driver&#160;(also&#160;called&#160;secondary&#160;bootloader,&#160;SBL).&#160;In&#160;a few&#160;<br/>cases&#160;it&#160;might&#160;be&#160;useful&#160;to&#160;have a&#160;downloadable custom&#160;flash driver.&#160;<br/>
+Advantages:&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Additional&#160;security,&#160;as&#160;the flash driver&#160;code is&#160;not&#160;located in&#160;the ECU&#160;during normal&#160;operation and&#160;<br/>might&#160;thus&#160;not&#160;unintentionally&#160;be&#160;executed.&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Flash driver&#160;can be updated in&#160;the&#160;field.&#160;If&#160;the flash&#160;driver&#160;is&#160;statically&#160;linked&#160;with the bootloader&#160;a&#160;<br/>bootloader&#160;update&#160;is&#160;the&#160;only&#160;way&#160;to realize an update.&#160;This&#160;is&#160;more complex&#160;and&#160;not&#160;specified by&#160;<br/>most&#160;OEMs.&#160;<br/>
+Disadvantages:&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Increased complexity&#160;inside the&#160;Bootloader&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Increased RAM consumption,&#160;all&#160;downloaded&#160;drivers&#160;are stored&#160;in&#160;RAM&#160;<br/>
+<b>&gt;&#160;</b><br/>
+Additional&#160;post-build steps&#160;might&#160;be required&#160;<br/>
+Having&#160;a downloadable&#160;flash driver&#160;requires&#160;to&#160;split&#160;the&#160;logic&#160;into&#160;a flash driver&#160;wrapper&#160;(we call&#160;it&#160;<br/>fbl_flio)&#160;and the flash&#160;driver&#160;itself&#160;(flashdrv).&#160;<br/>
+The tester&#160;will&#160;then&#160;download the flash driver&#160;contents&#160;during the update procedure.&#160;The flash driver&#160;<br/>wrapper&#160;is&#160;responsible to&#160;check&#160;if&#160;an appropriate&#160;flash&#160;driver&#160;is&#160;located in the temporary&#160;RAM buffer.&#160;<br/>Thereafter&#160;it&#160;can use&#160;the&#160;downloaded flash driver&#160;to modify&#160;the memory&#160;contents&#160;as&#160;requested&#160;by&#160;the&#160;<br/>tester.&#160;<br/>
+There are a few&#160;possibilities&#160;how&#160;to&#160;use an additional&#160;custom&#160;flash driver&#160;together&#160;with the&#160;existing&#160;<br/>Vector&#160;flash&#160;driver.&#160;The most&#160;straight-forward solution&#160;is&#160;to reserve&#160;some&#160;margin at&#160;the&#160;end&#160;of&#160;the&#160;1st&#160;<br/>flash driver&#160;and thereafter&#160;append the 2nd&#160;flash driver,&#160;typically&#160;in&#160;a post-build step.&#160;This&#160;adaptation is&#160;<br/>transparent&#160;for&#160;the&#160;delivered bootloader.&#160;Your&#160;custom&#160;flash driver&#160;wrapper&#160;must&#160;be aware&#160;of&#160;the&#160;<br/>relative offset,&#160;of&#160;course.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-1&#160;Flash Driver&#160;Layout&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Note&#160;<br/></b>This&#160;approach may&#160;be the&#160;only&#160;option,&#160;depending on the OEM.&#160;For&#160;some OEMs&#160;the&#160;<br/>
+&#160;<br/>
+Bootloader&#160;will&#160;only&#160;allow&#160;the further&#160;download,&#160;when&#160;all&#160;configured drivers&#160;(downloaded&#160;<br/>and statically&#160;linked)&#160;were&#160;initialized successfully.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+6<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name=7></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1188_Custom_Flash_Drivers-7_1.png"/><br/>
+Custom&#160;Flash Drivers&#160;<br/>
+Another&#160;option&#160;is&#160;to&#160;download the respective flash driver&#160;before downloading the&#160;actual&#160;data,&#160;which&#160;<br/>means&#160;having multiple flash driver&#160;containers.&#160;This&#160;procedure&#160;is&#160;only&#160;valid for&#160;a few&#160;OEMs.&#160;<br/>
+<b>5&#160;</b><br/>
+<b>Additional&#160;Resources&#160;</b><br/>
+<a href="http://portal.automotive-his.de/index.php?option=com_content&task=view&id=24&Itemid=33&lang=english">HIS&#160;Flash&#160;Programming (document&#160;overview)&#160;</a><br/>
+<a href="http://portal.automotive-his.de/images/pdf/FlashProgramming/his%20flash%20driver%20v130.pdf">HIS&#160;Flash Driver&#160;Specification&#160;v130&#160;</a><br/>
+<a href="http://portal.automotive-his.de/images/pdf/StandardSoftware/api_iodriver_2_1_3.pdf">Flash Driver&#160;API&#160;v213&#160;</a><br/>
+<a href="http://vector.com/vi_flashbootloader_en.html">Vector&#160;Homepage&#160;-&#160;Flash Bootloader&#160;</a><br/>
+<a href="http://vector.com/portal/medien/cmc/info/FlashBootloader_ProductInformation_EN.pdf">Flash Bootloader&#160;Product&#160;Information&#160;</a><br/>
+<b>6&#160;</b><br/>
+<b>Contacts&#160;</b><br/>
+For&#160;a&#160;full&#160;list&#160;with&#160;all&#160;Vector&#160;locations&#160;and addresses&#160;worldwide,&#160;please visit<a href="http://vector.com/contact/">&#160;http://vector.com/contact/.</a>&#160;<br/>
+&#160;<br/>
+Copyright&#160;©&#160;2016&#160;-&#160;Vector&#160;Informatik&#160;GmbH<i>&#160;</i><br/>
+7<i>&#160;</i><br/>
+Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0<b>&#160;</b><br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2">1 Overview</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#2">2 HIS Flash Driver Interface</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#3">3 Polling Function</a>
+<ul>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#3">3.1 General Information</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.2 Internal Bootloader Time Base</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.3 Watchdog Handling</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#4">3.4 (Adaptive) RCR-RP Handling</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">3.5 Pipelined Programming (Early Acknowledge)</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#5">3.6 Pipelined Verification</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#6">4 Downloadable Flash Driver</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7">5 Additional Resources</a></li>
+<li><a href="AN-ISC-8-1188_Custom_Flash_Driverss.html#7">6 Contacts</a></li>
+</ul>
+<hr/>
+</body>
+</html>

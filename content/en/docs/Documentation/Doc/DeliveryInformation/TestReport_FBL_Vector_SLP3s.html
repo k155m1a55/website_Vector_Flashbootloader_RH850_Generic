@@ -1,0 +1,960 @@
+---
+title: TestReport_FBL_Vector_SLP3s
+linkTitle: TestReport_FBL_Vector_SLP3s
+weight: 26
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-1_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test Report&#160;<br/>Vector&#160;SLP3&#160;Flash&#160;Bootloader&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>General&#160;Information&#160;</b><br/>
+<b>Component&#160;</b><br/>
+<b>&#160;</b><br/>
+Test&#160;Person&#160;<br/>
+Li&#160;Wenhe&#160;<br/>
+Test&#160;Proceeding&#160;Date&#160;<br/>
+2018-03-27&#160;<br/>
+Test&#160;Report&#160;Recipients&#160;<br/>
+Vector&#160;Informatik&#160;GmbH,&#160;Customer&#160;<br/>
+<b>Test Environment&#160;</b><br/>
+<b>Component&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Version&#160;/&#160;<br/>Derivative&#160;</b><br/>
+Target&#160;System&#160;<br/>
+RH850&#160;<br/>
+R7F701313EAFP&#160;<br/>
+Generation&#160;Tool&#160;<br/>
+GENy&#160;<br/>
+01.04.50&#160;<br/>
+Compiler&#160;<br/>
+Green&#160;Hills&#160;<br/>
+2015.1.7&#160;<br/>
+Customer&#160;<br/>
+Nexteer&#160;Automotive (Suzhou)&#160;Co.,Lt&#160;<br/>
+&#160;<br/>
+License&#160;<br/>
+CBD1701035&#160;<br/>
+&#160;<br/>
+Project&#160;Number&#160;<br/>
+5022666&#160;<br/>
+&#160;<br/>
+Test&#160;Database&#160;<br/>
+DemoFBL_Vector_SLP3.dbc&#160;<br/>
+<b>Component under&#160;Test&#160;</b><br/>
+<b>Component&#160;Type&#160;</b><br/>
+<b>Component&#160;Name&#160;</b><br/>
+<b>Version&#160;</b><br/>
+CAN&#160;FBL&#160;(SLP3)&#160;<br/>
+FblOem_Vector&#160;<br/>
+07.03.01&#160;<br/>
+&#160;<br/>
+<b>Overall&#160;Test&#160;Result&#160;</b><br/>
+<b>OK&#160;</b><br/>
+Details&#160;/&#160;hints&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+1&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=2></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-2_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Revision history&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Achim&#160;Strobelt&#160;<br/>
+2016-09-07&#160;<br/>
+02.00.00&#160;<br/>
+Converted&#160;to&#160;new&#160;template,&#160;removed&#160;tests&#160;<br/>which are done&#160;by&#160;automatic&#160;tests,&#160;added&#160;<br/>tests&#160;for&#160;pipelining&#160;options&#160;<br/>
+Achim&#160;Strobelt&#160;<br/>
+2017-03-15&#160;<br/>
+02.01.00&#160;<br/>
+Changed&#160;gap&#160;fill&#160;test&#160;value&#160;<br/>
+Achim&#160;Strobelt&#160;<br/>
+2017-08-14&#160;<br/>
+03.00.00&#160;<br/>
+Adapted&#160;tests&#160;for&#160;Vector&#160;SLP3 7.xx.xx&#160;<br/>
+<b>Test Report&#160;distribution&#160;</b><br/>
+After&#160;finishing&#160;the&#160;tests,&#160;this&#160;test&#160;report&#160;must&#160;be&#160;stored&#160;in&#160;the&#160;_doc\30_TestReports&#160;direc-<br/>tory.&#160;A&#160;copy&#160;of&#160;this document&#160;is included&#160;in&#160;the&#160;Bootloader delivery&#160;as PDF.&#160;<br/>
+<b>Glossary&#160;and&#160;Abbreviations&#160;</b><br/>
+See&#160;chapte<a href="TestReport_FBL_Vector_SLP3s.html#22">r&#160;6.</a>&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+2&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=3></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-3_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#4"><b>1</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#4"><b>Introduction...................................................................................................................&#160;4</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5"><b>2</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5"><b>Test&#160;Environment&#160;..........................................................................................................&#160;5</b>&#160;<br/>2.1&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5">Module Versions,&#160;Compiler/Linker&#160;information&#160;...................................................&#160;5&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5">2.2&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5">Components&#160;......................................................................................................&#160;5&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5">2.3&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#5">Test&#160;Setup&#160;..........................................................................................................&#160;5&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#6"><b>3</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#6"><b>Configuration&#160;Tests&#160;......................................................................................................&#160;6</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#6">White Box&#160;Tests&#160;.................................................................................................&#160;6&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#7">3.2&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#7">Compile&#160;Tests&#160;....................................................................................................&#160;7&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#8"><b>4</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#8"><b>Implementation&#160;Tests&#160;...................................................................................................&#160;8</b>&#160;<br/>4.1&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#8">Download Sequence&#160;Tests&#160;1&#160;..............................................................................&#160;8&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#10">4.2&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#10">Download Sequence&#160;Tests&#160;2&#160;............................................................................&#160;10&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#12">4.3&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#12">Special&#160;Configurations&#160;.....................................................................................&#160;12&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#17">4.4&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#17">Download Error&#160;Tests&#160;.......................................................................................&#160;17&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#18">4.5&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#18">Test&#160;of&#160;Security&#160;Features&#160;.................................................................................&#160;18&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#19">4.6&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#19">CAN&#160;Bootloader&#160;Specific&#160;Tests&#160;........................................................................&#160;19&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#20">4.7&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#20">Watchdog&#160;Tests&#160;...............................................................................................&#160;20&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#21"><b>5</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#21"><b>Automated Tests&#160;.........................................................................................................&#160;21</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#22"><b>6</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#22"><b>Glossary&#160;and&#160;Abbreviations&#160;......................................................................................&#160;22</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#23"><b>7</b>&#160;</a><br/>
+<a href="TestReport_FBL_Vector_SLP3s.html#23"><b>Contact&#160;........................................................................................................................&#160;23</b>&#160;</a><br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+3&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=4></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-4_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>1&#160;&#160;Introduction&#160;&#160;</b><br/>
+This&#160;document&#160;serves&#160;as&#160;the&#160;Test&#160;Report&#160;for&#160;testing&#160;new&#160;integrations&#160;of&#160;the&#160;Vector&#160;SLP3&#160;<br/>Flash&#160;Bootloader.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+4&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=5></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-5_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>2&#160;&#160;Test&#160;Environment&#160;</b><br/>
+<b>2.1&#160;</b><br/>
+<b>Module&#160;Versions,&#160;Compiler/Linker information&#160;</b><br/>
+See&#160;file&#160;“CBD1701035_DeliveryDescription.html”.&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Components&#160;</b><br/>
+The&#160;test&#160;requires the&#160;following&#160;components:&#160;<br/>
+<b>&gt;&#160;&#160;</b>CAN&#160;Bootloader software on&#160;a&#160;target&#160;ECU/&#160;board&#160;<br/>
+<b>&gt;&#160;&#160;</b>vFlash&#160;as Flash&#160;Tool&#160;<br/>
+<b>&gt;&#160;&#160;</b>CANoe&#160;<br/>
+<b>&gt;&#160;&#160;</b>Example&#160;ECU&#160;application&#160;<br/>
+<b>&gt;&#160;&#160;</b>HexView&#160;<br/>
+<b>&gt;&#160;&#160;</b>CANoe&#160;Automated&#160;Test&#160;Suite&#160;<br/>
+&#160;<br/>
+This test&#160;report&#160;describes two&#160;sets&#160;of&#160;tests:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Manual tests&#160;<br/>
+<b>&gt;&#160;&#160;</b>CANoe&#160;automated&#160;tests&#160;<br/>
+<b>2.3&#160;</b><br/>
+<b>Test Setup&#160;</b><br/>
+The&#160;tests&#160;are&#160;based&#160;on&#160;a&#160;standard&#160;&#160;Bootloader&#160;configuration.&#160;The&#160;following&#160;base&#160;configu-<br/>ration&#160;is assumed:&#160;<br/>
+<b>&gt;&#160;&#160;</b>8&#160;segments&#160;per block&#160;<br/>
+<b>&gt;&#160;&#160;</b>2&#160;mandatory&#160;logical blocks&#160;<br/>
+<b>&gt;&#160;&#160;</b>Project&#160;State:&#160;“Integration”&#160;<br/>
+<b>&gt;&#160;&#160;</b>Flash&#160;Driver Usage:&#160;Download&#160;Driver&#160;<br/>
+<b>&gt;&#160;&#160;</b>Diagnostic Buffer Size:&#160;4095&#160;Bytes&#160;<br/>
+<b>&gt;&#160;&#160;</b>Security&#160;Class&#160;which&#160;was&#160;ordered&#160;for&#160;this Bootloader&#160;<br/>
+<b>&gt;&#160;&#160;</b>Hardware dependent&#160;settings matching&#160;the&#160;customer’s requirements&#160;<br/>
+<b>&gt;&#160;&#160;</b>Other settings defined&#160;by&#160;pre-config&#160;file&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+5&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-6_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>3&#160;&#160;Configuration&#160;Tests&#160;</b><br/>
+Configuration&#160;tests&#160;include&#160;white&#160;box&#160;tests&#160;and&#160;basic compile&#160;test&#160;for various features.&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>White&#160;Box&#160;Tests&#160;&#160;</b><br/>
+This test&#160;is&#160;a&#160;verification&#160;of&#160;the&#160;source&#160;code&#160;before tests&#160;of&#160;the&#160;running&#160;Bootloader are&#160;performed.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+00.01&#160;<br/>
+<b>Flash&#160;Block&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;entries of&#160;the&#160;FlashBlock&#160;structure&#160;must&#160;<br/>
+&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Structure&#160;</b><br/>
+correspond&#160;to&#160;the&#160;resource mapping of&#160;the&#160;<br/>
+&#160;<br/>
+This&#160;structure&#160;<br/>
+supported&#160;controllers.&#160;<br/>
+describes&#160;the&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;end addresses&#160;of&#160;the blocks&#160;are&#160;the&#160;<br/>
+mapping&#160;of&#160;flash&#160;<br/>
+addresses&#160;of&#160;the&#160;last&#160;byte in&#160;the&#160;corresponding&#160;<br/>
+segments&#160;on&#160;a&#160;<br/>
+block.&#160;<br/>
+specific&#160;controller&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+6&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=7></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-7_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Compile&#160;Tests&#160;</b><br/>
+The&#160;following&#160;tests&#160;are&#160;used&#160;to&#160;verify&#160;several&#160;Bootloader configurations compile&#160;without&#160;error.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+01.01&#160;<br/>
+<b>Project&#160;states&#160;</b><br/>
+Compile the&#160;Bootloader&#160;with each of&#160;the&#160;following&#160;&#160;Bootloader&#160;is&#160;compiled&#160;without&#160;compile errors.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+project&#160;states&#160;<br/>
+<b>&gt;&#160;&#160;</b>Integration&#160;<br/>
+<b>&gt;&#160;&#160;</b>Production&#160;<br/>
+<b>&gt;&#160;&#160;</b>Production&#160;(reduced&#160;checks)&#160;<br/>
+01.02&#160;<br/>
+<b>Application&#160;task&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Compile the&#160;Bootloader&#160;with and without&#160;<br/>
+Bootloader&#160;is&#160;compiled&#160;without&#160;compile errors.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+Application&#160;Task&#160;<br/>
+&#160;<br/>
+01.03&#160;<br/>
+<b>Watchdog&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Compile the&#160;Bootloader&#160;with enabled&#160;and&#160;<br/>
+Bootloader&#160;is&#160;compiled&#160;without&#160;compile errors.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+disabled&#160;watchdog&#160;support.&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+7&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=8></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-8_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4&#160;&#160;Implementation&#160;Tests&#160;</b><br/>
+<b>4.1&#160;</b><br/>
+<b>Download&#160;Sequence&#160;Tests 1&#160;</b><br/>
+The&#160;following&#160;tests&#160;are&#160;used&#160;to&#160;verify&#160;the&#160;standard download&#160;sequence.&#160;The&#160;following&#160;configuration&#160;will be&#160;used&#160;for these&#160;tests:&#160;<br/>
+<b>&gt;&#160;&#160;</b>2&#160;mandatory&#160;logical blocks&#160;(Application&#160;and&#160;Data)&#160;<br/>
+<b>&gt;&#160;&#160;</b>A&#160;running&#160;application&#160;has to&#160;be&#160;used&#160;for the&#160;application&#160;block.&#160;<br/>
+<b>&gt;&#160;&#160;</b>One&#160;of&#160;both&#160;blocks&#160;has&#160;to&#160;cross&#160;a&#160;flash&#160;block&#160;boundary.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+02.01&#160;<br/>
+<b>Program&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download the&#160;application&#160;to&#160;the&#160;ECU.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application is downloaded correctly.&#160;The&#160;first&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>application&#160;from&#160;</b><br/>
+logical&#160;block&#160;is&#160;validated&#160;after&#160;<br/>
+&#160;<br/>
+<b>FBL&#160;</b><br/>
+checksum/signature check.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is not&#160;started&#160;because&#160;the&#160;<br/>
+second&#160;logical&#160;block&#160;is&#160;missing.&#160;<br/>
+02.02&#160;<br/>
+<b>Program&#160;data&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download data block&#160;(second logical&#160;block)&#160;<br/>
+<b>&gt;&#160;&#160;</b>Data&#160;block&#160;is&#160;downloaded correctly.&#160;The&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>block&#160;from&#160;FBL&#160;</b><br/>
+second&#160;logical&#160;block&#160;is&#160;validated&#160;after&#160;<br/>
+&#160;<br/>
+checksum/signature check.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is started&#160;because both&#160;logical&#160;<br/>
+blocks&#160;are&#160;present.&#160;<br/>
+02.03&#160;<br/>
+<b>Reprogram&#160;both&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;is&#160;started&#160;from&#160;a&#160;running&#160;<br/>
+<b>&gt;&#160;&#160;</b>Transition&#160;from&#160;application to&#160;Bootloader&#160;is&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>blocks&#160;from&#160;</b><br/>
+application.&#160;Both&#160;logical&#160;blocks&#160;are&#160;<br/>
+working&#160;correctly.&#160;<br/>
+<b>&#160;</b><br/>
+<b>application&#160;</b><br/>
+reprogrammed.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Both&#160;logical&#160;blocks&#160;are erased and&#160;<br/>
+reprogrammed.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is&#160;running&#160;after&#160;reprogramming&#160;<br/>
+is&#160;finished.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+8&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=9></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-9_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+02.04&#160;<br/>
+<b>Erase&#160;Application&#160;&#160;&gt;&#160;&#160;</b>Start&#160;another&#160;download of&#160;the&#160;application&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is not&#160;started&#160;again,&#160;resets&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Interrupt&#160;the&#160;download,&#160;e.g.&#160;by&#160;resetting&#160;the&#160;<br/>
+start&#160;the&#160;Bootloader.&#160;<br/>
+<b>&#160;</b><br/>
+ECU.&#160;<br/>
+02.05&#160;<br/>
+<b>Reprogram&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download the&#160;application to&#160;the&#160;ECU&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is started&#160;after&#160;a successful&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Application&#160;from&#160;</b><br/>
+download.&#160;<br/>
+<b>&#160;</b><br/>
+<b>interrupted&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Download&#160;</b><br/>
+02.06&#160;<br/>
+<b>Startup&#160;of&#160;valid&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Make sure&#160;a valid application is programmed.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application is started&#160;after&#160;every&#160;reset.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>application&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Reset&#160;the&#160;ECU&#160;several&#160;times.&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+9&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=10></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-10_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Download&#160;Sequence&#160;Tests 2&#160;</b><br/>
+The&#160;following&#160;tests&#160;use&#160;a&#160;different&#160;configuration:&#160;<br/>
+<b>&gt;&#160;&#160;</b>2&#160;mandatory&#160;logical blocks,&#160;1&#160;optional logical&#160;block&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;optional block&#160;uses the&#160;multiple&#160;memory&#160;interface,&#160;e.g.&#160;an&#160;Eeprom&#160;driver.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Flash&#160;Driver Usage:&#160;Optional Flash&#160;Driver&#160;Download&#160;<br/>
+<b>&gt;&#160;&#160;</b>Activate&#160;pipelined&#160;programming&#160;and&#160;pipelined&#160;verification&#160;(if&#160;ordered)1.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Please&#160;note:&#160;Test&#160;cases 03.02,&#160;03.03&#160;and&#160;03.04&#160;require&#160;no&#160;additional downloads.&#160;&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+03.01&#160;<br/>
+<b>Download&#160;</b><br/>
+Try&#160;the&#160;following&#160;sequences with vFlash&#160;(FD&#160;flash&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;application is started&#160;if&#160;both&#160;mandatory&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Sequence&#160;</b><br/>
+driver,&#160;AP&#160;application,&#160;CA1 and CA2:&#160;calibration&#160;<br/>
+blocks&#160;(AP&#160;and&#160;CA1)&#160;are&#160;present.&#160;<br/>
+files)&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP,&#160;CA1&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP,&#160;FD,&#160;CA1&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP,&#160;FD,&#160;CA1,&#160;FD,&#160;CA2&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP,&#160;CA1,&#160;CA2&#160;<br/>
+<b>&gt;&#160;&#160;</b>FD,&#160;AP,&#160;CA1,&#160;FD,&#160;CA2&#160;<br/>
+<b>&gt;&#160;&#160;</b>AP&#160;<br/>
+<b>&gt;&#160;&#160;</b>AP,&#160;FD,&#160;CA1,&#160;CA2&#160;<br/>
+03.02&#160;<br/>
+<b>Multiple&#160;memory&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Flash&#160;driver&#160;selection is&#160;done&#160;by&#160;multiple&#160;<br/>
+<b>&gt;&#160;&#160;</b>Verify&#160;data is&#160;downloaded to&#160;CA2 (e.g.&#160;by&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>devices&#160;</b><br/>
+memory&#160;interface.&#160;<br/>
+Debugger).&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>1&#160;These&#160;features&#160;have&#160;to&#160;be&#160;ordered&#160;explicitly&#160;and&#160;are&#160;not&#160;tested&#160;if&#160;they&#160;are&#160;not&#160;ordered.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+10&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=11></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-11_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Result&#160;</b><br/>
+<b>Result&#160;</b><br/>
+03.03&#160;<br/>
+<b>Pipelined&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Verify&#160;pipelined&#160;programming&#160;feature&#160;<br/>
+<b>&gt;&#160;&#160;</b>Download should be&#160;OK&#160;<br/>
+N.a.<b>&#160;</b><br/>
+<b>programming&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Transfer&#160;Data&#160;Requests&#160;should be&#160;answered&#160;<br/>
+without&#160;a&#160;response&#160;pending&#160;messages2.&#160;<br/>
+03.04&#160;<br/>
+<b>Pipelined&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Verify&#160;pipelined verification&#160;feature&#160;<br/>
+<b>&gt;&#160;&#160;</b>Checksum/Signature&#160;calculation should be&#160;<br/>
+N.a.<b>&#160;</b><br/>
+<b>verification&#160;</b><br/>
+OK.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Routine&#160;Control/Check&#160;Memory&#160;should be&#160;<br/>
+processed&#160;without&#160;response&#160;pending&#160;<br/>message.3&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>2&#160;If&#160;response&#160;pending&#160;messages&#160;are&#160;still&#160;observed,&#160;the&#160;response&#160;times&#160;should&#160;be&#160;shorter&#160;than&#160;without&#160;pipelined&#160;programming.&#160;<br/>
+3&#160;If&#160;response&#160;pending&#160;messages&#160;are&#160;still&#160;observed,&#160;the&#160;response&#160;times&#160;should&#160;be&#160;shorted&#160;than&#160;without&#160;pipelined&#160;verification.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+11&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=12></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-12_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>Special&#160;Configurations&#160;</b><br/>
+The&#160;following&#160;tests&#160;are&#160;used&#160;to&#160;verify&#160;special&#160;Bootloader&#160;features&#160;are working&#160;correctly.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+04.01&#160;<br/>
+<b>Multiple Nodes&#160;</b><br/>
+Configure&#160;the&#160;Bootloader&#160;to&#160;use&#160;a&#160;multiple node&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;communicates&#160;using&#160;the&#160;CAN&#160;&#160;<b>OK&#160;&#160;</b><br/>
+configuration.&#160;<br/>
+identifiers&#160;of&#160;“Demo2”.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Configure&#160;the&#160;Bootloader&#160;to&#160;use&#160;node&#160;“Demo2”&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;CAN&#160;identifiers&#160;of&#160;node “Demo”&#160;are&#160;<br/><b>&gt;&#160;&#160;</b>Start&#160;the&#160;Bootloader&#160;<br/>
+ignored.&#160;<br/>
+04.02&#160;<br/>
+<b>Sleep&#160;Mode&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable Bootloader&#160;Sleep&#160;Mode&#160;<br/>
+<b>&gt;&#160;&#160;</b>ApplFblBusSleep()&#160;is&#160;reached&#160;after&#160;the&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Send a&#160;CAN&#160;message,&#160;verify&#160;communication is&#160;<br/>
+configured&#160;sleep time expired.&#160;<br/>
+&#160;<br/>
+working.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Stop&#160;communication&#160;<br/>
+04.03&#160;<br/>
+<b>Sleep&#160;Mode&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable Bootloader&#160;Sleep&#160;Mode&#160;<br/>
+<b>&gt;&#160;&#160;</b>ApplFblBusSleep()&#160;is&#160;not&#160;reached.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Send&#160;functional&#160;tester&#160;present&#160;messages&#160;(e.g.&#160;<br/>
+<b>&#160;</b><br/>
+every&#160;2500ms)&#160;<br/>
+04.04&#160;<br/>
+<b>Flash&#160;Driver&#160;from&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Configure&#160;the&#160;Flash&#160;Driver&#160;Usage&#160;to&#160;“Use&#160;Flash&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;application can&#160;be&#160;flashed&#160;without&#160;a&#160;flash&#160;&#160;<b>OK&#160;&#160;</b><br/>
+<b>ROM&#160;</b><br/>
+Driver&#160;from&#160;ROM”.&#160;<br/>
+driver&#160;download.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download application without&#160;flash&#160;driver.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;flash&#160;driver&#160;download is rejected&#160;by&#160;the&#160;<br/>
+<b>&gt;&#160;&#160;</b>Download application&#160;with&#160;flash&#160;driver.&#160;<br/>
+bootloader.&#160;<br/>
+04.05&#160;<br/>
+<b>Changed&#160;download&#160;&#160;&gt;&#160;&#160;</b>Deactivate&#160;the&#160;following&#160;options:&#160;Control&#160;DTC&#160;<br/>
+<b>&gt;&#160;&#160;</b>Download of&#160;first&#160;logical&#160;block should succeed.&#160;&#160;<b>OK&#160;&#160;</b><br/>
+<b>sequence&#160;</b><br/>
+option&#160;Record&#160;and Check&#160;Programming&#160;<br/>
+<b>&#160;</b><br/>
+Preconditions&#160;Service.&#160;Set&#160;Communication&#160;<br/>Control&#160;Type&#160;to&#160;“Disable&#160;Rx&#160;and&#160;Tx”.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Use the&#160;same&#160;settings&#160;in vFlash&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+12&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=13></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-13_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+04.06&#160;<br/>
+<b>Response after&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>De-activate&#160;“Response after&#160;Reset”.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Both&#160;requests&#160;are&#160;responded&#160;at&#160;once.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>reset&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Set&#160;the&#160;Bootloader&#160;to programming&#160;session&#160;and&#160;<br/>
+send a&#160;default&#160;session&#160;request&#160;(10&#160;01)&#160;to&#160;the&#160;<br/>Bootloader.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Send a&#160;reset&#160;request&#160;(11&#160;01)&#160;to&#160;the&#160;Bootloader.&#160;<br/>
+04.07&#160;<br/>
+<b>Response after&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Re-activate&#160;response&#160;after&#160;reset.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Both&#160;requests&#160;are&#160;not&#160;responded&#160;at&#160;once.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>reset&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Set&#160;the&#160;Bootloader&#160;to programming&#160;session&#160;and&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;should send a&#160;response&#160;<br/>
+<b>&#160;</b><br/>
+send a&#160;default&#160;session&#160;request&#160;(10&#160;01)&#160;to&#160;the&#160;<br/>
+pending&#160;message,&#160;issue&#160;the&#160;reset&#160;and&#160;send&#160;<br/>
+Bootloader.&#160;<br/>
+the&#160;positive response after&#160;the&#160;reset.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Send a&#160;reset&#160;request&#160;(11&#160;01)&#160;to&#160;the&#160;Bootloader.&#160;<br/>
+04.08&#160;<br/>
+<b>Force&#160;Boot&#160;Mode&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable “Stay&#160;In&#160;Boot”&#160;in&#160;GENy&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;can&#160;be&#160;started&#160;if&#160;a&#160;corrupt&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download&#160;an&#160;invalid application software&#160;(e.g.&#160;<br/>
+application has&#160;been&#160;validated.&#160;<br/>
+<b>&#160;</b><br/>
+random&#160;data)&#160;without&#160;working&#160;CAN/Diagnosis&#160;to&#160;&#160;<b>&gt;&#160;&#160;</b>A&#160;working&#160;application is&#160;flashed&#160;onto&#160;the&#160;ECU.&#160;<br/>the&#160;ECU.&#160;<br/>
+<b>&gt;&#160;&#160;</b>After&#160;flashing&#160;the&#160;correct&#160;application,&#160;the&#160;<br/>
+<b>&gt;&#160;&#160;</b>Start&#160;a download using&#160;the&#160;“Force Boot&#160;Mode”&#160;<br/>
+application can&#160;be&#160;reprogrammed&#160;using&#160;the&#160;<br/>
+feature of&#160;vFlash.&#160;<br/>
+normal&#160;sequence.&#160;<br/>
+04.09&#160;<br/>
+<b>Use&#160;of&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable “ApplFblStart&#160;Function”&#160;in&#160;GENy.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Programming&#160;session&#160;can be&#160;started&#160;from&#160;a&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>ApplFblStart()&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Adapt&#160;your&#160;application&#160;to&#160;use&#160;ApplFblStart.&#160;<br/>
+running&#160;application without&#160;using&#160;NV-memory.&#160;&#160;<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Start&#160;download&#160;from&#160;running&#160;application.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Reprogramming&#160;of&#160;application is possible.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+13&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=14></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-14_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+04.10&#160;<br/>
+<b>Use&#160;of&#160;Presence&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable “Presence&#160;Pattern”&#160;in&#160;GENy&#160;<br/>
+<b>&gt;&#160;&#160;</b>General:&#160;The&#160;size of&#160;masks&#160;and pattern&#160;is&#160;an&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Patterns&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable&#160;Application Validity&#160;Flag&#160;<br/>
+integer&#160;multiple of&#160;the device’s&#160;flash&#160;segment&#160;&#160;<b>&#160;<br/></b>size.&#160;The&#160;write pattern&#160;size is extended&#160;<br/>
+1.&#160;&#160;Generate,&#160;re-build and program&#160;the&#160;<br/>
+Bootloader,&#160;the&#160;application area&#160;is&#160;erased.<br/>
+automatically&#160;to match&#160;the device’s&#160;flash&#160;<br/>
+&#160;<br/>
+segment&#160;size.&#160;<br/>
+2.&#160;&#160;Check&#160;the&#160;mask/pattern&#160;area&#160;at&#160;the&#160;end&#160;of&#160;<br/>
+<b>&gt;&#160;&#160;</b>Step&#160;2:&#160;All&#160;bytes should&#160;equal&#160;the&#160;(device&#160;<br/>
+the&#160;logical&#160;blocks&#160;(e.g.&#160;with&#160;the&#160;debugger).&#160;<br/>
+specific)&#160;flash deleted&#160;value.&#160;<br/>
+3.&#160;&#160;Download a&#160;valid application&#160;(two blocks).&#160;<br/>
+<b>&gt;&#160;&#160;</b>Step&#160;4:&#160;The&#160;application is&#160;started.&#160;The&#160;mask&#160;<br/>
+4.&#160;&#160;After&#160;the&#160;download has&#160;finished,&#160;check&#160;the&#160;<br/>
+should have&#160;flash&#160;deleted value,&#160;the&#160;pattern&#160;<br/>
+mask/pattern&#160;area&#160;at&#160;the&#160;end of&#160;the&#160;second&#160;<br/>
+area&#160;should&#160;show&#160;the&#160;completely&#160;written&#160;<br/>
+logical&#160;block.&#160;<br/>
+application valid pattern&#160;as defined in&#160;the&#160;<br/>fbl_apnv&#160;file&#160;“kFblPresencePattern={0x73,&#160;<br/>
+5.&#160;&#160;Set&#160;a breakpoint&#160;in&#160;function&#160;<br/>
+0x6A,&#160;0x29,&#160;0x3E}”.&#160;<br/>
+FblDiagRCStartErase-<br/>MainHandler(),&#160;directly&#160;behind&#160;the&#160;call&#160;of&#160;&#160;<b>&gt;&#160;&#160;</b>Step 6:&#160;The&#160;mask&#160;of&#160;the&#160;second&#160;logical&#160;block&#160;<br/>function&#160;<br/>
+should show&#160;the&#160;inverse&#160;value&#160;of&#160;the&#160;<br/>
+ApplFblInvalidateBlock().&#160;<br/>
+application valid pattern&#160;written&#160;in Step&#160;4.&#160;<br/>
+6.&#160;&#160;Start&#160;another&#160;download of&#160;the&#160;application&#160;file&#160;&#160;<b>&gt;&#160;&#160;</b>Step&#160;8:&#160;The&#160;mask/pattern area&#160;has&#160;been&#160;<br/>
+(first&#160;logical&#160;block).&#160;After&#160;the&#160;breakpoint&#160;has&#160;<br/>
+erased.&#160;That&#160;is,&#160;mask&#160;and pattern&#160;shall&#160;show&#160;<br/>
+been&#160;hit,&#160;check&#160;the&#160;mask/pattern&#160;area.&#160;<br/>
+the&#160;flash&#160;erased&#160;value&#160;again.&#160;<br/>
+7.&#160;&#160;Resume&#160;the&#160;debugger&#160;and&#160;wait&#160;until&#160;the&#160;<br/>
+<b>&gt;&#160;&#160;</b>Step&#160;9:&#160;The&#160;valid&#160;pattern&#160;has&#160;to&#160;be&#160;set&#160;at&#160;the&#160;<br/>
+(positive)&#160;response&#160;for&#160;the erase&#160;request(s)&#160;<br/>
+first&#160;logical&#160;block.&#160;<br/>
+has&#160;been&#160;received.&#160;<br/>
+8.&#160;&#160;Stop&#160;the debugger&#160;and&#160;check&#160;the&#160;<br/>
+mask/pattern&#160;area&#160;of&#160;the&#160;first&#160;logical&#160;block.&#160;<br/>
+9.&#160;&#160;Restart&#160;the&#160;bootloader&#160;and&#160;make&#160;another&#160;<br/>
+download of&#160;the&#160;first&#160;logical&#160;block.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+14&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=15></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-15_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+04.11&#160;<br/>
+<b>Startup&#160;application&#160;&#160;&gt;&#160;&#160;</b>De-activate&#160;“Application&#160;Validity&#160;Flag”.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;result&#160;of&#160;the&#160;Check&#160;Programming&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>validation&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Flash&#160;a valid application (2 logical&#160;blocks).&#160;<br/>
+Dependencies service is&#160;not&#160;stored&#160;any&#160;more.&#160;&#160;<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>During&#160;startup,&#160;ApplFblIsValidApp&#160;is&#160;used to&#160;<br/>
+check&#160;if&#160;all&#160;mandatory&#160;logical&#160;blocks&#160;are&#160;<br/>present.&#160;<br/>
+<b>&gt;&#160;&#160;</b>ApplFblCheckProgDependencies()&#160;is&#160;<br/>
+called&#160;during&#160;startup&#160;to establish compatibility&#160;<br/>between both logical&#160;blocks.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application is started.&#160;<br/>
+04.12&#160;<br/>
+<b>Gap&#160;Fill&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Enable “Gap&#160;Filling”&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;areas&#160;which aren’t&#160;occupied&#160;by&#160;the&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Set&#160;“Fill&#160;Code”&#160;to&#160;0xC5&#160;<br/>
+downloaded&#160;data are padded&#160;with 0xC5.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download a&#160;file which doesn’t&#160;start&#160;at&#160;the&#160;<br/>
+beginning&#160;of&#160;a&#160;logical&#160;block,&#160;includes&#160;a&#160;gap&#160;<br/>between to segments&#160;and doesn’t&#160;end at&#160;the&#160;<br/>end of&#160;the&#160;logical&#160;block.&#160;<br/>
+04.13&#160;<br/>
+<b>Data&#160;Compression4&#160;&#160;&gt;&#160;&#160;</b>Activate&#160;data&#160;compression&#160;and download&#160;<br/>
+<b>&gt;&#160;&#160;</b>All&#160;files&#160;must&#160;be&#160;downloaded and&#160;flashed&#160;<br/>
+N.a.<b>&#160;</b><br/>
+compressed&#160;files:&#160;<br/>
+correctly.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Worst&#160;case&#160;compression&#160;(random&#160;data).&#160;File&#160;<br/>
+should be&#160;bigger&#160;than&#160;uncompressed&#160;file.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Best&#160;case&#160;compression&#160;(short&#160;pattern)&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Flash&#160;driver&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>4&#160;This&#160;test&#160;is&#160;optional&#160;and&#160;only&#160;done&#160;if&#160;data&#160;compression&#160;has&#160;been&#160;ordered.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+15&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=16></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-16_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+04.14&#160;<br/>
+<b>Erase Function&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Configure on&#160;logical&#160;block&#160;which includes the&#160;<br/>
+<b>&gt;&#160;&#160;</b>Verify&#160;all&#160;memory&#160;has&#160;been&#160;erased,&#160;e.g.&#160;by&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+complete&#160;flash&#160;memory&#160;<br/>
+setting&#160;a&#160;breakpoint&#160;at&#160;the end of&#160;<br/>
+<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Start&#160;another&#160;download (complete&#160;flash&#160;<br/>
+FblEraseRoutine()&#160;and verifying&#160;the&#160;erase&#160;<br/>
+memory).&#160;<br/>
+with the&#160;debugger.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Stop&#160;the download after&#160;erase.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+16&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=17></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-17_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.4&#160;</b><br/>
+<b>Download&#160;Error&#160;Tests&#160;</b><br/>
+The&#160;following&#160;tests&#160;create&#160;some&#160;defined&#160;error&#160;conditions and&#160;verify&#160;if&#160;these&#160;errors are&#160;processed&#160;correctly&#160;by&#160;the&#160;Bootloader.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+05.01&#160;<br/>
+<b>Segment&#160;Number&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Configure&#160;“Max&#160;segments&#160;per&#160;block”&#160;to&#160;1&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;must&#160;reject&#160;the&#160;download.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Check&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Download a&#160;file which contains&#160;more&#160;than&#160;1&#160;<br/>
+&#160;<br/>
+block.&#160;<br/>
+05.02&#160;<br/>
+<b>Remove Vfp5&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Remove Vfp&#160;from&#160;the&#160;flash device.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;must&#160;reject&#160;the&#160;download.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Start&#160;a download.&#160;<br/>
+&#160;<br/>
+05.03&#160;<br/>
+<b>Misaligned&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Try&#160;to&#160;download a&#160;(dummy)&#160;file where&#160;the&#160;start&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;must&#160;reject&#160;the&#160;download.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Address Region&#160;</b><br/>
+address&#160;of&#160;the&#160;address&#160;region&#160;is&#160;not&#160;aligned&#160;to&#160;<br/>
+&#160;<br/>
+the&#160;flash&#160;segment&#160;size.&#160;<br/>
+05.04&#160;<br/>
+<b>Bootloader&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Try&#160;to&#160;download the&#160;Bootloader&#160;Hex&#160;file&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;must&#160;reject&#160;the&#160;download.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>memory&#160;overlap&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;Bootloader&#160;must&#160;be&#160;working&#160;after&#160;this&#160;test.&#160;&#160;&#160;<br/>
+05.05&#160;<br/>
+<b>Programming&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Set&#160;the&#160;number&#160;of&#160;allowed programming&#160;cycles&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;first&#160;programming&#160;attempt&#160;must&#160;succeed&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>Attempt&#160;Counter&#160;</b><br/>
+to 1&#160;and erase&#160;the&#160;NV-memory&#160;of&#160;the&#160;<br/>
+and the&#160;application should start.&#160;<br/>
+<b>&#160;</b><br/>
+Bootloader&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;second&#160;programming&#160;attempt&#160;must&#160;be&#160;<br/>
+<b>&gt;&#160;&#160;</b>Program&#160;the&#160;application&#160;<br/>
+rejected&#160;by&#160;the&#160;Bootloader.&#160;The&#160;application&#160;<br/>
+<b>&gt;&#160;&#160;</b>Reprogram&#160;the&#160;application&#160;<br/>
+should start&#160;again.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>5&#160;This&#160;test&#160;is&#160;only&#160;applicable&#160;on&#160;some&#160;hardware&#160;platforms,&#160;e.g.&#160;V850.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+17&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=18></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-18_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.5&#160;</b><br/>
+<b>Test of&#160;Security&#160;Features&#160;</b><br/>
+The&#160;following&#160;tests&#160;are&#160;used&#160;to&#160;verify&#160;the&#160;security&#160;features&#160;ordered&#160;with&#160;this&#160;Bootloader&#160;(e.g.&#160;AES&#160;encryption&#160;or&#160;signature&#160;verification)&#160;are&#160;<br/>working.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+06.01&#160;<br/>
+<b>Signature&#160;</b><br/>
+Test&#160;signature&#160;verification&#160;<br/>
+<b>&gt;&#160;&#160;</b>Signature verification is&#160;working&#160;for&#160;all&#160;<br/>
+N.a.&#160;<br/>
+<b>verification&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Security&#160;class C.&#160;<br/>
+requested&#160;classes.&#160;<br/>
+<b>(Security&#160;class C&#160;<br/>and CCC)</b><br/>
+<b>&gt;&#160;&#160;</b>Application can&#160;be&#160;downloaded if&#160;correct&#160;<br/>
+<b>6&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Security&#160;class CCC.&#160;<br/>
+checksums/signatures&#160;are used.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Make one download with correct&#160;<br/>
+checksums/signatures&#160;and&#160;one download&#160;with&#160;<br/>
+<b>&gt;&#160;&#160;</b>Applications with incorrect&#160;<br/>
+incorrect&#160;checksums/signatures.&#160;<br/>
+checksums/signatures&#160;are rejected.&#160;<br/>
+06.02&#160;<br/>
+<b>Encryption7&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Test&#160;AES&#160;encrypted&#160;files&#160;if&#160;available (Security&#160;<br/>
+<b>&gt;&#160;&#160;</b>Downloading&#160;of&#160;encrypted&#160;flash&#160;driver&#160;and&#160;<br/>
+N.a.&#160;<br/>
+class&#160;AAA).&#160;<br/>
+application is possible.&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;application is&#160;running&#160;correctly.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>6&#160;Optional&#160;feature&#160;–&#160;only&#160;tested&#160;if&#160;ordered.&#160;Security&#160;class&#160;DDD&#160;is&#160;verified&#160;by&#160;the&#160;automatic&#160;tests.&#160;<br/>
+7&#160;Decryption&#160;is&#160;an&#160;optional&#160;feature.&#160;The&#160;test&#160;is&#160;omitted&#160;if&#160;no&#160;decryption&#160;module&#160;is&#160;ordered.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+18&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=19></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-19_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.6&#160;</b><br/>
+<b>CAN&#160;Bootloader&#160;Specific&#160;Tests&#160;</b><br/>
+These&#160;tests&#160;are used&#160;to&#160;create&#160;special bus&#160;conditions&#160;and&#160;to&#160;verify&#160;CAN bus&#160;error handling.&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+06.01&#160;<br/>
+<b>Bus&#160;Off&#160;Handling&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Set&#160;a breakpoint&#160;in&#160;ApplFblCanBusOff&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;breakpoint&#160;should be hit.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Create a&#160;bus&#160;off&#160;condition by&#160;disturbing&#160;the&#160;<br/>
+<b>&gt;&#160;&#160;</b>When&#160;the&#160;bus&#160;off&#160;condition&#160;is&#160;removed,&#160;the&#160;<br/>
+&#160;<br/>
+ECU’s&#160;Tx&#160;message using&#160;CANstress.&#160;<br/>
+Bootloader&#160;should&#160;be&#160;able to&#160;restore&#160;<br/>communication.&#160;<br/>
+06.02&#160;<br/>
+<b>Bootloader&#160;Startup&#160;&#160;&gt;&#160;&#160;</b>Use CANstress&#160;to&#160;generate&#160;a&#160;dominant&#160;level&#160;on&#160;&#160;<b>&gt;&#160;&#160;</b>ECU&#160;must&#160;be&#160;running&#160;–&#160;no&#160;endless loop&#160;in&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>with dominant&#160;Rx&#160;</b><br/>
+the&#160;bus.&#160;<br/>
+CAN&#160;hardware&#160;initialization.&#160;<br/>
+&#160;<br/>
+<b>&gt;&#160;&#160;</b>Start&#160;ECU.&#160;<br/>
+06.03&#160;<br/>
+<b>High&#160;Bus&#160;Load&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Generate high&#160;bus&#160;load&#160;with an&#160;IG&#160;in CANoe&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;download must&#160;be&#160;successful.&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+(bus&#160;load&#160;&gt;=&#160;75%).&#160;<br/>
+<b>&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Perform&#160;a download.&#160;<br/>
+06.04&#160;<br/>
+<b>CAN&#160;message&#160;</b><br/>
+Verify&#160;CAN&#160;message&#160;reception&#160;for&#160;special&#160;<br/>
+<b>&gt;&#160;&#160;</b>Only&#160;messages&#160;which should be&#160;received&#160;by&#160;<br/>
+<b>OK&#160;&#160;</b><br/>
+<b>reception&#160;</b><br/>
+configurations&#160;(29&#160;Bit&#160;IDs,&#160;NormalFixed&#160;or&#160;<br/>
+the&#160;ECU&#160;should be&#160;processed.&#160;<br/>
+<b>&#160;</b><br/>
+<b>(configuration&#160;</b><br/>
+Extended&#160;Addressing).&#160;<br/>
+<b>dependent)</b><br/>
+<b>&gt;&#160;&#160;</b>Other&#160;messages&#160;should&#160;be&#160;discarded.&#160;<br/>
+<b>&#160;</b><br/>
+Normal&#160;Addressing&#160;with&#160;11 Bit&#160;IDs&#160;is&#160;verified&#160;by&#160;the&#160;<br/>automatic&#160;test&#160;suite.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Send diagnostic&#160;messages&#160;from&#160;the&#160;receive&#160;<br/>
+message&#160;range&#160;to&#160;the&#160;ECU&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+19&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=20></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-20_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-20_2.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>4.7&#160;</b><br/>
+<b>Watchdog Tests&#160;</b><br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Test&#160;Entry&#160;</b><br/>
+<b>Expected&#160;Results&#160;</b><br/>
+<b>Result&#160;</b><br/>
+07.01&#160;<br/>
+<b>Watchdog&#160;Refresh&#160;&#160;&gt;&#160;&#160;</b>Activate&#160;watchdog&#160;handling,&#160;set&#160;watchdog&#160;time&#160;&#160;<b>&gt;&#160;&#160;</b>The&#160;actual&#160;trigger&#160;period&#160;should be&#160;close&#160;to&#160;<br/>
+<b>OK</b>&#160;<br/>
+<b>Rate&#160;</b><br/>
+to&#160;1ms.&#160;<br/>
+the&#160;period&#160;specified&#160;in the Bootloader&#160;<br/>
+<b>&gt;&#160;&#160;</b>Add&#160;pin trigger&#160;to&#160;function&#160;<br/>
+throughout&#160;the&#160;whole download.&#160;<br/>
+ApplFblWdTrigger().&#160;<br/>
+<b>&gt;&#160;&#160;</b>Insert&#160;ERICle.Wdg protocol&#160;below.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Use ERICle.Wdg&#160;to&#160;measure&#160;the&#160;trigger&#160;timings.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Perform&#160;a download.&#160;<br/>
+<b>Measurement&#160;Result: Refresh Rate&#160;1ms&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+20&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=21></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-21_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>5&#160;&#160;Automated&#160;Tests&#160;</b><br/>
+The&#160;following&#160;tests&#160;are&#160;used&#160;to&#160;verify&#160;the&#160;diagnostic implementation.&#160;<br/>Please&#160;use&#160;the&#160;following&#160;configuration:&#160;<br/>
+<b>&gt;&#160;&#160;</b>2&#160;mandatory&#160;logical blocks&#160;<br/>
+<b>&gt;&#160;&#160;</b>Security&#160;class DDD&#160;<br/>
+<b>&gt;&#160;&#160;</b>Other settings should&#160;be&#160;set&#160;to&#160;default&#160;configuration&#160;<br/>
+<b>Test-No.&#160;&#160;Test&#160;Name&#160;</b><br/>
+<b>Result&#160;</b><br/>
+08.01&#160;<br/>
+<b>Diagnostic&#160;Frame&#160;Test&#160;</b><br/>
+<b>OK&#160;&#160;<br/></b>&#160;<br/>
+08.02&#160;<br/>
+<b>Diagnostic&#160;Sequence Test&#160;</b><br/>
+<b>OK&#160;&#160;<br/>&#160;</b><br/>
+08.03&#160;<br/>
+<b>Half-Automatic&#160;Test&#160;</b><br/>
+<b>OK&#160;&#160;<br/>&#160;</b><br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+21&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=22></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-22_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>6&#160;&#160;Glossary&#160;and&#160;Abbreviations&#160;</b><br/>
+<b>Abbreviation&#160;&#160;Description&#160;&#160;<br/>OK&#160;</b><br/>
+The&#160;obtained&#160;result&#160;was in&#160;accordance&#160;to&#160;the&#160;expected.&#160;<br/>
+N.&#160;a.&#160;<br/>
+Not&#160;applicable.&#160;The&#160;selected&#160;test&#160;configuration&#160;excludes&#160;this&#160;test.&#160;<br/>
+N.&#160;t.&#160;<br/>
+Not&#160;tested.&#160;The&#160;test&#160;was&#160;not&#160;proceeded.&#160;&#160;<br/>
+<b>FAILED&#160;</b><br/>
+The&#160;obtained&#160;result&#160;was&#160;<b>not</b>&#160;in accordance&#160;to&#160;the&#160;specified.&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+22&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+<a name=23></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/DeliveryInformation/TestReport_FBL_Vector_SLP3-23_1.png"/><br/>
+Vector SLP3 Flash&#160;Bootloader&#160;Test Report&#160;<br/>
+<b>7&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more information&#160;on&#160;<br/>&#160;<br/><b>&gt;&#160;&#160;</b>News&#160;<br/>
+<b>&gt;&#160;&#160;</b>Products&#160;<br/>
+<b>&gt;&#160;&#160;</b>Demo&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Support&#160;<br/>
+<b>&gt;&#160;&#160;</b>Training&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Addresses&#160;<br/>
+&#160;<br/>www.vector.com&#160;<br/>
+&#160;<br/>
+©&#160;2018&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.00.00&#160;<br/>
+23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;6.0.1&#160;<br/>
+<hr/>
+</body>
+</html>

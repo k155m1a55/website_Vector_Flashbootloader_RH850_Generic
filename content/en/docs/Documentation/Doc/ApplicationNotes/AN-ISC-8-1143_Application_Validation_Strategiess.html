@@ -1,0 +1,439 @@
+---
+title: AN-ISC-8-1143_Application_Validation_Strategiess
+linkTitle: AN-ISC-8-1143_Application_Validation_Strategiess
+weight: 5
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-1_1.png"/><br/>
+<b>&#160;</b><br/>
+<b>Bootloader&#160;Validation Strategies&#160;</b><br/>
+<b>Version&#160;1.0&#160;</b><br/>
+<b>2012-03-21&#160;</b><br/>
+<b>Application&#160;Note &#160;AN-ISC-8-1143&#160;</b><br/>
+&#160;<br/>&#160;<i>&#160;<br/></i>Author(s)&#160;<br/>
+Achim&#160;Strobelt&#160;<br/>
+Restrictions&#160;<br/>
+Customer&#160;confidential&#160;-&#160;Vector&#160;decides&#160;<br/>
+Abstract&#160;<br/>
+This&#160;application&#160;note&#160;describes&#160;application&#160;validation strategies&#160;used&#160;in&#160;Vector&#160;<br/>
+Bootloaders.&#160;<br/>
+<i><b>&#160;<br/>Table&#160;of Contents&#160;</b></i><br/>
+<i><b>&#160;<br/></b></i><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">1.0&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">Introduction&#160;......................................................................................................................................................&#160;1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">1.1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">Scope&#160;............................................................................................................................................................&#160;1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.0&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">Validation Basics&#160;..............................................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">Module Validation&#160;..........................................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1.1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">Download Integrity&#160;......................................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1.2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">Download Authenticity&#160;................................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">2.2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">Application Validation&#160;....................................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.0&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">Validation Approaches&#160;.....................................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">Pattern&#160;...........................................................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">Checksum/CRC&#160;.............................................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">3.3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">Signatures&#160;.....................................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">3.4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">Validation Structure&#160;.......................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.0&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">Storage of&#160;Validation Information&#160;....................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.1&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">EEPROM&#160;.......................................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.2&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">Emulated EEPROM&#160;.......................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">4.3&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">Presence Patterns&#160;.........................................................................................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">5.0&#160;</a><br/>
+<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">Contacts&#160;...........................................................................................................................................................&#160;5&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>1.0&#160;&#160;Introduction&#160;<br/></b>Today,&#160;most&#160;automotive&#160;ECUs&#160;support&#160;software&#160;download to be&#160;able to update the&#160;application software&#160;or&#160;data at&#160;<br/>
+any&#160;time.&#160;The Flash&#160;Bootloader&#160;from&#160;Vector&#160;provides&#160;a convenient&#160;way&#160;to fulfill&#160;this&#160;task&#160;according to&#160;the&#160;<br/>
+specification of&#160;the respective car&#160;manufacturer.&#160;While&#160;the process&#160;of&#160;downloading&#160;new&#160;software&#160;into the ECU&#160;is&#160;<br/>
+greatly&#160;simplified by&#160;the&#160;Bootloader,&#160;the ECU&#160;supplier&#160;has&#160;to apply&#160;an algorithm,&#160;which guarantees&#160;integrity&#160;and&#160;<br/>
+authenticity&#160;of&#160;the&#160;downloaded software/data.&#160;<br/>
+<b>1.1&#160;&#160;Scope&#160;<br/></b>Checking downloaded software/data usually&#160;takes&#160;some time to reveal&#160;the&#160;validity&#160;state.&#160;This&#160;is&#160;why&#160;the&#160;validity&#160;<br/>
+state&#160;is&#160;determined by&#160;the&#160;Bootloader&#160;directly&#160;after&#160;the&#160;download and stored&#160;within a special&#160;memory&#160;region&#160;called&#160;<br/>
+“Validation&#160;Area”.&#160;There are various&#160;kinds&#160;of&#160;methods&#160;for&#160;handling the validity&#160;information,&#160;the&#160;most&#160;common ones&#160;<br/>
+are setting&#160;a flag&#160;in&#160;EEPROM or&#160;storing a&#160;special&#160;pattern in flash memory.&#160;During&#160;start-up of&#160;the&#160;ECU,&#160;the&#160;<br/>
+Bootloader&#160;checks&#160;the validity&#160;information to&#160;decide&#160;whether&#160;to start&#160;the application software&#160;or&#160;to&#160;stay&#160;in&#160;the&#160;<br/>
+Bootloader.&#160;This&#160;approach&#160;allows&#160;short&#160;start-up times,&#160;which&#160;is&#160;a common requirement&#160;for&#160;automotive ECUs.&#160;<br/>This&#160;application&#160;note&#160;will&#160;mainly&#160;focus&#160;on the mechanisms,&#160;which can be used&#160;to&#160;perform&#160;the actual&#160;validation&#160;<br/>
+check.&#160;A&#160;method&#160;which can&#160;be used to&#160;store the&#160;validity&#160;information&#160;in the flash&#160;memory&#160;is&#160;described&#160;in&#160;chapter<a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">&#160;4.3&#160;</a><br/>
+Mask/Pattern Mechanism.&#160;<br/>
+<b>&#160;1&#160;&#160;</b><br/>
+<i>Copyright&#160;©&#160;2012&#160;-&#160;Vector&#160;Informatik&#160;GmbH&#160;</i><br/>
+<b>Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-2_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-2_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Bootloader&#160;Validation Strategies&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.0&#160;&#160;Validation&#160;Basics&#160;<br/></b>ECU&#160;software&#160;often includes&#160;several&#160;modules&#160;(e.g.&#160;the&#160;actual&#160;application&#160;and&#160;a calibration module).&#160;At&#160;least&#160;one of&#160;<br/>
+these modules&#160;is&#160;mandatory,&#160;and modules&#160;can be optional&#160;to&#160;add&#160;functionality&#160;or&#160;data for&#160;special&#160;use cases.&#160;<br/>To determine the&#160;validity&#160;of&#160;an application,&#160;several&#160;preconditions&#160;have to be fulfilled:&#160;<br/>
+•&#160;&#160;All&#160;mandatory&#160;modules&#160;have to&#160;be present.&#160;<br/>
+•&#160;&#160;All&#160;downloaded modules&#160;(mandatory&#160;and optional)&#160;have to be downloaded correctly.&#160;<br/>
+•&#160;&#160;The&#160;modules&#160;have to&#160;be compatible.&#160;<br/>
+&#160;<br/>The validation of&#160;an&#160;ECU’s&#160;software can&#160;be seen&#160;as&#160;a two-step validation.&#160;Depending on&#160;the Bootloader&#160;<br/>
+implementation,&#160;it&#160;is&#160;performed in one&#160;or&#160;two&#160;steps.&#160;<br/>
+<b>2.1&#160;&#160;Module&#160;Validation&#160;<br/></b>Module&#160;validation should&#160;ensure that&#160;the downloaded&#160;module has&#160;been&#160;downloaded correctly.&#160;Additionally,&#160;a&#160;<br/>
+check&#160;if&#160;the downloaded module&#160;is&#160;permitted to&#160;run&#160;on&#160;the&#160;ECU&#160;can be&#160;performed.&#160;<br/>The&#160;module&#160;validation&#160;is&#160;performed after&#160;a&#160;module&#160;has&#160;been downloaded,&#160;e.g.&#160;with a check&#160;routine request&#160;for&#160;<br/>
+each logical&#160;block&#160;or&#160;during&#160;a request&#160;transfer&#160;exit&#160;request.&#160;The validation&#160;result&#160;should be&#160;stored&#160;in&#160;non-volatile&#160;<br/>
+memory&#160;to avoid&#160;executing&#160;the complete&#160;validation&#160;sequence&#160;every&#160;time the validation&#160;state&#160;has&#160;to&#160;be checked.&#160;<br/>
+<b>2.1.1&#160;&#160;Download Integrity&#160;<br/></b>Before&#160;a downloaded&#160;module is&#160;used by&#160;the ECU,&#160;the Bootloader&#160;has&#160;to ensure that&#160;the&#160;file&#160;has&#160;been&#160;downloaded&#160;<br/>
+correctly.&#160;This&#160;includes&#160;checking if&#160;all&#160;data&#160;has&#160;been&#160;written to&#160;flash&#160;correctly&#160;and&#160;that&#160;the data&#160;was&#160;transferred&#160;<br/>
+correctly&#160;to the ECU.&#160;<br/>Data&#160;written to flash is&#160;read&#160;back&#160;by&#160;the&#160;flash driver&#160;immediately&#160;after&#160;writing and&#160;compared to&#160;the&#160;diagnostic&#160;<br/>
+buffer.&#160;This&#160;comparison ensures&#160;that&#160;the&#160;intended data&#160;was&#160;flashed.&#160;<br/>If&#160;a checksum&#160;is&#160;available in the&#160;downloaded&#160;data&#160;or&#160;was&#160;sent&#160;by&#160;a special&#160;service,&#160;this&#160;checksum&#160;can be used to&#160;<br/>
+cover&#160;the complete&#160;data&#160;transfer&#160;from&#160;tester&#160;to the&#160;ECU.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;</b><br/>
+If&#160;a CRC32 checksum&#160;is&#160;used to&#160;check&#160;the downloaded data,&#160;but&#160;no&#160;signature check&#160;is&#160;done,&#160;<br/>
+&#160;&#160;the module&#160;validation is&#160;called security&#160;class&#160;“DDD”&#160;or&#160;security&#160;class&#160;“None”.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>2.1.2&#160;&#160;Download&#160;Authenticity&#160;<br/></b>Some ECUs&#160;require that&#160;only&#160;software&#160;or&#160;data from&#160;a legitimate source is&#160;used on&#160;the&#160;ECU&#160;(e.g.&#160;in security&#160;<br/>
+relevant&#160;ECUs&#160;or&#160;as&#160;tuning&#160;protection).&#160;The authentication&#160;is&#160;normally&#160;done&#160;by&#160;calculation&#160;of&#160;a cryptographic&#160;<br/>
+signature over&#160;the&#160;downloaded&#160;data.&#160;The signature can be&#160;either&#160;supplied&#160;by&#160;the&#160;OEM or&#160;the&#160;ECU&#160;supplier.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note &#160;AN-ISC-8-1143<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=3></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-3_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-3_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-3_3.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-3_4.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Bootloader&#160;Validation Strategies&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;</b><br/>
+Depending&#160;on the OEM,&#160;several&#160;security&#160;classes&#160;for&#160;data authentication are defined.&#160;The most&#160;<br/>
+&#160;&#160;common security&#160;classes&#160;are security&#160;class&#160;“C”&#160;with a&#160;symmetric&#160;signature calculation and&#160;<br/>
+security&#160;class&#160;“CCC”&#160;with an asymmetric&#160;calculation.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>2.2&#160;&#160;Application Validation&#160;<br/></b>The application&#160;validation step has&#160;to&#160;ensure that&#160;all&#160;required modules&#160;are&#160;present&#160;on the&#160;ECU&#160;and that&#160;the&#160;<br/>
+downloaded&#160;modules&#160;are compatible&#160;with each other&#160;and&#160;with the&#160;used hardware/Bootloader&#160;combination.&#160;<br/>The Bootloader&#160;has&#160;to&#160;decide if&#160;the ECU’s&#160;application&#160;is&#160;started based on the application&#160;validation step.&#160;The&#160;<br/>
+application&#160;validation step&#160;can either&#160;be&#160;done at&#160;the&#160;end of&#160;the&#160;download sequence or&#160;during&#160;ECU&#160;start-up.&#160;If&#160;the&#160;<br/>
+application&#160;validity&#160;is&#160;determined at&#160;the end of&#160;the download sequence,&#160;the&#160;validity&#160;information has&#160;to be stored&#160;<br/>
+within&#160;a non-volatile memory&#160;(see next&#160;chapter).&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;</b><br/>
+If&#160;the application&#160;validity&#160;is&#160;checked on every&#160;start-up&#160;of&#160;the ECU,&#160;the checks&#160;will&#160;be based on&#160;<br/>
+&#160;&#160;the module&#160;validity&#160;flags&#160;and the&#160;startup&#160;time&#160;will be&#160;increased.&#160;On the other&#160;side,&#160;there&#160;is&#160;no&#160;<br/>
+additional&#160;non-volatile memory&#160;needed to store the&#160;application&#160;validity.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>3.0&#160;&#160;Validation Approaches&#160;<br/></b>There are several&#160;approaches&#160;to check&#160;the integrity&#160;and authenticity&#160;of&#160;downloaded data.&#160;This&#160;chapter&#160;describes&#160;<br/>
+some variants.&#160;<br/>
+<b>3.1&#160;&#160;Pattern&#160;<br/></b>The check&#160;for&#160;one or&#160;more&#160;patterns&#160;located&#160;in the memory&#160;area&#160;of&#160;downloaded&#160;data&#160;is&#160;a simple approach&#160;to&#160;check&#160;<br/>
+if&#160;the&#160;written&#160;data is&#160;the&#160;expected data.&#160;The validation&#160;function checks&#160;if&#160;the patterns&#160;are found&#160;at&#160;a&#160;known location.&#160;<br/>
+If&#160;the patterns&#160;are found,&#160;the validation function&#160;assumes&#160;the&#160;download has&#160;been&#160;correctly&#160;programmed.&#160;<br/>Usually,&#160;two&#160;patterns&#160;are&#160;used&#160;with this&#160;approach:&#160;one&#160;at&#160;the beginning&#160;and one at&#160;the&#160;end&#160;of&#160;the&#160;download.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;</b><br/>
+With a pattern check,&#160;not&#160;the complete data&#160;written is&#160;checked.&#160;Errors&#160;outside&#160;the patterns&#160;won’t&#160;<br/>
+<b>&#160;&#160;</b>be found.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>3.2&#160;&#160;Checksum/CRC&#160;<br/></b>A&#160;checksum/CRC&#160;check&#160;uses&#160;a checksum&#160;read from&#160;the downloaded&#160;data or&#160;sent&#160;by&#160;an&#160;additional&#160;service for&#160;the&#160;<br/>
+integrity&#160;check.&#160;The checksum&#160;is&#160;calculated over&#160;the complete downloaded&#160;data&#160;of&#160;a module.&#160;If&#160;the&#160;checksum&#160;is&#160;<br/>
+correct,&#160;the&#160;integrity&#160;of&#160;a complete module assumed.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note &#160;AN-ISC-8-1143<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=4></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-4_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-4_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-4_3.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-4_4.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Bootloader&#160;Validation Strategies&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;</b><br/>
+Checksum&#160;algorithms&#160;like CRC32&#160;don’t&#160;provide an&#160;authenticity&#160;check&#160;because there’s&#160;no&#160;secret&#160;<br/>
+<b>&#160;&#160;</b>parameter&#160;involved during the checksum&#160;calculation.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>3.3&#160;&#160;Signatures&#160;<br/></b>Signature calculation algorithms&#160;combine a&#160;hash calculation&#160;and&#160;cryptographic&#160;routines&#160;to&#160;ensure the&#160;downloaded&#160;<br/>
+software’s&#160;integrity&#160;and authenticity.&#160;&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;</b><br/>
+Some&#160;Bootloader&#160;configurations&#160;skip the&#160;integrity&#160;check&#160;if&#160;a signature calculation&#160;is&#160;done.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>3.4&#160;&#160;Validation Structure&#160;<br/></b>A&#160;validation structure can be used&#160;to embed&#160;validity&#160;information into the downloaded data.&#160;The&#160;validation structure&#160;<br/>
+consists&#160;of&#160;block&#160;information including&#160;checksums/signatures&#160;which can&#160;be compared against&#160;the&#160;<br/>
+checksums/signatures&#160;that&#160;are calculated over&#160;the&#160;actual&#160;memory&#160;content.&#160;A&#160;validation structure&#160;can be used if&#160;no&#160;<br/>
+specific&#160;diagnostic&#160;service&#160;for&#160;transmission of&#160;the checksum/signature&#160;values&#160;is&#160;specified&#160;by&#160;the&#160;OEM.&#160;<br/>&#160;<br/>
+<b>4.0&#160;&#160;Storage&#160;of&#160;Validation&#160;Information&#160;</b><br/>
+<b>4.1&#160;&#160;EEPROM&#160;<br/></b>If&#160;an EEPROM is&#160;used to&#160;store the&#160;validation information,&#160;some bytes&#160;have to be&#160;reserved&#160;in&#160;the&#160;EEPROM’s&#160;<br/>
+memory.&#160;Data in EEPROM is&#160;writeable without&#160;needing&#160;to erase&#160;larger&#160;blocks&#160;and&#160;can&#160;be written very&#160;often&#160;<br/>
+compared to flash&#160;memory.&#160;On the&#160;other&#160;side,&#160;storing the data&#160;in&#160;EEPROM&#160;requires&#160;loading an additional&#160;driver&#160;to&#160;<br/>
+access&#160;the EEPROM.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;</b><br/>
+During the ECU’s&#160;start-up,&#160;the EEPROM&#160;driver&#160;has&#160;to&#160;be loaded twice:&#160;First,&#160;in the Bootloader&#160;<br/>
+&#160;&#160;to check&#160;if&#160;the application is&#160;valid,&#160;and a&#160;second&#160;time in&#160;the&#160;application.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>4.2&#160;&#160;Emulated&#160;EEPROM&#160;<br/></b>Emulated EEPROMs&#160;basically&#160;are&#160;used&#160;as&#160;the same way&#160;than EEPROMs.&#160;They&#160;use software&#160;modules&#160;like EepM&#160;<br/>
+or&#160;FEE&#160;to&#160;achieve&#160;EEPROM like behavior&#160;in&#160;flash memory.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note &#160;AN-ISC-8-1143<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=5></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-5_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-5_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-5_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Bootloader&#160;Validation Strategies&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;</b><br/>
+EEPROM&#160;emulations&#160;are often more complicated than&#160;EEPROM&#160;drivers.&#160;Especially&#160;the start-up&#160;<br/>
+<b>&#160;&#160;</b>times&#160;can be bigger&#160;than the start-up times&#160;of&#160;an EEPROM driver&#160;and the&#160;access&#160;times&#160;can&#160;<br/>
+depend&#160;on the amount&#160;of&#160;previously&#160;written&#160;data.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>4.3&#160;&#160;Presence Patterns&#160;<br/></b>Presence&#160;patterns&#160;(also called&#160;Mask/Pattern mechanism)&#160;use the memory&#160;inside each&#160;module to&#160;store the validity&#160;<br/>
+information.&#160;A&#160;pattern&#160;value&#160;is&#160;used&#160;to&#160;indicate&#160;that&#160;a module&#160;is&#160;valid and&#160;a mask&#160;value is&#160;used to&#160;invalidate an&#160;<br/>
+already&#160;written pattern.&#160;<br/>As&#160;presence&#160;patterns&#160;are stored inside the module’s&#160;memory,&#160;they&#160;normally&#160;are memory&#160;mapped and can be&#160;<br/>
+accessed without&#160;loading&#160;additional&#160;drivers.&#160;This&#160;can reduce the start-up time compared to the&#160;EEPROM/&#160;<br/>
+Emulated&#160;EEPROM&#160;variants,&#160;but&#160;some&#160;memory&#160;from&#160;the application/data area has&#160;to be reserved for&#160;presence&#160;<br/>
+patterns.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;</b><br/>
+If&#160;a&#160;memory&#160;area&#160;with&#160;error&#160;recognition or&#160;correction&#160;is&#160;used to store the presence&#160;pattern,&#160;<br/>
+<b>&#160;&#160;</b>special&#160;care&#160;has&#160;to be taken&#160;to make sure&#160;that&#160;the&#160;software can&#160;handle the error.&#160;If&#160;the ECU&#160;<br/>
+reacts&#160;e.g.&#160;with&#160;a reset&#160;if&#160;an&#160;error&#160;occurs&#160;during reading the&#160;pattern,&#160;the ECU&#160;will&#160;be&#160;locked&#160;<br/>
+because&#160;the presence pattern will&#160;be&#160;read during&#160;every&#160;start-up.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>5.0&#160;&#160;Contacts&#160;<br/></b>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Germany&#160;&#160;</b><br/>
+<b>France,&#160;Belgium,&#160;Luxemburg:&#160;</b><br/>
+<b>Sweden,&#160;Denmark,&#160;Norway,&#160;&#160;</b><br/>
+<b>and all&#160;countries&#160;not&#160;named&#160;below:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Finland,&#160;Iceland:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Vector&#160;Informatik GmbH&#160;</b><br/>
+<b>Vector&#160;France&#160;SAS&#160;</b><br/>
+<b>VecScan&#160;AB&#160;</b><br/>
+Ingersheimer&#160;Str.&#160;24&#160;<br/>
+168 Boulevard Camélinat&#160;<br/>
+Theres&#160;Svenssons&#160;Gata 9&#160;<br/>
+70499 Stuttgart&#160;<br/>
+92240 Malakoff&#160;&#160;<br/>
+41755 Göteborg&#160;&#160;<br/>
+GERMANY&#160;<br/>
+FRANCE&#160;<br/>
+SWEDEN&#160;<br/>
+Phone:&#160;+49 711-80670-0&#160;<br/>
+Phone:&#160;+33 1 42 31 40&#160;00&#160;<br/>
+Phone:&#160;+46 31 764 76 00&#160;<br/>
+Fax:&#160;&#160;+49 711-80670-111&#160;<br/>
+Fax:&#160;&#160;+33 1 42 31 40&#160;09&#160;<br/>
+Fax:&#160;&#160;+46 31 764 76 19&#160;&#160;<br/>
+E-mail:&#160;&#160;info@de.vector.com&#160;<br/>
+E-mail:&#160;&#160;information@fr.vector.com&#160;<br/>
+E-mail:&#160;&#160;info@se.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;&#160;<br/>
+<b>&#160;</b><br/>
+<b>United&#160;Kingdom,&#160;Ireland:&#160;</b><br/>
+<b>China:&#160;</b><br/>
+<b>India:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Vector</b>&#160;<b>GB&#160;Ltd.&#160;</b><br/>
+<b>Vector&#160;Automotive&#160;Technology&#160;</b><br/>
+<b>Vector&#160;Informatik India Pvt.&#160;Ltd.&#160;</b><br/>
+Rhodium,&#160;Central&#160;Boulevard&#160;<br/>
+<b>(Shanghai)&#160;Co.,&#160;Ltd.</b>&#160;&#160;<br/>
+4/1/1/1,&#160;Sutar&#160;Icon,&#160;Sus&#160;Road,&#160;<br/>
+Blythe Valley&#160;Park&#160;<br/>
+Sunyoung Center&#160;<br/>
+Pashan,&#160;Pune&#160;-&#160;411 021&#160;<br/>
+Solihull,&#160;Birmingham&#160;<br/>
+Room&#160;1701,&#160;No.398 Jiangsu Road&#160;<br/>
+INDIA&#160;<br/>
+West&#160;Midlands&#160;B90 8AS&#160;<br/>
+Changning&#160;District&#160;<br/>
+&#160;<br/>
+UNITED KINGDOM&#160;<br/>
+Shanghai&#160;200050&#160;<br/>
+&#160;<br/>
+Phone:&#160;+44 121&#160;50681-50&#160;<br/>
+P.R.&#160;CHINA&#160;<br/>
+Phone:&#160;+91&#160;20 2587 2023&#160;<br/>
+Fax:&#160;&#160;+44 121&#160;50681-69&#160;<br/>
+Phone:&#160;+86 21&#160;6432 5353&#160;<br/>
+Fax:<b>&#160;&#160;&#160;</b>+91 20 2587&#160;2025&#160;<br/>
+&#160;<br/>
+Fax:&#160;&#160;&#160;+86 21 6432 5308&#160;<br/>
+&#160;<br/>
+E-mail:&#160;&#160;info@uk.vector.com&#160;<br/>
+E-mail:&#160;info@cn.vector.com&#160;<br/>
+E-mail:&#160;info@in.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note &#160;AN-ISC-8-1143<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=6></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1143_Application_Validation_Strategies-6_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Bootloader&#160;Validation Strategies&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>USA,&#160;Canada,&#160;Mexico:&#160;</b><br/>
+<b>Japan:&#160;</b><br/>
+<b>Korea:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Vector&#160;CANtech,&#160;Inc.&#160;</b><br/>
+<b>Vector&#160;Japan&#160;Co.&#160;Ltd.&#160;</b><br/>
+<b>Vector&#160;Korea&#160;IT&#160;Inc.&#160;</b><br/>
+39500 Orchard Hill&#160;Place,&#160;Suite 550&#160;<br/>
+Tennozu Yusen&#160;Bldg.&#160;16F&#160;<br/>
+#1406,&#160;Mario&#160;Tower,&#160;<br/>
+Novi,&#160;MI&#160; 48375&#160;<br/>
+2-2-20&#160;Higashi-shinagawa,&#160;<br/>
+222-12 Guro-dong,&#160;Guro-gu&#160;&#160;<br/>
+USA&#160;<br/>
+Shinagawa-ku,&#160;<br/>
+Seoul,&#160;152-848&#160;<br/>
+&#160;<br/>
+Tokyo 140-0002&#160;<br/>
+REPUBLIC OF&#160;KOREA&#160;<br/>
+&#160;<br/>
+JAPAN&#160;<br/>
+&#160;<br/>
+Phone:&#160;+1 248 449 9290&#160;<br/>
+Phone:&#160;+81 3 5769 7800&#160;<br/>
+Phone:&#160;+82 2 807 0600&#160;<br/>
+Fax:&#160;&#160;+1 248 449 9704&#160;<br/>
+Fax:&#160;&#160;+81 3 5769 6975&#160;<br/>
+Fax:&#160;&#160;+82 2 807 0601&#160;<br/>
+E-mail:&#160;&#160;info@us.vector.com&#160;<br/>
+E-mail:&#160;&#160;info@jp.vector.com&#160;<br/>
+E-mail:&#160;&#160;info@kr.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>6<i>&#160;</i></b><br/>
+<i>Application Note &#160;AN-ISC-8-1143<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">1.0 Introduction</a>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#1">1.1 Scope</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.0 Validation Basics</a>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1 Module Validation</a>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1.1 Download Integrity</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#2">2.1.2 Download Authenticity</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">2.2 Application Validation</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.0 Validation Approaches</a>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.1 Pattern</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#3">3.2 Checksum/CRC</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">3.3 Signatures</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">3.4 Validation Structure</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.0 Storage of Validation Information</a>
+<ul>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.1 EEPROM</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#4">4.2 Emulated EEPROM</a></li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">4.3 Presence Patterns</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1143_Application_Validation_Strategiess.html#5">5.0 Contacts</a></li>
+</ul>
+<hr/>
+</body>
+</html>

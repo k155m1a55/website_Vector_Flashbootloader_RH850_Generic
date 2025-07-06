@@ -1,0 +1,905 @@
+---
+title: TechnicalReference_FBL_RH850s
+linkTitle: TechnicalReference_FBL_RH850s
+weight: 30
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>Flash Bootloader Hardware&#160;<br/></b>TechnicalReference&#160;<br/>
+&#160;<br/>
+CANfbl&#160;Renesas&#160;RH850&#160;<br/>&#160;<br/>
+&#160;<br/>
+Version&#160;1.00.01&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Authors&#160;<br/>
+Christian Bäuerle;&#160;Robert&#160;Schäffner&#160;<br/>
+Status&#160;<br/>
+Released&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>Document&#160;Information&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Christian Bäuerle&#160;<br/>
+2013-06-12&#160;<br/>
+01.00.00&#160;<br/>
+Creation&#160;<br/>
+Robert&#160;Schäffner&#160;<br/>
+2015-05-29&#160;<br/>
+01.00.01&#160;<br/>
+Removed&#160;template parts&#160;<br/>
+Table&#160;1-1&#160;&#160;<br/>
+History&#160;of&#160;the&#160;Document&#160;<br/>
+<b>Reference&#160;Documents&#160;</b><br/>
+<b>No.&#160;</b><br/>
+<b>Source&#160;</b><br/>
+<b>Title&#160;</b><br/>
+<b>Document&#160;No.&#160;</b><br/>
+<b>Version&#160;</b><br/>
+[1]&#160;<br/>
+Renesas&#160;<br/>
+RH850/F1L&#160;Group&#160;User’s&#160;manual&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+[2]&#160;<br/>
+Renesas&#160;<br/>
+V850E3v5&#160;Architecture&#160;Specifications&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+[3]&#160;<br/>
+Renesas&#160;<br/>
+T01&#160;-&#160;Self-Programming&#160;Library&#160;for&#160;&#160;<br/>
+EALC-SD-1045-<br/>
+&#160;<br/>
+Code Flash&#160;(RV40&#160;Flash)&#160;<br/>
+1E00b&#160;<br/>
+Table&#160;1-2&#160;&#160;<br/>
+References&#160;Documents&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+2&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=3></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>Contents</b>&#160;<br/>
+<a href="TechnicalReference_FBL_RH850s.html#6"><b>1</b>&#160;&#160;<b>Introduction&#160;....................................................................................................................&#160;6</b>&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">1.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">Configurations&#160;covered&#160;by&#160;this&#160;Technical&#160;Reference&#160;.......................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">1.1.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">Microcontrollers&#160;...............................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">1.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">Compilers&#160;........................................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7"><b>2</b>&#160;&#160;<b>Memory&#160;Model&#160;................................................................................................................&#160;7</b>&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">2.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">[#hw_mem]&#160;-&#160;Design&#160;the&#160;Memory&#160;Layout&#160;........................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">2.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">Memory&#160;Mapping&#160;............................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">2.2.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">Memory&#160;mapping&#160;of&#160;application and FBL&#160;........................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">2.2.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">Memory&#160;range&#160;of&#160;the&#160;FBL&#160;................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">2.2.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">Memory&#160;range&#160;of&#160;the&#160;application&#160;.....................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">2.2.4&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">Bootloader&#160;Sections&#160;........................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">2.2.5&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">Compiler-/Linker&#160;specific&#160;memory&#160;mapping&#160;issues&#160;..........................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">2.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">[#hw_intvect]&#160;-&#160;The&#160;Interrupt&#160;Vector&#160;Tables&#160;......................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#10">2.3.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#10">Bootloader&#160;Vector&#160;Table&#160;................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#10">2.3.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#10">Application Vector&#160;Table&#160;................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#11">2.3.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#11">Vector&#160;base address&#160;registers&#160;.......................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#11">2.3.4&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#11">Special&#160;measures&#160;for&#160;NMI&#160;.............................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12"><b>3</b>&#160;&#160;<b>Hardware&#160;Layer&#160;............................................................................................................&#160;12</b>&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">3.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">Flash&#160;Memory&#160;and Flash&#160;Driver&#160;....................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">3.1.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">Special&#160;clock parameters&#160;and clock&#160;settings..................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">3.1.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">Flash&#160;Code Buffer&#160;Size&#160;.................................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">3.1.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">ID&#160;Authentication&#160;...........................................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#13">3.1.4&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#13">Rebuilding&#160;the&#160;flash&#160;driver&#160;binary&#160;..................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">3.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">[#hw_size]&#160;-&#160;Flash&#160;Segment&#160;Size&#160;..................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">3.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">CAN&#160;Driver&#160;....................................................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">3.3.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#14">CAN&#160;Channels&#160;..............................................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#15">3.3.1.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#15">Number&#160;of&#160;Supported Channels&#160;......................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">3.3.1.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">Channel&#160;Settings&#160;for&#160;Pipelined Programming&#160;..................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">3.3.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">Sleep Mode&#160;...................................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">3.4&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">Timer&#160;.............................................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">3.5&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">Startup&#160;Code&#160;.................................................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">3.6&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">Hardware&#160;Registers.......................................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#18">3.7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#18">Misc&#160;..............................................................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19"><b>4</b>&#160;&#160;<b>Build&#160;..............................................................................................................................&#160;19</b>&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">4.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">Code executed&#160;from&#160;RAM&#160;.............................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">4.1.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">Use of&#160;relocatable Code&#160;................................................................................&#160;19&#160;</a><br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+3&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=4></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">4.1.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#19">Use of&#160;Code linked&#160;to RAM&#160;...........................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">4.1.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">Greenhills&#160;......................................................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">4.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">Compiler&#160;Options&#160;..........................................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">4.2.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#20">Inline&#160;Function Prologues&#160;..............................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#21">4.2.2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#21">Optimizations&#160;................................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#21">4.3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#21">Linker&#160;Parameters&#160;.........................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#22"><b>5</b>&#160;&#160;<b>Glossary&#160;and&#160;Abbreviations&#160;........................................................................................&#160;22</b>&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#22">5.1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#22">Abbreviations&#160;................................................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#23"><b>6</b>&#160;&#160;<b>Contact&#160;..........................................................................................................................&#160;23</b>&#160;<br/></a>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+4&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=5></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">Figure&#160;1-1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#6">Manuals&#160;and References&#160;for&#160;the&#160;Flash&#160;Bootloader&#160;.....................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">Figure&#160;2-1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#7">Memory&#160;Mapping&#160;........................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">Figure&#160;2-2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#8">Flash&#160;Block Configuration&#160;using&#160;GENy&#160;.......................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">Figure&#160;3-1&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#12">Clock&#160;parameter&#160;setting&#160;in GENy&#160;..............................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#13">Figure&#160;3-2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#13">Directory&#160;of&#160;flash&#160;driver&#160;project&#160;.................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#15">Figure&#160;3-3&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#15">CAN&#160;channel&#160;configuration&#160;in GENy&#160;.........................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">Figure&#160;3-4&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#16">Maximum&#160;number&#160;of&#160;CAN&#160;channels&#160;.........................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#18">Figure&#160;3-5&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#18">Component&#160;Hw_Rh850Cpu&#160;......................................................................&#160;18&#160;</a><br/>
+<b>&#160;</b><br/>
+<b>Tables&#160;</b><br/>
+<a href="TechnicalReference_FBL_RH850s.html#2">Table 1-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#2">History&#160;of&#160;the&#160;Document&#160;.............................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#2">Table 1-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#2">References&#160;Documents&#160;..............................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">Table 2-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#9">Bootloader&#160;memory&#160;sections&#160;......................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">Table 3-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_FBL_RH850s.html#17">Timer&#160;Configuration&#160;Code&#160;.........................................................................&#160;17&#160;</a><br/>
+<b>&#160;</b><br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+5&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-6_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-6_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-6_3.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-6_4.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>1&#160;&#160;Introduction&#160;</b><br/>
+This&#160;&#160;document&#160;&#160;covers&#160;&#160;the&#160;&#160;hardware-related&#160;&#160;<a href="http://dict.leo.org/se?p=/Mn4k.&search=particularities">particularities&#160;&#160;</a>of&#160;&#160;the&#160;&#160;Flash&#160;&#160;Bootloader.&#160;&#160;It&#160;<br/>complements&#160;&#160;the&#160;&#160;explanations&#160;&#160;started&#160;&#160;in&#160;&#160;the&#160;&#160;user&#160;&#160;manual&#160;&#160;with&#160;&#160;hardware-specific&#160;&#160;details.&#160;<br/>All&#160;references there are&#160;resumed&#160;here&#160;in&#160;this&#160;document&#160;again&#160;and&#160;explained&#160;in&#160;detail.&#160;<br/>
+The&#160;connection&#160;between&#160;a&#160;reference&#160;in&#160;the&#160;user&#160;manual&#160;and&#160;its&#160;specific&#160;description&#160;in&#160;this&#160;<br/>document&#160;is&#160;the&#160;headline.&#160;Both&#160;the&#160;reference&#160;and&#160;its&#160;explanation&#160;can&#160;be&#160;found&#160;below&#160;the&#160;<br/>same&#160;headline.&#160;<br/>
+<b>User&#160;Manual</b><br/>
+headline<br/>
+headline<br/>
+#hw_&lt;xxx&gt;<br/>
+#oem_&lt;yyy&gt;<br/>
+<b>Technical</b><br/>
+<b>Flash Tool</b><br/>
+<b>Technical</b><br/>
+<b>Reference</b><br/>
+<b>Documentation</b><br/>
+<b>Reference</b><br/>
+<b>Hardware</b><br/>
+<b>OEM</b><br/>
+<b>You&#160;are&#160;here</b><br/>
+&#160;<br/>
+Figure&#160;1-1&#160;<br/>
+Manuals&#160;and&#160;References&#160;for&#160;the&#160;Flash&#160;Bootloader&#160;<br/>
+Additionally&#160;&#160;this&#160;&#160;headline&#160;&#160;is&#160;&#160;marked&#160;&#160;with&#160;&#160;the&#160;&#160;ID&#160;&#160;of&#160;&#160;the&#160;&#160;reference&#160;&#160;from&#160;&#160;the&#160;&#160;User&#160;&#160;Manual.&#160;<br/>This ID looks like:&#160;<b>[#hw_&lt;xxx&gt;]</b>.&#160;<br/>
+<b>1.1&#160;</b><br/>
+<b>Configurations&#160;covered by&#160;this&#160;Technical&#160;Reference&#160;</b><br/>
+This&#160;Technical Reference&#160;covers the&#160;following&#160;controllers and&#160;compilers:&#160;<br/>
+<b>1.1.1&#160;</b><br/>
+<b>Microcontrollers&#160;</b><br/>
+<b>&#160;&#160;</b>Renesas&#160;RH850&#160;F1L&#160;<br/>
+<b>1.2&#160;</b><br/>
+<b>Compilers&#160;</b><br/>
+<b>&#160;&#160;</b>GreenHills&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+6&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=7></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>2&#160;&#160;Memory&#160;Model&#160;</b><br/>
+<b>2.1&#160;</b><br/>
+<b>[#hw_mem]&#160;-&#160;Design&#160;the&#160;Memory&#160;Layout&#160;</b><br/>
+For more general&#160;information&#160;about&#160;this&#160;see&#160;the UserManual_FlashBootloader&#160;in&#160;the chapter&#160;<b>Design&#160;<br/>Memory&#160;Layout</b>.&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Memory&#160;Mapping&#160;</b><br/>
+<b>2.2.1&#160;</b><br/>
+<b>Memory&#160;mapping of&#160;application&#160;and FBL&#160;</b><br/>
+The&#160;FBL&#160;will reside&#160;in&#160;the&#160;memory&#160;space&#160;starting&#160;from&#160;the&#160;address 0,&#160;because&#160;the&#160;interrupt&#160;<br/>vector&#160;table&#160;is&#160;also&#160;located&#160;at&#160;this&#160;address&#160;and&#160;it&#160;must&#160;be&#160;part&#160;of&#160;the&#160;FBL.&#160;This&#160;is&#160;required&#160;<br/>so&#160;that&#160;the&#160;bootloader is started&#160;after PowerOn&#160;or reset.&#160;<br/>
+&#160;<br/>
+<b>Memo</b><br/>
+<b>em&#160;ry&#160;Map</b><br/>
+<b>y&#160;<br/>r&#160;&#160;</b><br/>
+Application<br/>
+<b>o&#160;&#160;<br/>m&#160;&#160;&#160;e&#160;&#160;M&#160;&#160;&#160;h&#160;&#160;&#160;s&#160;&#160;a&#160;&#160;l&#160;F&#160;</b><br/>
+<b>Interrupt&#160;Vector&#160;Table</b><br/>
+<b>[Application]</b><br/>
+<b>FLAG&#160;&#160;0&#160;invalid,&#160;1&#160;vaild</b><br/>
+<b>M&#160;&#160;A&#160;</b><br/>
+<b>Flash&#160;Driver</b><br/>
+<b>&#160;<br/>R</b><br/>
+<b>y<br/>r&#160;<br/>o&#160;</b><br/>
+<b>Bootloader</b><br/>
+<b>m&#160;&#160;</b><br/>
+Transport&#160;Protocol,<br/>
+<b>e&#160;</b><br/>
+KWP2000-Services,<br/>
+<b>M</b><br/>
+CAN&#160;Driver<br/>
+<b>&#160;<br/>h&#160;&#160;</b><br/>
+<b>IsValid</b><b>Invalidate</b><b>Validate</b><br/>
+<b>s&#160;a&#160;</b><br/>
+<b>Interrupt&#160;Vector Table</b><br/>
+<b>l<br/>F&#160;</b><br/>
+<b>[FBL]</b><br/>
+&#160;<br/>
+Figure&#160;2-1&#160;<br/>
+Memory&#160;Mapping&#160;<br/>
+<b>2.2.2&#160;</b><br/>
+<b>Memory&#160;range&#160;of&#160;the&#160;FBL&#160;</b><br/>
+Depending&#160;on&#160;the&#160;Bootloader configuration&#160;and&#160;used&#160;compiler optimization,&#160;the&#160;Bootloader&#160;<br/>occupies&#160;&#160;one&#160;&#160;or&#160;&#160;more&#160;&#160;flash&#160;&#160;blocks.&#160;&#160;These&#160;&#160;flash&#160;&#160;blocks&#160;&#160;are&#160;&#160;used&#160;&#160;by&#160;&#160;the&#160;&#160;Bootloader&#160;<br/>exclusively&#160;and&#160;have&#160;to&#160;be&#160;configured&#160;to&#160;“Protected”&#160;in&#160;the&#160;flash&#160;block&#160;table&#160;to&#160;protect&#160;the&#160;<br/>Bootloader&#160;from&#160;being&#160;erased&#160;or overwritten.&#160;<br/>
+The&#160;&#160;size&#160;&#160;of&#160;&#160;the&#160;&#160;FBL&#160;&#160;depends&#160;&#160;on&#160;&#160;the&#160;&#160;used&#160;&#160;car&#160;&#160;manufacturer&#160;&#160;specification&#160;&#160;and&#160;&#160;the&#160;<br/>configuration.&#160;&#160;Depending&#160;&#160;on&#160;&#160;these&#160;&#160;requirements,&#160;&#160;the&#160;&#160;FBL&#160;&#160;can&#160;&#160;exceed&#160;&#160;the&#160;&#160;size&#160;&#160;of&#160;<br/>32Kbytes.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+7&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=8></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-8_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+&#160;<br/>
+<b>2.2.3&#160;</b><br/>
+<b>Memory&#160;range&#160;of&#160;the&#160;application&#160;</b><br/>
+The&#160;application&#160;can&#160;start&#160;directly&#160;after&#160;the&#160;Bootloader&#160;and&#160;may&#160;occupy&#160;all&#160;memory&#160;regions&#160;<br/>which&#160;&#160;are&#160;&#160;not&#160;&#160;reserved&#160;&#160;for&#160;&#160;the&#160;&#160;Bootloader.&#160;&#160;The&#160;&#160;Flash&#160;&#160;sectors&#160;&#160;which&#160;&#160;can&#160;&#160;be&#160;&#160;used&#160;&#160;by&#160;&#160;the&#160;<br/>application&#160;are&#160;&#160;configured&#160;in&#160;the&#160;“FlashBlockTable”&#160;configuration&#160;dialog&#160;in&#160;&#160;the&#160;generation&#160;<br/>tool GENy,&#160;setting&#160;the&#160;device&#160;type&#160;to&#160;“Flash”.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;2-2&#160;<br/>
+Flash&#160;Block&#160;Configuration&#160;using&#160;GENy&#160;<br/>
+<b>2.2.4&#160;</b><br/>
+<b>Bootloader Sections&#160;</b><br/>
+There&#160;&#160;are&#160;&#160;a&#160;&#160;few&#160;&#160;RAM/ROM&#160;&#160;sections&#160;&#160;that&#160;&#160;must&#160;&#160;be&#160;&#160;defined&#160;&#160;to&#160;&#160;a&#160;&#160;fixed&#160;&#160;location.&#160;&#160;They&#160;&#160;are&#160;<br/>used&#160;&#160;to&#160;&#160;locate&#160;&#160;the&#160;&#160;data&#160;&#160;within&#160;&#160;a&#160;&#160;determined&#160;&#160;memory&#160;&#160;area.&#160;&#160;It&#160;&#160;may&#160;&#160;also&#160;&#160;be&#160;&#160;necessary&#160;&#160;to&#160;<br/>specify&#160;&#160;shared&#160;&#160;memory&#160;&#160;locations&#160;&#160;that&#160;&#160;are&#160;&#160;accessed&#160;&#160;within&#160;&#160;the&#160;&#160;application&#160;&#160;and&#160;&#160;the&#160;<br/>Bootloader (e.g.&#160;interrupt&#160;vector table&#160;of&#160;the&#160;application&#160;or the&#160;FBL&#160;header).&#160;<br/>
+The&#160;following&#160;sections&#160;must&#160;be&#160;defined&#160;in&#160;the&#160;linker command&#160;file:&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+8&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=9></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-9_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-9_2.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>Section&#160;Name&#160;</b><br/>
+<b>Address&#160;</b><br/>
+.intvect&#160;<br/>
+The&#160;interrupt&#160;vector&#160;table of&#160;the&#160;bootloader&#160;at&#160;address 0&#160;<br/>
+.FBLHEADER&#160;<br/>
+This&#160;section defines&#160;the&#160;location&#160;of&#160;the&#160;Bootloader&#160;header&#160;structure&#160;<br/>“FblHeader”.&#160;This&#160;structure includes&#160;information like&#160;the&#160;Bootloader&#160;version,&#160;<br/>the&#160;start&#160;address&#160;of&#160;the&#160;Bootloader,&#160;etc.&#160;<br/>
+This&#160;address&#160;must&#160;be&#160;compliant&#160;to&#160;the&#160;address&#160;configured&#160;in&#160;the&#160;generation&#160;<br/>tool&#160;in the&#160;field&#160;“Header&#160;Address”&#160;in the&#160;FBL-options.&#160;<br/>
+.APPLVECT&#160;<br/>
+Start&#160;address&#160;of&#160;application&#160;interrupt&#160;vector&#160;table&#160;validation&#160;flag.&#160;<br/>
+The&#160;application interrupt&#160;vector&#160;table&#160;flag is used&#160;to determine&#160;if&#160;an&#160;application&#160;<br/>was downloaded and to&#160;get&#160;the&#160;start&#160;address&#160;of&#160;the&#160;application.&#160;Normally,&#160;the&#160;<br/>section&#160;APPLVECT&#160;should be&#160;placed&#160;right&#160;before&#160;the&#160;application interrupt&#160;<br/>vector&#160;table.&#160;<br/>
+FLASHDRV&#160;<br/>
+Allocates the&#160;memory&#160;for&#160;the&#160;flash&#160;driver.&#160;The&#160;size of&#160;the&#160;array&#160;is&#160;defined in&#160;<br/>the&#160;generation&#160;tool&#160;as&#160;the “Flash&#160;code buffer&#160;size (bytes)”&#160;parameter.&#160;<br/>
+The&#160;array&#160;flashCode[]&#160;allocates&#160;the&#160;memory.&#160;<br/>
+Please note&#160;that&#160;there&#160;can be&#160;additional&#160;flashCode[]-arrays&#160;if&#160;there&#160;is&#160;more&#160;<br/>than one&#160;flash&#160;driver&#160;variant&#160;present&#160;(e.g.&#160;if&#160;the&#160;OEM&#160;specification&#160;requires&#160;a&#160;<br/>downloadable driver&#160;and the&#160;Bootloader&#160;uses&#160;a compiled&#160;in driver&#160;for&#160;the&#160;<br/>EepM&#160;module.&#160;<br/>
+Table&#160;2-1&#160;&#160;<br/>
+Bootloader&#160;memory&#160;sections&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Note&#160;<br/></b>Please&#160;note&#160;that&#160;depending&#160;on&#160;the&#160;used&#160;car&#160;manufacturer,&#160;some&#160;other&#160;sections&#160;must&#160;<br/>
+&#160;&#160;be&#160;also included.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>Linker&#160;command&#160;file examples can&#160;be&#160;found&#160;in&#160;document&#160;chapter&#160;Linker&#160;Parameters.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>2.2.5&#160;</b><br/>
+<b>Compiler-/Linker&#160;specific&#160;memory&#160;mapping issues&#160;</b><br/>
+&#160;<br/>
+<b>2.3&#160;</b><br/>
+<b>[#hw_intvect]&#160;-&#160;The&#160;Interrupt&#160;Vector Tables&#160;</b><br/>
+For more general&#160;information&#160;about&#160;this&#160;see&#160;the UserManual_FlashBootloader in&#160;the chapter&#160;The&#160;Interrupt&#160;<br/>Vector&#160;Tables&#160;and&#160;Fbl_vect.c&#160;/&#160;Applvect.c(.h)&#160;-&#160;The&#160;Interrupt&#160;Vector&#160;Tables.&#160;<br/>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+9&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=10></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-10_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-10_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-10_3.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>2.3.1&#160;</b><br/>
+<b>Bootloader Vector Table&#160;</b><br/>
+The&#160;interrupt&#160;vector table&#160;of&#160;the&#160;bootloader&#160;covers&#160;the&#160;exception&#160;vectors&#160;at&#160;the&#160;offsets&#160;from&#160;<br/>0x00&#160;–&#160;0xF0.&#160;These&#160;are&#160;the&#160;vectors&#160;of&#160;RESET,&#160;SYSERR,&#160;HVTRAP,&#160;up&#160;to&#160;FEINT.&#160;All&#160;these&#160;<br/>vectors&#160;&#160;reference&#160;&#160;the&#160;&#160;startup&#160;&#160;code&#160;&#160;of&#160;&#160;the&#160;&#160;bootloader&#160;&#160;to&#160;&#160;make&#160;&#160;sure&#160;&#160;that&#160;&#160;these&#160;&#160;events&#160;&#160;are&#160;<br/>handled&#160;&#160;even&#160;&#160;if&#160;&#160;no&#160;&#160;valid&#160;&#160;application&#160;&#160;is&#160;&#160;available.&#160;&#160;If&#160;&#160;a&#160;&#160;special&#160;&#160;handling&#160;&#160;of&#160;&#160;one&#160;&#160;of&#160;&#160;these&#160;<br/>vectors&#160;&#160;is&#160;&#160;needed,&#160;&#160;please&#160;&#160;adapt&#160;&#160;the&#160;&#160;bootloader&#160;&#160;vector&#160;&#160;table&#160;&#160;fbl_vect.c&#160;&#160;to&#160;&#160;implement&#160;&#160;a&#160;<br/>specific handler call.&#160;<br/>
+Besides&#160;&#160;these&#160;&#160;exceptions,&#160;&#160;no&#160;&#160;other&#160;&#160;vectors&#160;&#160;are&#160;&#160;implemented&#160;&#160;in&#160;&#160;the&#160;&#160;bootloader&#160;&#160;vector&#160;<br/>table.&#160;Since&#160;exception/interrupt&#160;control&#160;registers&#160;are&#160;available&#160;that&#160;permit&#160;the&#160;remapping&#160;of&#160;<br/>the&#160;vector&#160;table&#160;address,&#160;it&#160;is&#160;no&#160;longer&#160;necessary&#160;to&#160;use&#160;the&#160;redirection&#160;mechanism&#160;from&#160;<br/>bootloader vector table&#160;to&#160;application&#160;vector&#160;table&#160;with&#160;jump&#160;opcodes.&#160;&#160;<br/>
+It&#160;is&#160;therefore&#160;mandatory&#160;that&#160;download&#160;applications&#160;initialize&#160;the&#160;vector&#160;base&#160;registers&#160;on&#160;<br/>startup&#160;and&#160;before interrupts are&#160;enabled.&#160;<br/>
+&#160;<br/>
+<b>2.3.2&#160;</b><br/>
+<b>Application Vector Table&#160;</b><br/>
+The&#160;&#160;application&#160;&#160;vector&#160;&#160;table&#160;&#160;consists&#160;&#160;of&#160;&#160;the&#160;&#160;reset&#160;&#160;vector&#160;&#160;entry&#160;&#160;only.&#160;This&#160;&#160;entry&#160;&#160;is&#160;&#160;used&#160;&#160;by&#160;<br/>the&#160;bootloader&#160;to&#160;start&#160;the&#160;application&#160;if&#160;it&#160;is&#160;valid&#160;after&#160;Reset&#160;or&#160;PowerOn.&#160;It&#160;also&#160;provides&#160;<br/>a&#160;&#160;flag&#160;&#160;that&#160;&#160;tells&#160;&#160;the&#160;&#160;Bootloader&#160;&#160;that&#160;&#160;the&#160;&#160;application&#160;&#160;interrupt&#160;&#160;vector&#160;&#160;table&#160;&#160;is&#160;&#160;valid/present.&#160;<br/>This&#160;flag&#160;must&#160;be&#160;set&#160;to&#160;APPLVECT_FROM_APPL&#160;in&#160;the&#160;application.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Note&#160;<br/></b>The&#160;fbl_applvect.c&#160;file doesn’t&#160;contain&#160;the&#160;application&#160;vector&#160;table itself.&#160;&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>This&#160;table&#160;must&#160;be&#160;located at&#160;a&#160;fixed&#160;address&#160;to&#160;provide&#160;the&#160;Bootloader&#160;with the&#160;<br/>
+<b>&#160;&#160;</b>memory&#160;address&#160;of&#160;the&#160;application&#160;interrupt&#160;vector&#160;table validation&#160;flag.&#160;Please make&#160;<br/>
+sure&#160;to locate&#160;the&#160;application&#160;interrupt&#160;vector&#160;table validation&#160;flag at&#160;the&#160;same address&#160;<br/>in the&#160;Bootloader&#160;and in&#160;the&#160;application itself.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>An example implementation&#160;is&#160;provided with&#160;every&#160;Bootloader&#160;delivery:&#160;<br/>
+&#160;&#160;&#160;The&#160;Bootloader&#160;demonstration project&#160;includes a&#160;placeholder&#160;called&#160;fbl_applvect.c&#160;<br/>
+&#160;The&#160;demonstration application includes&#160;the&#160;file&#160;applvect.c.&#160;This&#160;file&#160;includes the&#160;<br/>
+address&#160;of&#160;the&#160;application’s&#160;startup&#160;code which is&#160;used to&#160;start&#160;the&#160;application&#160;<br/>software&#160;by&#160;the&#160;Bootloader.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+10&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=11></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-11_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>2.3.3&#160;</b><br/>
+<b>Vector base&#160;address&#160;registers&#160;</b><br/>
+The&#160;RH850&#160;has&#160;got&#160;three&#160;Exception/Interrupt&#160;control&#160;registers.&#160;RBASE&#160;is&#160;the&#160;Reset&#160;Base&#160;<br/>Register&#160;&#160;and&#160;&#160;contains&#160;&#160;the&#160;&#160;reset&#160;&#160;vector&#160;&#160;address.&#160;&#160;The&#160;&#160;exception&#160;&#160;vector&#160;&#160;base&#160;&#160;address&#160;&#160;is&#160;<br/>controlled&#160;&#160;by&#160;&#160;the&#160;&#160;EBASE&#160;&#160;register.&#160;&#160;The&#160;&#160;INTBP&#160;&#160;register&#160;&#160;provides&#160;&#160;the&#160;&#160;base&#160;&#160;address&#160;&#160;of&#160;&#160;the&#160;<br/>interrupt&#160;handler address table.&#160;For&#160;detailed&#160;information&#160;for these&#160;registers please&#160;see&#160;[3].&#160;<br/>
+These&#160;&#160;registers&#160;&#160;permit&#160;&#160;to&#160;&#160;store&#160;&#160;the&#160;&#160;reset&#160;&#160;vector,&#160;&#160;the&#160;&#160;exception&#160;&#160;vectors&#160;&#160;and&#160;&#160;the&#160;&#160;interrupt&#160;<br/>vectors&#160;at&#160;&#160;three&#160;different&#160;&#160;locations.&#160;Since&#160;the&#160;bootloader&#160;only&#160;provides&#160;the&#160;reset-&#160;and&#160;the&#160;<br/>exception&#160;vectors,&#160;it&#160;is&#160;important&#160;to&#160;initialize&#160;RBASE&#160;and&#160;EBASE&#160;in&#160;the&#160;bootloader&#160;startup&#160;<br/>code.&#160;<br/>
+<b>2.3.4&#160;</b><br/>
+<b>Special&#160;measures&#160;for&#160;NMI&#160;</b><br/>
+The&#160;NMI&#160;(FENMI)&#160;is&#160;handled&#160;by&#160;the&#160;Bootloader’s&#160;startup&#160;code.&#160;Normally,&#160;the&#160;NMI&#160;handlers&#160;<br/>invoke&#160;the&#160;startup&#160;code&#160;of&#160;the&#160;Bootloader&#160;to&#160;restart&#160;the&#160;Bootloader&#160;after&#160;a&#160;NMI&#160;occurred.&#160;If&#160;<br/>NMI&#160;&#160;handling&#160;&#160;is&#160;&#160;required&#160;&#160;in&#160;&#160;your&#160;&#160;Bootloader,&#160;&#160;you&#160;&#160;have&#160;&#160;to&#160;&#160;implement&#160;&#160;the&#160;&#160;corresponding&#160;<br/>handlers.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>While&#160;restarting&#160;the&#160;Bootloader&#160;can&#160;be&#160;an&#160;appropriate&#160;choice,&#160;the&#160;application&#160;software&#160;<br/>
+<b>&#160;&#160;</b>normally&#160;has&#160;to&#160;handle NMIs.&#160;Please ensure&#160;your&#160;application software&#160;includes the&#160;<br/>
+needed&#160;handlers&#160;and activates&#160;its&#160;own table&#160;by&#160;setting&#160;the&#160;corresponding&#160;base&#160;register.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+11&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=12></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-12_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>3&#160;&#160;Hardware&#160;Layer&#160;</b><br/>
+The&#160;&#160;relevant&#160;&#160;hardware&#160;&#160;components&#160;&#160;of&#160;&#160;the&#160;&#160;Flash-Bootloader&#160;&#160;are&#160;&#160;the&#160;&#160;CAN-controller,&#160;&#160;the&#160;<br/>hardware-timer&#160;&#160;and&#160;&#160;flash&#160;&#160;memory.&#160;&#160;This&#160;&#160;chapter&#160;&#160;describes&#160;&#160;the&#160;&#160;relevant&#160;&#160;properties&#160;&#160;and&#160;<br/>configuration&#160;settings for these&#160;components.&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Flash Memory&#160;and&#160;Flash Driver&#160;</b><br/>
+The&#160;flash&#160;driver&#160;uses&#160;the&#160;Renesas&#160;Self&#160;Programming&#160;Library&#160;(FCL)&#160;for&#160;flash&#160;programming.&#160;<br/>The&#160;flash&#160;driver&#160;file&#160;flashdrv.c&#160;performs&#160;an&#160;interface&#160;adaption&#160;between&#160;the&#160;bootloader&#160;(HIS&#160;<br/>–&#160;interface) and&#160;the&#160;FCL.&#160;&#160;<br/>
+<b>3.1.1&#160;</b><br/>
+<b>Special&#160;clock&#160;parameters&#160;and&#160;clock&#160;settings&#160;</b><br/>
+The&#160;&#160;FCL&#160;&#160;requires&#160;&#160;the&#160;&#160;CPU&#160;&#160;clock&#160;&#160;(CPUCLK)&#160;&#160;frequency&#160;&#160;as&#160;&#160;a&#160;&#160;parameter.&#160;&#160;The&#160;&#160;bootloader&#160;<br/>calls&#160;the&#160;flash&#160;driver&#160;with&#160;the&#160;value&#160;that&#160;is&#160;configured&#160;in&#160;the&#160;GENy&#160;FblDrvCan_-component&#160;&#160;<br/>Internal&#160;System&#160;Clock&#160;as&#160;a&#160;parameter.&#160;Please&#160;make&#160;sure&#160;that&#160;you&#160;enter&#160;the&#160;correct&#160;value&#160;<br/>in&#160;GENy&#160;as shown&#160;below.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-1&#160;<br/>
+Clock&#160;parameter&#160;setting&#160;in&#160;GENy&#160;<br/>
+<b>3.1.2&#160;</b><br/>
+<b>Flash Code&#160;Buffer&#160;Size&#160;</b><br/>
+The&#160;&#160;bootloader&#160;&#160;reserves&#160;&#160;a&#160;&#160;configurable&#160;&#160;amount&#160;&#160;of&#160;&#160;RAM&#160;&#160;to&#160;&#160;store&#160;&#160;the&#160;&#160;flash&#160;&#160;driver.&#160;&#160;Per&#160;<br/>default,&#160;&#160;8KBytes&#160;&#160;are&#160;&#160;reserved&#160;&#160;for&#160;&#160;this&#160;&#160;buffer.&#160;&#160;The&#160;&#160;flash&#160;&#160;driver&#160;&#160;size&#160;&#160;is&#160;&#160;about&#160;&#160;6KBytes.&#160;<br/>Depending&#160;on&#160;the&#160;used&#160;compiler,&#160;flash&#160;technology&#160;and&#160;the&#160;compiler&#160;options&#160;the&#160;size&#160;of&#160;the&#160;<br/>flash&#160;&#160;driver&#160;&#160;may&#160;&#160;be&#160;&#160;different.&#160;&#160;Please&#160;&#160;refer&#160;&#160;to&#160;&#160;the&#160;&#160;delivered&#160;&#160;flashdrv.hex&#160;&#160;file&#160;&#160;for&#160;&#160;the&#160;&#160;actual&#160;<br/>size&#160;&#160;of&#160;&#160;the&#160;&#160;flash&#160;&#160;driver.&#160;&#160;It&#160;&#160;is&#160;&#160;necessary&#160;&#160;to&#160;&#160;keep&#160;&#160;in&#160;&#160;mind&#160;&#160;that&#160;&#160;future&#160;&#160;updates&#160;&#160;of&#160;&#160;the&#160;&#160;flash&#160;<br/>driver&#160;can&#160;be&#160;of&#160;greater&#160;size&#160;so&#160;that&#160;&#160;it&#160;is&#160;recommended&#160;to&#160;have&#160;a&#160;sufficient&#160;buffer&#160;size&#160;in&#160;<br/>reserve.&#160;&#160;<br/>
+<b>3.1.3&#160;</b><br/>
+<b>ID&#160;Authentication&#160;</b><br/>
+The&#160;&#160;RH850&#160;&#160;requires&#160;&#160;an&#160;&#160;ID&#160;&#160;authentication&#160;&#160;when&#160;&#160;the&#160;&#160;flash&#160;&#160;library&#160;&#160;is&#160;&#160;initialized.&#160;&#160;The&#160;&#160;ID&#160;<br/>consists&#160;&#160;of&#160;&#160;four&#160;&#160;32&#160;&#160;bit&#160;&#160;unsigned&#160;&#160;integer&#160;&#160;values.&#160;&#160;The&#160;&#160;FBL&#160;&#160;uses&#160;&#160;the&#160;&#160;defines&#160;<br/>FLASH_AUTH_ID_0,&#160;FLASH_AUTH_ID_1,&#160;FLASH_AUTH_ID_2&#160;and&#160;FLASH_AUTH_ID_3&#160;<br/>to&#160;&#160;specify&#160;&#160;these&#160;&#160;four&#160;&#160;ID&#160;&#160;values.&#160;&#160;Per&#160;&#160;default,&#160;&#160;all&#160;&#160;ID-&#160;&#160;values&#160;&#160;are&#160;&#160;set&#160;&#160;to&#160;&#160;FFFFFFFFh.&#160;&#160;It&#160;&#160;is&#160;<br/>possible&#160;&#160;to&#160;&#160;redefine&#160;&#160;these&#160;&#160;ID&#160;&#160;codes&#160;&#160;to&#160;&#160;specific&#160;&#160;values&#160;&#160;by&#160;&#160;defining&#160;&#160;the&#160;&#160;codes&#160;&#160;in&#160;&#160;a&#160;&#160;user-<br/>configuration&#160;file&#160;for GENy:&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+12&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=13></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-13_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-13_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-13_3.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>User&#160;configuration&#160;file&#160;fragment&#160;with authentication&#160;ID&#160;defines:&#160;<br/>
+&#160;&#160;/*-----------------------------------------------------------------------------*/&#160;<br/>
+#&#160;define&#160;FLASH_AUTH_ID_0&#160;0xFFFFFFFFul&#160;<br/>#&#160;define&#160;FLASH_AUTH_ID_1&#160;0xFFFFFFFFul&#160;<br/>#&#160;define&#160;FLASH_AUTH_ID_2&#160;0xFFFFFFFFul&#160;<br/>#&#160;define&#160;FLASH_AUTH_ID_3&#160;0xFFFFFFFFul&#160;<br/>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.1.4&#160;</b><br/>
+<b>Rebuilding the&#160;flash&#160;driver binary&#160;&#160;</b><br/>
+The&#160;flash&#160;driver&#160;is&#160;delivered&#160;with&#160;a&#160;build&#160;project&#160;based&#160;on&#160;the&#160;Vector&#160;MakeSupport.&#160;It&#160;can&#160;<br/>be&#160;found&#160;in&#160;the&#160;delivery&#160;in&#160;the&#160;Flash&#160;folder that&#160;is located&#160;in&#160;BSW.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-2&#160;<br/>
+Directory&#160;of&#160;flash&#160;driver&#160;project&#160;<br/>
+The&#160;&#160;subdirectory&#160;&#160;“Build”&#160;&#160;contains&#160;&#160;a&#160;&#160;build&#160;&#160;system&#160;&#160;to&#160;&#160;rebuild&#160;&#160;the&#160;&#160;flash&#160;&#160;driver.&#160;&#160;You&#160;&#160;have&#160;&#160;to&#160;<br/>adapt&#160;&#160;your&#160;&#160;compilers&#160;&#160;installation&#160;&#160;path&#160;&#160;in&#160;&#160;the&#160;&#160;file&#160;&#160;“Makefile”.&#160;Then&#160;&#160;the&#160;&#160;flash&#160;&#160;driver&#160;&#160;can&#160;&#160;be&#160;<br/>rebuilt&#160;by&#160;executing&#160;m.bat.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>Compiler&#160;path setting in&#160;Makefile:&#160;<br/>
+&#160;&#160;#------------------------------------------------------------------------------&#160;<br/>
+#-------------------------&#160;MUST&#160;be&#160;filled&#160;out&#160;---------------------------------&#160;<br/>#&#160;Define&#160;Compiler&#160;path&#160;<br/>#&#160;E.g.:&#160;COMPILER_BASE&#160;=&#160;C:\Uti\HC08\HIWARE&#160;<br/>#&#160;&#160;&#160;&#160;&#160;&#160;&#160;COMPILER_BIN&#160;&#160;=&#160;$(COMPILER_BASE)\prog&#160;<br/>#&#160;&#160;&#160;&#160;&#160;&#160;&#160;COMPILER_INC&#160;&#160;=&#160;$(COMPILER_BASE)\lib\hc08c\include&#160;<br/>#&#160;&#160;&#160;&#160;&#160;&#160;&#160;COMPILER_LIB&#160;&#160;=&#160;$(COMPILER_BASE)\lib\hc08c\lib&#160;<br/>#------------------------------------------------------------------------------&#160;<br/>COMPILER_BASE&#160;=&#160;D:\uti\PPC\WindRiver\5.9.0\diab\5.9.0.0&#160;<br/>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+13&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=14></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+&#160;<br/>
+When&#160;rebuilding&#160;the&#160;flash&#160;driver&#160;it&#160;is&#160;important&#160;to&#160;consider&#160;compiler&#160;options,&#160;linker mapping&#160;<br/>and&#160;&#160;configuration&#160;&#160;settings&#160;&#160;of&#160;&#160;the&#160;&#160;FCL.&#160;&#160;Bootloader&#160;&#160;and&#160;flash&#160;&#160;driver&#160;&#160;have&#160;&#160;been&#160;&#160;tested&#160;&#160;with&#160;<br/>the&#160;settings of&#160;the&#160;delivery.&#160;Other settings have&#160;not&#160;been&#160;tested&#160;and&#160;should&#160;not&#160;be&#160;used.&#160;<br/>
+The&#160;&#160;FCL&#160;&#160;permits&#160;&#160;several&#160;&#160;configurations.&#160;&#160;For&#160;&#160;further&#160;&#160;details&#160;&#160;see&#160;&#160;the&#160;&#160;FCL&#160;&#160;configuration&#160;<br/>header&#160;file&#160;fcl_cfg.h&#160;and&#160;[3].&#160;&#160;<br/>
+It&#160;is&#160;mandatory&#160;that&#160;the&#160;execution&#160;mode&#160;of&#160;the&#160;FCL&#160;is&#160;configured&#160;to&#160;use&#160;the&#160;status&#160;check&#160;<br/>by&#160;<br/>
+user.&#160;<br/>
+This&#160;<br/>
+is&#160;<br/>
+done&#160;<br/>
+in&#160;<br/>
+file&#160;<br/>
+fcl_cfg.h&#160;<br/>
+by&#160;<br/>
+setting&#160;<br/>
+the&#160;<br/>
+define&#160;<br/>
+switch&#160;<br/>
+R_FCL_COMMAND_EXECUTION_MODE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;to&#160;&#160;R_FCL_HANDLER_CALL_USER.&#160;&#160;This&#160;<br/>permits&#160;&#160;watchdog&#160;&#160;servicing&#160;&#160;and&#160;&#160;handling&#160;&#160;of&#160;&#160;other&#160;&#160;dynamic&#160;&#160;tasks&#160;&#160;by&#160;&#160;the&#160;&#160;bootloader&#160;&#160;flash&#160;<br/>driver&#160;during&#160;flash&#160;operations.&#160;This&#160;setting&#160;is&#160;already&#160;configured&#160;in&#160;the&#160;bootloader&#160;delivery&#160;<br/>and&#160;must&#160;not&#160;be&#160;changed.&#160;<br/>
+Some&#160;&#160;compilers&#160;&#160;support&#160;&#160;a&#160;&#160;small&#160;&#160;data&#160;&#160;area&#160;&#160;option&#160;&#160;(SDA).&#160;&#160;If&#160;&#160;this&#160;&#160;compiler&#160;&#160;option&#160;&#160;is&#160;&#160;used&#160;<br/>please&#160;&#160;make&#160;&#160;sure&#160;&#160;that&#160;&#160;the&#160;&#160;corresponding&#160;&#160;base&#160;&#160;pointers&#160;&#160;have&#160;&#160;got&#160;&#160;the&#160;&#160;same&#160;&#160;value&#160;&#160;in&#160;&#160;the&#160;<br/>bootloader and&#160;the&#160;flash&#160;driver.&#160;&#160;<br/>
+The&#160;&#160;flash&#160;&#160;driver&#160;&#160;is&#160;&#160;not&#160;&#160;relocatable.&#160;&#160;The&#160;&#160;RAM&#160;&#160;buffer&#160;&#160;array&#160;&#160;for&#160;&#160;the&#160;&#160;flash&#160;&#160;driver&#160;&#160;in&#160;&#160;the&#160;<br/>bootloader&#160;&#160;needs&#160;&#160;to&#160;&#160;be&#160;&#160;located&#160;&#160;at&#160;&#160;the&#160;&#160;exactly&#160;&#160;same&#160;&#160;address&#160;&#160;as&#160;&#160;the&#160;&#160;address&#160;&#160;of&#160;&#160;the&#160;&#160;flash&#160;<br/>driver itself.&#160;<br/>
+After&#160;the&#160;build&#160;process,&#160;the&#160;hex&#160;file&#160;of&#160;the&#160;flash&#160;driver&#160;is&#160;probably&#160;segmented&#160;and&#160;consists&#160;<br/>of&#160;&#160;more&#160;&#160;than&#160;&#160;on&#160;&#160;memory&#160;&#160;segment.&#160;&#160;Most&#160;&#160;bootloader&#160;&#160;implementations&#160;&#160;do&#160;&#160;not&#160;&#160;support&#160;&#160;the&#160;<br/>download&#160;of&#160;&#160;a&#160;&#160;segmented&#160;flash&#160;driver.&#160;Therefore,&#160;&#160;it&#160;&#160;is&#160;&#160;necessary&#160;&#160;to&#160;fill&#160;&#160;the&#160;&#160;gaps&#160;&#160;between&#160;<br/>the&#160;&#160;segments&#160;&#160;with&#160;&#160;fill&#160;&#160;code&#160;&#160;in&#160;&#160;order&#160;&#160;to&#160;&#160;obtain&#160;&#160;a&#160;&#160;single-region&#160;&#160;file.&#160;This&#160;&#160;can&#160;&#160;be&#160;&#160;done&#160;&#160;by&#160;&#160;a&#160;<br/>batch&#160;process&#160;using&#160;HexView.&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>&#160;[#hw_size]&#160;-&#160;Flash&#160;Segment&#160;Size&#160;</b><br/>
+For more general&#160;information&#160;about&#160;this&#160;see&#160;the UserManual_FlashBootloader in&#160;the chapter&#160;<b>Flash&#160;<br/>Segment&#160;Size</b>&#160;<br/>The&#160;flash&#160;segment&#160;size&#160;describes&#160;the&#160;minimum&#160;writable&#160;data&#160;size.&#160;The&#160;flash&#160;segment&#160;size&#160;<br/>of&#160;the&#160;RH850&#160;F1L&#160;is&#160;256&#160;bytes.&#160;Depending&#160;on&#160;the&#160;OEM&#160;reprogramming&#160;requirements,&#160;it&#160;is&#160;<br/>necessary&#160;&#160;to&#160;&#160;align&#160;&#160;the&#160;&#160;download&#160;&#160;addresses&#160;&#160;to&#160;&#160;integer&#160;&#160;multiple&#160;&#160;of&#160;&#160;this&#160;&#160;size.&#160;&#160;This&#160;&#160;can&#160;&#160;be&#160;<br/>accomplished&#160;by&#160;an&#160;additional&#160;processing&#160;step&#160;with&#160;HexView&#160;after building&#160;the&#160;application.&#160;<br/>
+&#160;<br/>
+<b>3.3&#160;</b><br/>
+<b>CAN&#160;Driver&#160;</b><br/>
+<b>3.3.1&#160;</b><br/>
+<b>CAN&#160;Channels&#160;</b><br/>
+The&#160;channel&#160;which&#160;is&#160;used&#160;for&#160;communication&#160;can&#160;be&#160;chosen&#160;in&#160;GENy.&#160;Depending&#160;on&#160;the&#160;<br/>derivative,&#160;different&#160;possibilities are provided.&#160;<br/>
+The&#160;&#160;channel&#160;&#160;configuration&#160;&#160;dialog&#160;&#160;is&#160;&#160;the&#160;&#160;same&#160;&#160;for&#160;&#160;the&#160;&#160;bootloader&#160;&#160;CAN&#160;&#160;driver&#160;&#160;and&#160;&#160;the&#160;<br/>standard&#160;&#160;Vector&#160;&#160;CAN&#160;&#160;driver.&#160;&#160;Since&#160;&#160;the&#160;&#160;standard&#160;&#160;Vector&#160;&#160;CAN&#160;&#160;driver&#160;&#160;provides&#160;&#160;a&#160;&#160;greater&#160;<br/>flexibility&#160;than&#160;the&#160;bootloader&#160;CAN&#160;driver,&#160;&#160;there&#160;are&#160;several&#160;options&#160;in&#160;&#160;this&#160;dialog&#160;that&#160;are&#160;<br/>not&#160;relevant&#160;for FBL&#160;configuration.&#160;<br/>
+The&#160;relevant&#160;settings&#160;for the&#160;FBL&#160;are:&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+14&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=15></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-15_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>&#160;&#160;</b>“BCFG”&#160;and&#160;“Bustiming&#160;Configuration”&#160;for setting&#160;up&#160;the&#160;baud&#160;rate&#160;<br/>
+<b>&#160;&#160;</b>“Physical Controller”&#160;for setting&#160;the&#160;CAN&#160;channel&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-3&#160;<br/>
+CAN&#160;channel&#160;configuration&#160;in&#160;GENy&#160;<br/>
+The&#160;Acceptance&#160;Filter&#160;Configuration&#160;can&#160;be&#160;ignored&#160;because&#160;the&#160;FBL&#160;uses&#160;&#160;a&#160;fixed&#160;set&#160;of&#160;<br/>CAN&#160;message&#160;objects&#160;for&#160;download&#160;communication.&#160;CAN&#160;interrupt&#160;priority,&#160;FullCAN&#160;object&#160;<br/>allocation,&#160;BasicCan&#160;and&#160;RX&#160;fifo&#160;settings are&#160;also&#160;not&#160;relevant&#160;for the&#160;FBL.&#160;<br/>
+&#160;<br/>
+<b>3.3.1.1&#160;</b><br/>
+<b>Number of Supported&#160;Channels&#160;</b><br/>
+The&#160;&#160;RSCAN&#160;&#160;cell&#160;&#160;supports&#160;&#160;a&#160;&#160;different&#160;&#160;number&#160;&#160;of&#160;&#160;physical&#160;&#160;CAN&#160;&#160;channels.&#160;&#160;In&#160;&#160;the&#160;&#160;field&#160;<br/>“Maximum&#160;number&#160;of&#160;CAN&#160;channels”&#160;of&#160;the&#160;component&#160;FblDrvCan_Rh850RscanCrx,&#160;the&#160;<br/>actual&#160;number&#160;of&#160;channels&#160;of&#160;the&#160;current&#160;derivative&#160;needs&#160;to&#160;be&#160;entered.&#160;When&#160;a&#160;physical&#160;<br/>CAN&#160;&#160;channel&#160;&#160;is&#160;&#160;chosen&#160;&#160;in&#160;&#160;the&#160;&#160;“Physical&#160;&#160;Controller”&#160;&#160;field,&#160;&#160;GENy&#160;&#160;checks&#160;&#160;if&#160;&#160;this&#160;&#160;selection&#160;<br/>complies&#160;&#160;with&#160;&#160;the&#160;&#160;configured&#160;&#160;maximum&#160;&#160;number&#160;&#160;of&#160;&#160;CAN&#160;&#160;channels&#160;&#160;in&#160;&#160;order&#160;&#160;to&#160;&#160;avoid&#160;<br/>incorrect&#160;configurations.&#160;In&#160;case&#160;of&#160;a&#160;mismatch,&#160;GENy&#160;generates&#160;an&#160;error message.&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+15&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=16></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-16_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-4&#160;<br/>
+Maximum&#160;number&#160;of&#160;CAN&#160;channels&#160;<br/>
+<b>3.3.1.2&#160;</b><br/>
+<b>Channel&#160;Settings&#160;for&#160;Pipelined Programming&#160;</b><br/>
+For&#160;&#160;pipelined&#160;&#160;programming,&#160;&#160;more&#160;&#160;than&#160;&#160;one&#160;&#160;(logical)&#160;&#160;channel&#160;&#160;can&#160;&#160;be&#160;&#160;configured,&#160;&#160;but&#160;&#160;only&#160;<br/>one&#160;&#160;physical&#160;&#160;channel&#160;&#160;is&#160;&#160;used.&#160;&#160;If&#160;&#160;more&#160;&#160;than&#160;&#160;one&#160;&#160;logical&#160;&#160;channel&#160;&#160;is&#160;&#160;mapped&#160;&#160;to&#160;&#160;the&#160;&#160;same&#160;<br/>physical&#160;&#160;channel&#160;&#160;in&#160;&#160;the&#160;&#160;“Physical&#160;&#160;controller”&#160;&#160;field,&#160;&#160;GENY&#160;&#160;generates&#160;&#160;an&#160;&#160;error&#160;&#160;message.&#160;<br/>Therefore,&#160;&#160;please&#160;&#160;set&#160;&#160;the&#160;&#160;Physical&#160;&#160;controller&#160;&#160;to&#160;&#160;a&#160;&#160;different&#160;&#160;value&#160;&#160;for&#160;&#160;the&#160;&#160;other&#160;&#160;logical&#160;<br/>channels.&#160;GENy&#160;generates&#160;the&#160;bootloader&#160;configuration&#160;for&#160;the&#160;physical&#160;channel&#160;according&#160;<br/>to&#160;the&#160;setting&#160;of&#160;logical channel 0.&#160;<br/>
+&#160;<br/>
+<b>3.3.2&#160;</b><br/>
+<b>Sleep Mode&#160;</b><br/>
+The&#160;&#160;implementation&#160;&#160;of&#160;&#160;FblCanSleep()&#160;&#160;enters&#160;&#160;the&#160;&#160;reset&#160;&#160;mode&#160;&#160;of&#160;&#160;the&#160;&#160;bootloader&#160;&#160;CAN&#160;<br/>channel and&#160;deactivates the&#160;CAN&#160;clock.&#160;<br/>
+Since&#160;&#160;the&#160;&#160;CAN&#160;&#160;cell&#160;&#160;does&#160;&#160;not&#160;&#160;provide&#160;&#160;a&#160;&#160;means&#160;&#160;to&#160;&#160;detect&#160;&#160;the&#160;&#160;sleep&#160;&#160;state,&#160;&#160;function&#160;<br/>FblCanIsAsleep()&#160;always&#160;returns&#160;0&#160;and&#160;cannot&#160;be&#160;used&#160;to&#160;detect&#160;a&#160;wakeup&#160;condition.&#160;<br/>
+<b>3.4&#160;</b><br/>
+<b>Timer&#160;</b><br/>
+The&#160;hardware&#160;independent&#160;modules&#160;of&#160;the&#160;Bootloader&#160;require&#160;a&#160;1ms&#160;time&#160;base&#160;to&#160;derive&#160;<br/>the&#160;necessary&#160;call&#160;cycles of&#160;cyclic functions&#160;from&#160;that&#160;time&#160;base.&#160;<br/>
+The&#160;RH850&#160;uses&#160;the&#160;Timer&#160;Array&#160;Unit&#160;D&#160;(TAUD).&#160;One&#160;channel&#160;is used&#160;to&#160;generate&#160;the&#160;1ms&#160;<br/>time&#160;&#160;base.&#160;An&#160;&#160;additional&#160;&#160;channel&#160;&#160;is&#160;&#160;used&#160;&#160;as&#160;&#160;a&#160;&#160;free-running&#160;&#160;timer&#160;&#160;that&#160;&#160;can&#160;&#160;be&#160;&#160;used&#160;&#160;as&#160;&#160;a&#160;<br/>base&#160;for generating&#160;the&#160;security&#160;access seed&#160;value.&#160;<br/>
+Like&#160;&#160;the&#160;&#160;other&#160;&#160;hardware&#160;&#160;specific&#160;&#160;configurations,&#160;&#160;the&#160;&#160;timer&#160;&#160;module&#160;&#160;is&#160;&#160;also&#160;&#160;configured&#160;&#160;with&#160;<br/>the&#160;&#160;configuration&#160;&#160;tool&#160;&#160;GENy.&#160;&#160;TAUD&#160;&#160;is&#160;&#160;supplied&#160;&#160;with&#160;&#160;the&#160;&#160;PCLK.&#160;&#160;Please&#160;&#160;specify&#160;&#160;the&#160;&#160;PCLK&#160;<br/>frequency&#160;of&#160;your system&#160;as the&#160;timer clock&#160;frequency.&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+16&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=17></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-17_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-17_2.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>Symbolic Constant&#160;</b><br/>
+<b>Description&#160;</b><br/>
+FBL_TIMER_RELOAD_VALUE&#160;<br/>
+Timer&#160;reload value&#160;for&#160;1ms&#160;base cycle.&#160;<br/>
+Table&#160;3-1&#160;&#160;<br/>
+Timer&#160;Configuration&#160;Code&#160;<br/>
+&#160;<br/>
+<b>3.5&#160;</b><br/>
+<b>Startup&#160;Code&#160;</b><br/>
+There&#160;&#160;is&#160;a&#160;&#160;sample&#160;&#160;startup&#160;&#160;code&#160;&#160;provided&#160;&#160;with&#160;&#160;the&#160;Bootloader&#160;&#160;demonstration&#160;project.&#160;This&#160;<br/>startup&#160;code&#160;performs&#160;several&#160;configuration&#160;and&#160;preparation&#160;tasks&#160;before&#160;the&#160;Bootloader’s&#160;<br/>main&#160;function&#160;can&#160;be&#160;started.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>The&#160;startup&#160;code&#160;is&#160;provided as&#160;a&#160;part&#160;of&#160;the&#160;Bootloader&#160;demonstration&#160;project.&#160;Please&#160;<br/>
+<b>&#160;&#160;</b>use&#160;your&#160;own startup&#160;code or&#160;review&#160;the startup&#160;code carefully&#160;to ensure&#160;the&#160;startup&#160;<br/>
+code is correct&#160;and&#160;fits&#160;into&#160;your&#160;usecase.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+The&#160;following&#160;tasks&#160;have&#160;to&#160;be&#160;handled&#160;by&#160;the&#160;startup&#160;code:&#160;<br/>
+<b>&#160;&#160;</b>Initialization&#160;of&#160;the&#160;global pointer (GP).&#160;<br/>
+<b>&#160;&#160;</b>Initialization&#160;of&#160;the&#160;text&#160;pointer (TP)&#160;<br/>
+<b>&#160;&#160;</b>Initialization&#160;of&#160;the&#160;stack pointer (SP)&#160;<br/>
+<b>&#160;&#160;</b>RAM initialisation.&#160;<br/>
+<b>&#160;&#160;</b>Copy&#160;routines linked&#160;to&#160;RAM from&#160;flash&#160;to&#160;RAM.&#160;<br/>
+Code&#160;is copied&#160;into&#160;RAM&#160;using&#160;the&#160;__start()&#160;library&#160;function&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>Keep in&#160;mind&#160;that&#160;there&#160;will&#160;be&#160;two startup-codes&#160;executed&#160;subsequently,&#160;first&#160;the&#160;<br/>
+<b>&#160;&#160;</b>startup-code of&#160;the&#160;Bootloader,&#160;then&#160;the&#160;startup-code of&#160;your&#160;application.&#160;<br/>
+Don’t&#160;forget&#160;to&#160;change&#160;the&#160;TLB&#160;structure&#160;according to&#160;your&#160;own MMU&#160;configuration.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>Please&#160;see&#160;the&#160;demonstration&#160;startup&#160;code&#160;for an&#160;example.&#160;<br/>
+&#160;<br/>
+<b>3.6&#160;</b><br/>
+<b>Hardware&#160;Registers&#160;</b><br/>
+Access&#160;&#160;to&#160;&#160;hardware&#160;&#160;registers&#160;&#160;is&#160;&#160;provided&#160;&#160;by&#160;&#160;macros&#160;&#160;and&#160;&#160;type&#160;&#160;definitions&#160;&#160;in&#160;&#160;the&#160;&#160;fbl_sfr.h&#160;<br/>header&#160;&#160;file.&#160;&#160;There&#160;&#160;is&#160;&#160;only&#160;&#160;support&#160;&#160;of&#160;&#160;those&#160;&#160;hardware&#160;&#160;registers&#160;&#160;that&#160;&#160;are&#160;&#160;absolutely&#160;<br/>necessary&#160;&#160;for&#160;&#160;the&#160;&#160;Bootloader.&#160;&#160;These&#160;&#160;are&#160;&#160;the&#160;&#160;CAN&#160;&#160;controller&#160;&#160;registers,&#160;&#160;the&#160;&#160;ports&#160;&#160;for&#160;<br/>transceiver control,&#160;timer,&#160;watchdog&#160;and&#160;I/O&#160;port registers.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+17&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=18></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-18_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+&#160;<br/>
+<b>3.7&#160;</b><br/>
+<b>Misc&#160;</b><br/>
+In&#160;&#160;GENy,&#160;&#160;the&#160;&#160;component&#160;&#160;Hw_Rh850Cpu&#160;&#160;is&#160;&#160;visible.&#160;&#160;Settings&#160;&#160;in&#160;&#160;this&#160;&#160;component&#160;&#160;are&#160;&#160;not&#160;<br/>relevant&#160;for the&#160;Flash-Bootloader.&#160;It&#160;is not&#160;necessary&#160;to&#160;make&#160;any&#160;changes here.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-5&#160;<br/>
+Component&#160;Hw_Rh850Cpu&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+18&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=19></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-19_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>4&#160;&#160;Build&#160;&#160;</b><br/>
+<b>4.1&#160;</b><br/>
+<b>Code&#160;executed from&#160;RAM&#160;</b><br/>
+The&#160;&#160;Bootloader&#160;&#160;has&#160;&#160;to&#160;&#160;execute&#160;&#160;some&#160;&#160;code&#160;&#160;from&#160;&#160;RAM&#160;&#160;during&#160;&#160;flash&#160;&#160;memory&#160;&#160;is&#160;&#160;erased&#160;&#160;or&#160;<br/>written.&#160;&#160;Depending&#160;&#160;on&#160;&#160;the&#160;&#160;amount&#160;&#160;of&#160;&#160;functionality&#160;&#160;which&#160;&#160;is&#160;&#160;needed&#160;&#160;during&#160;&#160;flashing,&#160;&#160;two&#160;<br/>approaches&#160;&#160;to&#160;&#160;execute&#160;&#160;code&#160;&#160;from&#160;&#160;RAM&#160;&#160;are&#160;&#160;used.&#160;&#160;Please&#160;&#160;note&#160;&#160;that&#160;&#160;one&#160;&#160;of&#160;&#160;these&#160;<br/>approaches&#160;is&#160;selected&#160;during&#160;the&#160;Bootloader&#160;package&#160;creation&#160;and&#160;that&#160;there&#160;is&#160;no&#160;option&#160;<br/>to&#160;configure this&#160;behavior.&#160;<br/>
+&#160;<br/>
+<b>4.1.1&#160;</b><br/>
+<b>Use&#160;of relocatable&#160;Code&#160;</b><br/>
+If&#160;&#160;the&#160;&#160;Bootloader&#160;&#160;just&#160;&#160;needs&#160;&#160;to&#160;&#160;maintain&#160;&#160;watchdog&#160;&#160;handling&#160;&#160;functionality,&#160;&#160;the&#160;&#160;watchdog&#160;<br/>handling&#160;&#160;code&#160;&#160;can&#160;&#160;be&#160;&#160;linked&#160;&#160;to&#160;&#160;flash&#160;&#160;memory&#160;&#160;and&#160;&#160;be&#160;&#160;copied&#160;&#160;from&#160;&#160;flash&#160;&#160;memory&#160;&#160;to&#160;&#160;RAM&#160;<br/>during&#160;&#160;the&#160;&#160;Bootloader’s&#160;&#160;startup.&#160;&#160;The&#160;&#160;two&#160;&#160;functions&#160;&#160;FblLookForWatchdog()&#160;&#160;and&#160;<br/>ApplFblWdTrigger()&#160;are&#160;copied&#160;to&#160;RAM&#160;in&#160;this&#160;configuration.&#160;No&#160;special&#160;&#160;precautions&#160;while&#160;<br/>rebuilding&#160;the&#160;Bootloader have&#160;to&#160;be&#160;taken.&#160;<br/>
+This&#160;&#160;variant&#160;&#160;can&#160;&#160;is&#160;&#160;used&#160;&#160;if&#160;&#160;the&#160;&#160;function&#160;&#160;FblCopyWatchdog()&#160;&#160;is&#160;&#160;present&#160;&#160;in&#160;&#160;the&#160;&#160;fbl_wd&#160;<br/>module.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>No&#160;function&#160;calls&#160;from&#160;ApplFblWdTrigger()&#160;are allowed&#160;if&#160;relocatable&#160;code is&#160;used&#160;for&#160;<br/>
+<b>&#160;&#160;</b>watchdog&#160;handling&#160;because&#160;function&#160;calls&#160;are normally&#160;not&#160;relocatable.&#160;<br/>
+The&#160;functions&#160;copied&#160;to&#160;RAM&#160;are&#160;not&#160;debuggable&#160;because&#160;there are no&#160;symbols&#160;<br/>generated&#160;to&#160;the&#160;target&#160;addresses.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+<b>4.1.2&#160;</b><br/>
+<b>Use&#160;of Code&#160;linked to&#160;RAM&#160;</b><br/>
+Some&#160;&#160;use&#160;&#160;cases&#160;&#160;require&#160;&#160;code&#160;&#160;to&#160;&#160;be&#160;&#160;linked&#160;&#160;to&#160;&#160;RAM&#160;&#160;because&#160;&#160;function&#160;&#160;calls&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;<br/>executed&#160;&#160;or&#160;&#160;more&#160;&#160;functionality&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;&#160;maintained&#160;&#160;during&#160;&#160;flashing,&#160;&#160;e.g.&#160;&#160;if&#160;&#160;pipelined&#160;<br/>programming&#160;is&#160;used&#160;or&#160;a&#160;complete&#160;communication&#160;stack has to&#160;be&#160;used&#160;to&#160;send&#160;response&#160;<br/>pending&#160;messages.&#160;<br/>
+To&#160;locate&#160;this&#160;functionality&#160;in&#160;RAM,&#160;some&#160;special&#160;compiler&#160;features&#160;are&#160;used.&#160;Basically,&#160;all&#160;<br/>compilers&#160;use&#160;the&#160;same&#160;method:&#160;<br/>
+<b>&#160;&#160;</b>Functions&#160;which&#160;have&#160;to&#160;be&#160;linked&#160;to&#160;RAM&#160;are&#160;placed&#160;in&#160;special sections or complete&#160;<br/>
+modules&#160;are&#160;marked&#160;to&#160;be&#160;linked&#160;to&#160;RAM.&#160;<br/>
+<b>&#160;&#160;</b>The&#160;compiler links&#160;these&#160;modules to&#160;RAM address&#160;space.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+19&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=20></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-20_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-20_2.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>&#160;&#160;</b>An&#160;image&#160;of&#160;the&#160;code&#160;and&#160;data&#160;linked&#160;to&#160;RAM&#160;is created.&#160;This&#160;image&#160;is linked&#160;into&#160;flash&#160;<br/>
+memory.&#160;<br/>
+<b>&#160;&#160;</b>Some&#160;address&#160;information&#160;to&#160;find&#160;the&#160;image&#160;in&#160;flash&#160;and&#160;target&#160;addresses in&#160;RAM is&#160;<br/>
+created.&#160;<br/>
+Code&#160;linked&#160;to&#160;RAM&#160;using&#160;this&#160;method&#160;can&#160;be&#160;debugged&#160;normally&#160;because&#160;the&#160;debugging&#160;<br/>symbols are located&#160;at&#160;the&#160;execution&#160;addresses of&#160;the&#160;code.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Note&#160;<br/></b>The&#160;addresses which can be&#160;supplied&#160;to normal&#160;jump&#160;instructions&#160;are not&#160;big&#160;enough&#160;<br/>
+&#160;&#160;to perform&#160;a&#160;jump&#160;from&#160;flash&#160;memory&#160;to RAM&#160;and back.&#160;Bootloader&#160;which have to&#160;<br/>
+execute such&#160;jumps&#160;either&#160;include a&#160;memmap.h&#160;file which inserts&#160;far&#160;jumps&#160;or&#160;have to&#160;<br/>be&#160;compiled&#160;with&#160;far&#160;jump compiler&#160;options.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>The&#160;implementations&#160;of&#160;code&#160;in&#160;RAM&#160;differ&#160;for&#160;every&#160;compiler.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>Please see&#160;the&#160;Bootloader&#160;demonstration&#160;project’s&#160;linker&#160;control&#160;file and&#160;startup&#160;code&#160;<br/>
+&#160;&#160;for&#160;examples.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>4.1.3&#160;</b><br/>
+<b>Greenhills&#160;</b><br/>
+<b>&#160;&#160;</b>ROM&#160;images of&#160;RAM code&#160;are created&#160;using&#160;the&#160;linker’s ROM() command.&#160;<br/>
+<b>&#160;&#160;</b>The&#160;linker&#160;automatically&#160;generates a&#160;table&#160;which&#160;is used&#160;to&#160;copy&#160;all&#160;images to&#160;all&#160;target&#160;<br/>
+addresses.&#160;<br/>
+<b>&#160;&#160;</b>The&#160;code&#160;is copied&#160;by&#160;the&#160;startup&#160;code&#160;supplied&#160;with&#160;the&#160;Bootloader&#160;demo&#160;using&#160;<br/>
+library&#160;routine.&#160;<br/>
+&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Compiler Options&#160;</b><br/>
+<b>4.2.1&#160;</b><br/>
+<b>Inline&#160;Function Prologues&#160;</b><br/>
+Greenhills&#160;compilers&#160;use&#160;independent&#160;functions&#160;to&#160;perform&#160;function&#160;prologue&#160;tasks.&#160;These&#160;<br/>function&#160;prologues&#160;cause&#160;errors&#160;while&#160;calling&#160;watchdog&#160;handling&#160;functions&#160;out&#160;of&#160;the&#160;flash&#160;<br/>driver.&#160;&#160;To&#160;&#160;avoid&#160;&#160;these&#160;&#160;problems,&#160;&#160;the&#160;&#160;function&#160;&#160;prologues&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;&#160;inlined&#160;&#160;on&#160;&#160;Greenhills&#160;<br/>compilers:&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+20&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=21></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_FBL_RH850-21_1.png"/><br/>
+TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Example&#160;<br/></b>Inline&#160;function&#160;prologues&#160;with Greenhills&#160;compilers:&#160;<br/>
+&#160;&#160;-inline_prologue&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>4.2.2&#160;</b><br/>
+<b>Optimizations&#160;</b><br/>
+The&#160;&#160;Greenhills&#160;&#160;compiler&#160;&#160;options&#160;&#160;–Ospace&#160;&#160;and&#160;&#160;–no_commons&#160;&#160;have&#160;&#160;been&#160;&#160;tested&#160;&#160;for&#160;&#160;the&#160;<br/>bootloader and&#160;should&#160;be&#160;applicable&#160;without&#160;problems.&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>Linker Parameters&#160;</b><br/>
+There&#160;is&#160;a&#160;linker&#160;control&#160;file&#160;supplied&#160;with&#160;every&#160;Bootloader&#160;demonstration&#160;project.&#160;Please&#160;<br/>see&#160;this&#160;file&#160;for linker parameter and&#160;linker handling&#160;examples.&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+21&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=22></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>5&#160;&#160;Glossary&#160;and&#160;Abbreviations&#160;</b><br/>
+<b>5.1&#160;</b><br/>
+<b>Abbreviations&#160;</b><br/>
+<b>Abbreviation&#160;</b><br/>
+<b>Description&#160;</b><br/>
+CAN&#160;<br/>
+Controller&#160;Area&#160;Network&#160;<br/>
+DMA&#160;<br/>
+Direct&#160;Memory&#160;Access&#160;<br/>
+ECU&#160;<br/>
+Electronic&#160;Control&#160;Unit&#160;<br/>
+EepM&#160;<br/>
+EEPROM&#160;Manager&#160;<br/>
+EepMgr&#160;<br/>
+EEPROM&#160;Manager&#160;<br/>
+FBL&#160;<br/>
+Flash&#160;Bootloader&#160;<br/>
+NMI&#160;<br/>
+Non-Maskable Interrupt&#160;<br/>
+TAU&#160;<br/>
+Timer&#160;Array&#160;Unit&#160;<br/>
+SFR&#160;<br/>
+Special&#160;Function Register&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+22&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name=23></a>TechnicalReference&#160;Flash&#160;Bootloader Hardware&#160;<br/>
+<b>6&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more information&#160;on&#160;<br/>
+&#160;<br/>
+<b>&gt;&#160;&#160;</b>News&#160;<br/>
+<b>&gt;&#160;&#160;</b>Products&#160;<br/>
+<b>&gt;&#160;&#160;</b>Demo&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Support&#160;<br/>
+<b>&gt;&#160;&#160;</b>Training&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Addresses&#160;<br/>
+&#160;<br/>
+<b>www.vector.com&#160;</b><br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.00.01&#160;<br/>
+23&#160;/&#160;23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;3.2.0&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#6">1 Introduction</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#6">1.1 Configurations covered by this Technical Reference</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#6">1.1.1 Microcontrollers</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#6">1.2 Compilers</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#7">2 Memory Model</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#7">2.1 [#hw_mem] - Design the Memory Layout</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#7">2.2 Memory Mapping</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#7">2.2.1 Memory mapping of application and FBL</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#7">2.2.2 Memory range of the FBL</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#8">2.2.3 Memory range of the application</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#8">2.2.4 Bootloader Sections</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#9">2.2.5 Compiler-/Linker specific memory mapping issues</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#9">2.3 [#hw_intvect] - The Interrupt Vector Tables</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#10">2.3.1 Bootloader Vector Table</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#10">2.3.2 Application Vector Table</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#11">2.3.3 Vector base address registers</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#11">2.3.4 Special measures for NMI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#12">3 Hardware Layer</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#12">3.1 Flash Memory and Flash Driver</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#12">3.1.1 Special clock parameters and clock settings</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#12">3.1.2 Flash Code Buffer Size</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#12">3.1.3 ID Authentication</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#13">3.1.4 Rebuilding the flash driver binary</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#14">3.2 &#160;[#hw_size] - Flash Segment Size</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#14">3.3 CAN Driver</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#14">3.3.1 CAN Channels</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#15">3.3.1.1 Number of Supported Channels</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#16">3.3.1.2 Channel Settings for Pipelined Programming</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#16">3.3.2 Sleep Mode</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#16">3.4 Timer</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#17">3.5 Startup Code</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#17">3.6 Hardware Registers</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#18">3.7 Misc</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#19">4 Build</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#19">4.1 Code executed from RAM</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#19">4.1.1 Use of relocatable Code</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#19">4.1.2 Use of Code linked to RAM</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#20">4.1.3 Greenhills</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#20">4.2 Compiler Options</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#20">4.2.1 Inline Function Prologues</a></li>
+<li><a href="TechnicalReference_FBL_RH850s.html#21">4.2.2 Optimizations</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#21">4.3 Linker Parameters</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#22">5 Glossary and Abbreviations</a>
+<ul>
+<li><a href="TechnicalReference_FBL_RH850s.html#22">5.1 Abbreviations</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_FBL_RH850s.html#23">6 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>

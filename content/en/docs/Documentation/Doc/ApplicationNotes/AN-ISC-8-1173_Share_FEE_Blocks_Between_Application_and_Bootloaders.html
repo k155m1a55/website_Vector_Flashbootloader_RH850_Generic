@@ -1,0 +1,627 @@
+---
+title: AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders
+linkTitle: AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders
+weight: 9
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-1_1.png"/><br/>
+&#160;<br/>
+<b>Share&#160;FEE&#160;Blocks&#160;Between&#160;Application&#160;and&#160;Bootloader&#160;</b><br/>
+<b>Version&#160;1.01.01&#160;</b><br/>
+<b>2017-01-11&#160;</b><br/>
+<b>Application&#160;Note&#160;AN-ISC-8-1173&#160;</b><br/>
+&#160;<br/>&#160;<br/><i><b>&#160;<br/></b></i>Author(s)&#160;<br/>
+Vogel,&#160;Nils, Andreas&#160;Wenckebach&#160;<br/>
+Restrictions&#160;<br/>
+Customer confidential&#160;-&#160;Vector decides&#160;<br/>
+Abstract&#160;<br/>
+This&#160;document shows&#160;how&#160;to&#160;share&#160;nonvolatile data&#160;between application&#160;and&#160;bootloader&#160;using&#160;the&#160;<br/>Vector FEE&#160;and&#160;DaVinci&#160;Configurator Pro for AUTOSAR 4&#160;projects.&#160;<br/>
+&#160;<br/><i><b>Table&#160;of&#160;Contents&#160;<br/></b></i>&#160;<br/><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#1">1.0&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#1">Overview&#160;..........................................................................................................................................................&#160;1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.0&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">Preconditions&#160;on the FEE&#160;Layout&#160;....................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">MSR&#160;Module Precondition.............................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">Config Limitations&#160;..........................................................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.2.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">NvM&#160;Configuration&#160;in the&#160;Bootloader&#160;..........................................................................................................&#160;2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">2.2.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">Block&#160;Limitation&#160;...........................................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">2.3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">FEE&#160;Feature&#160;FeeFblConfig&#160;...........................................................................................................................&#160;3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">2.3.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">Potential&#160;Problem&#160;with&#160;Regular&#160;AR Fee&#160;.....................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">2.3.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">Vector FEE&#160;Bootloader Configuration.........................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.0&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">FEE&#160;Configuration&#160;with&#160;the&#160;DaVinci&#160;Configurator&#160;Pro&#160;.....................................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">Step&#160;1&#160;Configure&#160;the&#160;NvM/FEE&#160;on&#160;Application&#160;Side.&#160;....................................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">Step&#160;2&#160;Transfer the&#160;MEM&#160;Stack&#160;Configuration to&#160;the&#160;Bootloader&#160;.................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#7">3.3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#7">Step&#160;3&#160;Adapt&#160;the&#160;Imported&#160;Configuration to&#160;Your Needs&#160;..............................................................................&#160;7&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#8">3.4&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#8">Step&#160;4&#160;Add&#160;the&#160;Standard Definition&#160;of&#160;the NvM&#160;............................................................................................&#160;8&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">3.5&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">Special&#160;configuration Aspects&#160;in Non DaVinci&#160;Configurator&#160;Pro&#160;Environments&#160;.........................................&#160;10&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">3.5.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">Further ASR Component&#160;Stubs&#160;required&#160;..................................................................................................&#160;10&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">3.5.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">Generation&#160;of&#160;the Fee Config for the&#160;Fbl&#160;..................................................................................................&#160;11&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.0&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">Usage of&#160;Fee&#160;Configuration&#160;in Flash&#160;Bootloader&#160;...........................................................................................&#160;11&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">Modules&#160;Required&#160;in&#160;the&#160;Flash Bootloader&#160;.................................................................................................&#160;11&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">Asr&#160;BSW&#160;Modules&#160;to&#160;Be&#160;Added to Flash Bootloader&#160;...............................................................................&#160;11&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">Asr&#160;Stub Modules&#160;to&#160;Be Used&#160;by&#160;the&#160;Fbl&#160;..................................................................................................&#160;11&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.1.3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">Generated Modules&#160;..................................................................................................................................&#160;12&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">Initialization&#160;in&#160;Fbl&#160;........................................................................................................................................&#160;12&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.2.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">Initialization&#160;Required&#160;...............................................................................................................................&#160;12&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">4.3&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">Synchronized&#160;Calls&#160;to&#160;Fee&#160;..........................................................................................................................&#160;13&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">4.3.1&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">Synchronized&#160;Read...................................................................................................................................&#160;13&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">4.3.2&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">Synchronized&#160;Write&#160;...................................................................................................................................&#160;14&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">4.4&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">Data&#160;elements&#160;to&#160;Be Read&#160;and&#160;Written by&#160;Fbl&#160;............................................................................................&#160;14&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">4.5&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">Configure&#160;Existing&#160;Flash&#160;Bootloader NVM Data&#160;for Fee&#160;.............................................................................&#160;15&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">4.6&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">Conclusion&#160;...................................................................................................................................................&#160;15&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">5.0&#160;</a><br/>
+<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">Contacts&#160;.........................................................................................................................................................&#160;15&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+<b>1.0&#160;&#160;Overview&#160;</b><br/>
+This&#160;application&#160;note&#160;addresses&#160;the&#160;case that&#160;nonvolatile&#160;data should&#160;be&#160;shared&#160;between&#160;application&#160;and&#160;<br/>bootloader&#160;and&#160;how&#160;this&#160;can be&#160;achieved&#160;by&#160;using the&#160;AR memory&#160;stack&#160;within the&#160;bootloader.&#160;<br/>
+<b>&#160;1&#160;&#160;</b><br/>
+<i>Copyright&#160;©&#160;2017&#160;-&#160;Vector Informatik&#160;GmbH&#160;<br/></i><b>Contact&#160;Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;+49-711-80&#160;670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-2_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-2_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-1&#160;Shared&#160;FEE-Blocks&#160;between&#160;application&#160;and&#160;bootloader&#160;<br/>
+<b>Chapter&#160;2</b>&#160;explains&#160;how the FEE&#160;works&#160;in the&#160;given use case and&#160;which&#160;are&#160;the&#160;necessary&#160;preconditions&#160;on&#160;the&#160;<br/>FEE&#160;layout.&#160;<br/>
+<b>Chapter&#160;3</b>&#160;describes&#160;the&#160;necessary&#160;actions&#160;in&#160;the&#160;DaVinci&#160;Configurator&#160;Pro&#160;5 step&#160;by&#160;step.&#160;<br/>
+<b>2.0&#160;&#160;Preconditions&#160;on the&#160;FEE&#160;Layout&#160;</b><br/>
+In&#160;general&#160;only&#160;a&#160;subset&#160;of&#160;the&#160;nonvolatile&#160;blocks&#160;needs&#160;to&#160;be&#160;shared&#160;between&#160;the&#160;application and the&#160;bootloader.&#160;<br/>This&#160;leads&#160;to&#160;some preconditions&#160;on&#160;the&#160;FEE&#160;layout&#160;which&#160;will&#160;be&#160;described&#160;in the&#160;following&#160;sub&#160;chapter.&#160;<br/>
+Please note&#160;it&#160;is&#160;assumed&#160;that&#160;all&#160;the&#160;bootloader&#160;blocks&#160;are known&#160;by&#160;the application.&#160;<br/>
+<b>2.1&#160;&#160;MSR&#160;Module&#160;Precondition&#160;</b><br/>
+At minimum&#160;the following&#160;AR&#160;Modules&#160;have&#160;to&#160;be used&#160;in&#160;bootloader:&#160;<br/>
+&#160;&#160;AR&#160;MemIF&#160;<br/>&#160;&#160;AR&#160;FEE&#160;<br/>&#160;&#160;AR FLS&#160;<br/>&#160;&#160;Stub&#160;for AR NVM&#160;or AR&#160;NVM (compar<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">e&#160;2.2.1,&#160;</a><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#8">3.4)</a>&#160;<br/>
+&#160;<br/>
+In&#160;case the flash bootloader&#160;does&#160;not&#160;include&#160;ASR&#160;components&#160;the following&#160;is&#160;needed&#160;additionally&#160;<br/>
+&#160;&#160;Stubs&#160;for &#160;AR DET&#160;and SCHM&#160;<br/>
+&#160; &#160; &#160;&#160;&#160;<br/>
+This&#160;is&#160;necessary&#160;due&#160;to the fact that&#160;the&#160;FEE&#160;uses&#160;a&#160;dynamic&#160;data&#160;layout.&#160;Therefore it is&#160;not&#160;possible to&#160;address&#160;a&#160;<br/>memory&#160;block&#160;directly&#160;as&#160;it is&#160;in case of&#160;using&#160;EEPROM.&#160;&#160;&#160;<br/>
+<b>2.2&#160;&#160;Config Limitations&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the&#160;bootloader&#160;configuration&#160;limitations.&#160;<br/>
+<b>2.2.1&#160;&#160;NvM&#160;Configuration&#160;in&#160;the&#160;Bootloader&#160;</b><br/>
+Using&#160;the&#160;AR&#160;NvM&#160;module&#160;is&#160;optional&#160;and&#160;depends&#160;on&#160;the&#160;project specific&#160;requirements. If&#160;NvM features&#160;are&#160;<br/>necessary&#160;for the&#160;block&#160;to&#160;be&#160;shared&#160;(e.g.&#160;RAM Block&#160;CRC or&#160;NvBlockType&#160;redundant block)&#160;the NvM&#160;has&#160;to be&#160;<br/>integrated as&#160;well. Please note&#160;that this&#160;approach leads&#160;to&#160;higher resource consumptions&#160;of&#160;about&#160;30-40&#160;kByte&#160;<br/>ROM in&#160;the&#160;bootloader.&#160;&#160;<br/>
+Real&#160;ASR&#160;Nvm&#160;module usage&#160;is&#160;not&#160;detailed&#160;within&#160;this&#160;document.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=3></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-3_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-3_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-3_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>In&#160;any&#160;case,&#160;you have to&#160;configure&#160;NvMDataSelectionBits&#160;parameter in&#160;order&#160;to&#160;allow&#160;the FEE&#160;calculates&#160;valid&#160;<br/>block&#160;numbers. &#160;Currently&#160;it&#160;is&#160;therefore mandatory&#160;create&#160;an NvM&#160;stub in case&#160;no&#160;real&#160;NVM&#160;is&#160;present.&#160;<br/>
+<b>2.2.2&#160;&#160;Block&#160;Limitation&#160;</b><br/>
+The&#160;integrator&#160;has&#160;to&#160;assure that the block&#160;ID of&#160;the given&#160;FEE&#160;block&#160;is&#160;the same in both&#160;configurations&#160;APPL and&#160;<br/>bootloader.&#160;It&#160;is&#160;therefore recommended that NvM/FEE-Blocks&#160;to&#160;be&#160;shared&#160;are&#160;located&#160;at&#160;the&#160;beginning of&#160;the&#160;<br/>FEE&#160;Layout&#160;to&#160;be&#160;robust against&#160;later layout&#160;changes.&#160;<br/>
+You&#160;need to&#160;configure&#160;Fee&#160;Block ID&#160;fixed&#160;so that it does&#160;not&#160;get&#160;recalculated after layout&#160;changes&#160;as&#160;<br/>depicted&#160;in the&#160;following figures.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-2&#160;Parameter&#160;FeeBlockIdFixed&#160;in&#160;DaVinci&#160;Configurator&#160;Pro&#160;Comfort&#160;Editor&#160;Memory&#160;Blocks&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-3&#160;Parameter&#160;FeeBlockIdFixed&#160;in&#160;the&#160;DaVinci&#160;Configurator&#160;Pro&#160;Basic&#160;Editor&#160;<br/>
+&#160;<br/>
+<b>2.3&#160;&#160;FEE&#160;Feature&#160;FeeFblConfig&#160;</b><br/>
+The&#160;Vector&#160;FEE&#160;provides&#160;a&#160;feature called&#160;FeeFblConfig&#160;which sets&#160;the FEE&#160;into a&#160;special&#160;bootloader&#160;mode.&#160;<br/>
+In&#160;this&#160;mode the&#160;FEE&#160;is&#160;able to&#160;detect&#160;and&#160;handle blocks&#160;which are&#160;not&#160;part of&#160;the&#160;bootloader&#160;configuration&#160;but&#160;<br/>which&#160;need&#160;to&#160;be&#160;handled&#160;in case of&#160;a&#160;sector switch.&#160;&#160;<br/>
+This&#160;chapter&#160;describes&#160;quickly&#160;the&#160;problem&#160;non Vector solutions&#160;may&#160;have&#160;and how&#160;the&#160;Vector solution addresses&#160;<br/>this&#160;problem.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=4></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-4_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-4_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-4_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.3.1&#160;&#160;Potential&#160;Problem&#160;with&#160;Regular&#160;AR&#160;Fee&#160;</b><br/>
+The&#160;bootloader&#160;knows&#160;only&#160;its&#160;own&#160;blocks. But&#160;what&#160;happens&#160;in case&#160;of&#160;a&#160;sector switch&#160;in the&#160;bootloader?&#160;In&#160;case&#160;<br/>a regular FEE&#160;is&#160;used&#160;only&#160;the&#160;blocks&#160;known&#160;in&#160;the&#160;current configuration&#160;will&#160;be handled. This&#160;would lead&#160;to&#160;a&#160;loss&#160;<br/>of&#160;all&#160;data&#160;stored&#160;within&#160;the&#160;application&#160;blocks.&#160;To overcome this&#160;problem&#160;you&#160;would have to&#160;use an exact copy&#160;of&#160;<br/>your&#160;application configuration&#160;within&#160;your&#160;bootloader.&#160;But&#160;this&#160;approach&#160;would lead&#160;to&#160;the&#160;fact that&#160;you have&#160;to&#160;<br/>update&#160;the&#160;bootloader&#160;every&#160;time&#160;you change&#160;the&#160;Nv-layout&#160;of&#160;some&#160;of&#160;the&#160;application blocks&#160;which&#160;is&#160;not&#160;feasible.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-4&#160;FEE&#160;Sector&#160;Switch&#160;with&#160;Regular&#160;AR&#160;FEE&#160;<br/>
+<b>2.3.2&#160;&#160;Vector&#160;FEE&#160;Bootloader&#160;Configuration&#160;</b><br/>
+Therefore the&#160;Vector&#160;FEE&#160;can&#160;be switched&#160;in a&#160;special&#160;bootloader&#160;mode.&#160;This&#160;enables&#160;the&#160;FEE&#160;to scan&#160;the&#160;flash&#160;<br/>image and&#160;detect valid application&#160;blocks&#160;even&#160;if&#160;they&#160;are not&#160;part of&#160;the bootloader&#160;configuration. This&#160;way&#160;Nv-<br/>blocks&#160;can&#160;easily&#160;be shared between bootloader&#160;and&#160;application&#160;without&#160;the need to keep all&#160;the&#160;application&#160;blocks&#160;<br/>within&#160;your bootloader configuration.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-5&#160;FEE&#160;Sector&#160;Switch&#160;with&#160;Vector&#160;FEE&#160;<br/>
+Please note&#160;that&#160;the&#160;background&#160;sector switch (BSS)&#160;is&#160;disabled&#160;in this&#160;mode. The&#160;FEE&#160;works&#160;according&#160;to&#160;a&#160;<br/>single sector principle.&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=5></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-5_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-5_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>3.0&#160;&#160;FEE&#160;Configuration&#160;with&#160;the&#160;DaVinci&#160;Configurator&#160;Pro&#160;</b><br/>
+This&#160;chapter&#160;shows&#160;the&#160;necessary&#160;actions&#160;to&#160;be&#160;done in the&#160;DaVinci&#160;Configurator&#160;Pro&#160;in order to share Nv-blocks&#160;<br/>between&#160;application and&#160;bootloader. The&#160;described use case just uses&#160;FLS&#160;and&#160;FEE.&#160;If&#160;you&#160;plan&#160;to&#160;use&#160;the&#160;NvM&#160;in&#160;<br/>the&#160;bootloader&#160;as&#160;well&#160;you&#160;can&#160;skip step&#160;4&#160;&#160;<br/>
+Note:&#160;<br/>
+Details&#160;on NvM&#160;and FEE&#160;configuration are&#160;not covered by&#160;this&#160;document&#160;<br/>
+For further information&#160;on&#160;how&#160;to&#160;configure&#160;NvM and FEE&#160;in&#160;general&#160;can&#160;be found&#160;in the&#160;technical&#160;reference&#160;of&#160;<br/>these modules.&#160;<br/>
+<b>3.1&#160;&#160;Step&#160;1&#160;Configure&#160;the&#160;NvM/FEE&#160;on&#160;Application&#160;Side.&#160;</b><br/>
+Configure&#160;your NV&#160;layout&#160;as&#160;needed&#160;for&#160;your project and&#160;start&#160;with&#160;the&#160;blocks&#160;to&#160;be&#160;shared.&#160;Make sure that&#160;the&#160;<br/>block&#160;IDs&#160;are fixed&#160;as&#160;described&#160;i<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">n&#160;2.2.2.&#160;</a>Verify&#160;that&#160;the shared&#160;blocks&#160;do&#160;have&#160;the smallest block&#160;IDs&#160;(beside&#160;the&#160;<br/>FeeConfigBlock)&#160;in&#160;your FEE&#160;partition.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-6&#160;Step1&#160;Configure&#160;NvM/FEE&#160;<br/>
+&#160;<br/>
+<b>3.2&#160;&#160;Step&#160;2&#160;Transfer&#160;the&#160;MEM&#160;Stack&#160;Configuration&#160;to the&#160;Bootloader&#160;</b><br/>
+Now&#160;you&#160;can export the&#160;MEM&#160;stack&#160;configuration&#160;from&#160;the application&#160;and&#160;import it into&#160;the&#160;bootloader.&#160;<br/>
+This&#160;gives&#160;you an easy&#160;start for the&#160;mem&#160;stack&#160;configuration&#160;of&#160;the&#160;bootloader.&#160;<br/>
+&#160;<br/>
+To export the configurations&#160;use the&#160;export&#160;wizard of&#160;the&#160;DaVinci&#160;Configurator&#160;Pro.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=6></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-6_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-6_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-6_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-7&#160;Export&#160;Configurations&#160;with&#160;DaVinci&#160;Configurator&#160;Pro&#160;<br/>
+&#160;<br/>
+Once this&#160;is&#160;done,&#160;you can&#160;import the configuration&#160;into&#160;your bootloader&#160;project.&#160;&#160;<br/>
+Note:&#160;<br/>
+If&#160;your Fbl&#160;does&#160;not&#160;use DaVinci&#160;Configurator, but another&#160;tool&#160;(e.g.&#160;GENy),&#160;you have&#160;to&#160;create an&#160;<br/>empty&#160;configuration&#160;withinthe&#160;DaVinci&#160;Configurator&#160;first and&#160;import the configuration&#160;here in order&#160;<br/>to&#160;generate&#160;your Fee configuration (chap<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">ter&#160;3.5&#160;</a>describes&#160;some&#160;more aspects&#160;for this&#160;situation).&#160;<br/>
+&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;4-8&#160;Import&#160;Configuration&#160;with&#160;DaVinci&#160;Configurator&#160;<br/>
+The&#160;DaVinci&#160;Configurator automatically&#160;adds&#160;the&#160;new&#160;modules&#160;to&#160;your configuration.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>6<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=7></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-7_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-7_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-7_3.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-7_4.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-9&#160;Imported&#160;MEM&#160;Stack&#160;Modules&#160;<br/>
+<b>3.3&#160;&#160;Step&#160;3&#160;Adapt&#160;the&#160;Imported&#160;Configuration&#160;to&#160;Your&#160;Needs&#160;</b><br/>
+Once the&#160;import is&#160;done&#160;you can&#160;start to adapt&#160;the&#160;configuration to&#160;the needs&#160;of&#160;the&#160;bootloader.&#160;As&#160;we learned in&#160;<br/>chapter<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">&#160;2.3&#160;</a>we have to switch the&#160;FEE&#160;into the bootloader&#160;mode.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-10&#160;FEE&#160;Bootloader&#160;Mode&#160;<br/>
+&#160;<br/>
+Now&#160;we&#160;can&#160;delete&#160;the&#160;blocks&#160;which are&#160;not&#160;needed&#160;in&#160;the&#160;bootloader. This&#160;can&#160;be&#160;easily&#160;done by&#160;the&#160;multi&#160;select&#160;<br/>feature of&#160;the DaVinci&#160;Configurator&#160;Pro.&#160;Mark&#160;the blocks&#160;you&#160;want&#160;to&#160;delete&#160;and&#160;hit&#160;the&#160;delete&#160;button.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-11&#160;Delete&#160;Not&#160;Used&#160;FEE&#160;Blocks&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>7<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=8></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-8_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-8_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>Last step:&#160;Disable&#160;features&#160;which&#160;are enabled&#160;for the&#160;application&#160;configuration&#160;but&#160;not used in the bootloader.&#160;The&#160;<br/>development and&#160;production error detection&#160;for example.&#160;You&#160;can&#160;use the&#160;validation&#160;messages&#160;of&#160;DaVinci&#160;<br/>Configurator&#160;Pro. It&#160;will&#160;execute&#160;the necessary&#160;actions&#160;automatically.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;4-12&#160;DaVinci&#160;Configurator&#160;Validation&#160;Rules&#160;<br/>
+<b>3.4&#160;&#160;Step&#160;4&#160;Add&#160;the&#160;Standard&#160;Definition&#160;of&#160;the&#160;NvM&#160;</b><br/>
+To be able to&#160;configure&#160;the&#160;parameter&#160;NvMDataSelectionBits<i>&#160;</i>described in chap<a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">ter&#160;2.2.1&#160;</a>you have to add&#160;the&#160;<br/>AUTOSAR&#160;standard&#160;NvM&#160;definition&#160;to&#160;your&#160;configuration.&#160;This&#160;is&#160;only&#160;the&#160;case if&#160;you&#160;do not&#160;want&#160;to&#160;use the&#160;NvM&#160;in&#160;<br/>the&#160;bootlader.&#160;<br/>
+To do so,&#160;add the NvM standard&#160;definition&#160;using&#160;the&#160;project settings&#160;editor of&#160;the&#160;DaVinci&#160;Configurator&#160;Pro.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>8<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=9></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-9_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-9_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-9_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-13&#160;Add&#160;New&#160;Modules&#160;to&#160;Your&#160;Configuration&#160;<br/>
+Now&#160;configure the parameter&#160;NvMDataSelectionBits&#160;to&#160;the same value&#160;as&#160;in&#160;the&#160;application&#160;configuration.&#160;All&#160;<br/>the&#160;other&#160;parameter&#160;errors&#160;and&#160;warnings&#160;can&#160;be&#160;ignored&#160;as&#160;we do&#160;not&#160;want to&#160;use nor generate the&#160;NvM module.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-14&#160;NvMDataSelectionBits&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>9<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=10></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-10_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-10_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-10_3.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-10_4.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-15&#160;Choose&#160;Nvm&#160;Fee&#160;Ref&#160;<br/>
+&#160;<br/>
+Figure&#160;4-16&#160;Nvm&#160;Stub&#160;Configuration&#160;to&#160;Allow&#160;Calculation&#160;of&#160;Valid&#160;Block&#160;Numbers&#160;<br/>
+<b>3.5&#160;&#160;Special&#160;configuration&#160;Aspects&#160;in&#160;Non&#160;DaVinci&#160;Configurator&#160;Pro&#160;Environments&#160;</b><br/>
+In&#160;case&#160;your&#160;flash&#160;bootloader&#160;is&#160;not&#160;configured&#160;with&#160;DaVinci&#160;Configurator Pro&#160;some further configuration aspects&#160;<br/>need&#160;to&#160;be&#160;considered.&#160;<br/>
+<b>3.5.1&#160;&#160;Further&#160;ASR&#160;Component&#160;Stubs&#160;required&#160;</b><br/>
+&#160;<br/>
+Figure&#160;4-17&#160;Add&#160;Stubs&#160;for&#160;Det,&#160;EcuC,&#160;MemIf&#160;from&#160;Application&#160;Software&#160;Integration&#160;Package&#160;<br/>
+After adding&#160;stubs&#160;for Det,&#160;EcuC and&#160;MemIf, some error may&#160;occur. Follow&#160;DaVinci&#160;Configurator&#160;Pro&#160;propositions&#160;<br/>to&#160;resolve&#160;these&#160;problems&#160;(e.g.&#160;add&#160;Fee&#160;reference&#160;to&#160;MemIf, resolve EcuC&#160;related errors&#160;(HW-dependent)).&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>10<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=11></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-11_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-11_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>3.5.2&#160;&#160;Generation&#160;of&#160;the&#160;Fee&#160;Config&#160;for&#160;the&#160;Fbl&#160;</b><br/>
+In&#160;case the configuration&#160;was&#160;created&#160;for Fbl&#160;Fee configuration&#160;only,&#160;only&#160;the&#160;minimum&#160;configuration Fee&#160;and&#160;Fls&#160;<br/>need&#160;to&#160;be&#160;generated&#160;<br/>&#160;<br/>
+&#160;<br/>
+Figure&#160;4-18&#160;Generation&#160;of&#160;Fbl&#160;Config&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>4.0&#160;&#160;Usage&#160;of&#160;Fee&#160;Configuration in Flash Bootloader&#160;</b><br/>
+Once&#160;you imported&#160;the&#160;Fee&#160;configuration&#160;to&#160;the&#160;flash&#160;bootloader&#160;and are&#160;able to generate Fls/Fee configuration,&#160;<br/>the&#160;created&#160;output&#160;has&#160;to&#160;be added&#160;and&#160;compiled&#160;with&#160;the&#160;flash&#160;bootloader&#160;project.&#160;Additionally&#160;static&#160;Asr&#160;modules&#160;<br/>and some static&#160;sub&#160;files&#160;have&#160;to&#160;be&#160;added to&#160;flash bootloader.&#160;<br/>
+&#160;<br/>
+<b>4.1&#160;&#160;Modules&#160;Required&#160;in&#160;the&#160;Flash&#160;Bootloader&#160;</b><br/>
+<b>4.1.1&#160;&#160;Asr&#160;BSW&#160;Modules&#160;to&#160;Be&#160;Added&#160;to&#160;Flash&#160;Bootloader&#160;</b><br/>
+The&#160;following&#160;application core modules&#160;need&#160;to be added to&#160;your&#160;Fbl&#160;project:&#160;<br/>
+<b>Fee&#160;</b><br/>
+.\Fee&#160;&gt;&#160;all&#160;content&#160;<br/>
+<b>Det&#160;</b><br/>
+.\Det&#160;&gt;&#160;Det.h&#160;<br/>
+.\Fls&#160;&gt;&#160;all&#160;content&#160;<br/>
+<b>Fls&#160;</b><br/>
+.\Mcal_&lt;Hw&gt;&#160;(Register definitions&#160;for Fls)&#160;<br/>
+<b>MemIf&#160;</b><br/>
+.\MemIf&#160;&gt;&#160;all&#160;header&#160;files&#160;<br/>
+.\_Common&#160;&gt;&#160;all&#160;<br/>
+<b>Other&#160;</b><br/>
+.\include&#160;of&#160;your project &gt;&#160;compiler_cfg.h&#160;&#160;&#160;<br/>
+(remove further includes&#160;within&#160;compiler_cfg.h&#160; (like Rte_Compiler_Cfg.h)&#160;<br/>
+&#160;<br/>
+<b>4.1.2&#160;&#160;Asr&#160;Stub&#160;Modules&#160;to&#160;Be&#160;Used&#160;by&#160;the&#160;Fbl&#160;</b><br/>
+The&#160;following&#160;stub modules&#160;are&#160;known to&#160;be&#160;required&#160;in the&#160;Fbl.&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>11<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=12></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-12_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Det&#160;</b><br/>
+Det.c/Det_Cfg.h:&#160;Provide&#160;Prototype for function&#160;Det_ReportError&#160;<br/>
+#define&#160;SchM_Enter_Fee_FEE_EXCLUSIVE_AREA_0()&#160;<br/>
+SchM_Fee.h&#160;<br/>
+#define&#160;SchM_Exit_Fee_FEE_EXCLUSIVE_AREA_0()&#160;<br/>
+#define&#160;SchM_Enter_Fls(arg1, arg2)&#160;<br/>
+<b>SchM&#160;</b><br/>
+#define&#160;SchM_Exit_Fls(arg1,&#160;arg2)&#160;<br/>
+SchM_Fls.h&#160;<br/>
+/*&#160;Function&#160;declaration&#160;is&#160;provided by&#160;SCHM&#160;*/&#160;<br/>
+FUNC(void,&#160;FLS_CODE)&#160;Fls_MainFunction(void);&#160;<br/>
+<b>&#160;</b><br/>
+<b>4.1.3&#160;&#160;Generated&#160;Modules&#160;</b><br/>
+The&#160;generated&#160;modules&#160;that should be added to&#160;the&#160;Fbl&#160;are&#160;<br/>
+&#160;<br/>
+Fee_Cfg.h&#160;<br/>
+<b>Fee&#160;</b><br/>
+Fee_Lcfg.c&#160;<br/>
+Fee_PrivateCfg.h&#160;<br/>
+<b>Fls&#160;</b><br/>
+Fls_Cfg.h&#160;<br/>
+&#160;<br/>
+<b>4.2&#160;&#160;Initialization&#160;in&#160;Fbl&#160;</b><br/>
+Depending&#160;on&#160;when&#160;the&#160;required Fee&#160;elements&#160;are to&#160;be&#160;read,&#160;the initialization has&#160;to&#160;happen early&#160;enough to&#160;<br/>allow&#160;access&#160;to&#160;the&#160;required elements.&#160;&#160;<br/>
+<b>4.2.1&#160;&#160;Initialization&#160;Required&#160;</b><br/>
+Fls&#160;and Fee&#160;need to&#160;be&#160;initialized.&#160;In both&#160;initializations&#160;the following&#160;logic&#160;applies&#160;(replace Fxx&#160;with&#160;Fee/Fls)&#160;<br/>
+&#160;<br/>Call Fxx_Init()&#160;<br/>
+while&#160;MEMIF_IDLE != Fxx_GetStatus()&#160;call&#160;Fxx_MainFunction()&#160;&#160;<br/>
+&#160;<br/>
+<b>Fee&#160;specific</b>:&#160;<br/>
+Depending on configuration call Fee_EnableFss()&#160;<br/>
+#if (FEE_FSS_CONTROL_API == STD_ON)&#160;<br/>
+&#160; &#160;Fee_EnableFss();&#160;<br/>
+#endif&#160;<br/>
+&#160;<br/>
+The&#160;location&#160;where the&#160;initialization needs&#160;to be done&#160;depends&#160;on the elements&#160;that&#160;need&#160;to&#160;be&#160;accessed&#160;via Fee.&#160;<br/>If&#160;elements&#160;need&#160;to be accessed&#160;before decision to&#160;jump to application&#160;(e.g.&#160;valid&#160;flag(s)), do the&#160;initialization&#160;within&#160;<br/>ApplFblInit(), otherwise&#160;within&#160;ApplFblStartup(),&#160;initposition == kStartupPostInit. If&#160;you&#160;need&#160;<br/>to&#160;do&#160;the&#160;initialization&#160;within&#160;ApplFblInit(), be sure&#160;to&#160;initialize&#160;watchdog&#160;and&#160;timer early&#160;in&#160;your configuration&#160;&#160;<br/>(set&#160;&#160;FBL_ENABLE_PRE_WDINIT / FBL_ENABLE_PRE_TIMERINIT)&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>12<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=13></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-13_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>4.3&#160;&#160;Synchronized&#160;Calls&#160;to&#160;Fee&#160;</b><br/>
+The&#160;bootloader&#160;usually&#160;requires&#160;synchronized calls&#160;to&#160;the&#160;Fee.&#160;The&#160;Fee&#160;API&#160;is&#160;usually&#160;asynchronous.&#160;A&#160;wrapper&#160;to&#160;<br/>embed the&#160;asynchronous&#160;API to&#160;synchronized calls&#160;should therefore be&#160;used.&#160;<br/>
+<b>4.3.1&#160;&#160;Synchronized&#160;Read&#160;</b><br/>
+Create&#160;a&#160;function to&#160;read from&#160;Fee in&#160;a synchronous&#160;&#160;way,&#160;e.g.&#160;with&#160;prototype&#160;<br/>
+FblResult ApplFblNvRead ( vuint16 blockNumber, vuint16 blockOffset, V_MEMRAM1 vuint8 &#160;&#160;<br/>V_MEMRAM2 V_MEMRAM3 * pBuffer, vuint16 length )&#160;<br/>
+&#160;<br/>Required&#160;implementation:&#160;<br/>&#160;<br/>If&#160;&#160;Fee_Read(blockNumber,&#160;blockOffset,&#160;pBuffer, length&#160;) == E_OK&#160;<br/>
+{&#160;<br/>
+&#160;<br/>
+While MEMIF_IDLE != Fee_GetStatus()&#160;&#160;<br/>
+&#160;<br/>
+{&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Call Fls_MainFunction()&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Call Fee_MainFunction()&#160;<br/>
+&#160; &#160; &#160;&#160;}&#160;<br/>
+&#160; &#160; &#160;&#160;//Check &#160;Fee_GetJobResult() == MEMIF_JOB_OK / MEMIF_BLOCK_INCONSISTENT / &#160;&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;MEMIF_BLOCK_INVALID&#160;<br/>
+&#160;<br/>
+If&#160;Fee_GetJobResult() == MEMIF_JOB_OK&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return OK&#160;<br/>
+&#160;<br/>
+Else If&#160;Fee_GetJobResult() == MEMIF_BLOCK_INCONSISTENT&#160;OR&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+MEMIF_BLOCK_INVALID&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+fill read&#160;buffer with FBL_FLASH_DELETED&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return OK&#160;<br/>
+&#160;<br/>
+Else&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return failed&#160;<br/>
+}&#160;<br/>
+Else return failed&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>13<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=14></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-14_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-14_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>4.3.2&#160;&#160;Synchronized&#160;Write&#160;</b><br/>
+Create&#160;a&#160;function to&#160;write&#160;to&#160;Fee in&#160;a synchronous&#160;&#160;way, e.g.&#160;with prototype&#160;<br/>
+FblResult ApplFblNvWrite ( vuint16 blockNumber, V_MEMRAM1 vuint8 &#160; V_MEMRAM2&#160;<br/>V_MEMRAM3 * pBuffer)&#160;<br/>
+&#160;<br/>Required&#160;implementation:&#160;<br/>If &#160;Fee_Write(blockNumber,&#160;pBuffer)&#160;== E_OK&#160;<br/>
+{&#160;<br/>
+&#160;<br/>
+While&#160;MEMIF_IDLE != Fee_GetStatus()&#160;<br/>
+&#160;<br/>
+{&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Call Fls_MainFunction()&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Call Fee_MainFunction()&#160;<br/>
+&#160; &#160; &#160;&#160;}&#160;<br/>
+&#160;<br/>
+If&#160;&#160;Fee_GetJobResult()&#160;==&#160;MEMIF_JOB_OK&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return Ok&#160;<br/>
+&#160;<br/>
+Else&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return failed&#160;<br/>
+}&#160;<br/>
+Else return failed&#160;<br/>
+<b>4.4&#160;&#160;Data&#160;elements&#160;to&#160;Be&#160;Read&#160;and&#160;Written&#160;by&#160;Fbl&#160;</b><br/>
+In&#160;order&#160;to&#160;read and&#160;write&#160;from&#160;and to&#160;the Fee, the&#160;API&#160;requires&#160;the&#160;block&#160;numbers&#160;of&#160;elements. These block&#160;<br/>numbers&#160;can&#160;be&#160;found&#160;in&#160;Fee_cfg.h, macros&#160;starting&#160;with&#160;FeeConf_FeeBlockConfiguration_Fee, e.g.:&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-1&#160;Example&#160;Fee&#160;Block&#160;Numbers&#160;Used&#160;in&#160;Flash&#160;Bootloader&#160;<br/>
+&#160;<br/>The&#160;length information&#160;required&#160;for read&#160;information&#160;has&#160;to&#160;be&#160;defined somewhere&#160;in the&#160;flash&#160;bootloader,&#160;e.g. for&#160;<br/>the&#160;example&#160;given&#160;above:&#160;<br/>&#160;<br/>#define&#160;FBL_NV_APPNBID_FEE_LENGTH &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;2u&#160;<br/>
+#define FBL_NV_KEYNBID_FEE_LENGTH &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;2u&#160;<br/>
+#define FBL_NV_SBAT_FEE_LENGTH &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 822u&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>14<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=15></a><img class="yflip" src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/ApplicationNotes/AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloader-15_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Share&#160;FEE&#160;blocks&#160;between&#160;APPL&#160;and&#160;bootloader&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>4.5&#160;&#160;Configure&#160;Existing&#160;Flash&#160;Bootloader&#160;NVM&#160;Data for&#160;Fee&#160;</b><br/>
+Existing NVM&#160;elements&#160;are read&#160;and&#160;written&#160;via&#160;the&#160;fbl_apnv.c/.h&#160;module.&#160;Usually&#160;functions&#160;and&#160;or macros&#160;are&#160;<br/>prepared to map&#160;to&#160;the&#160;generated&#160;WrapNv_cfg.h&#160;macros&#160;usable for either&#160;EEPROM or&#160;Eepm. For&#160;Fee&#160;<br/>configuration&#160;these&#160;elements&#160;now&#160;have to&#160;be&#160;mapped&#160;to&#160;synchronized Fee&#160;read/write&#160;functionality.&#160;&#160;<br/>
+&#160;<br/>An example call&#160;that&#160;can&#160;be mapped to&#160;the&#160;corresponding fbl_apnv.c/.h&#160;function&#160;for reading&#160;the&#160;above mentioned&#160;<br/>element Fbl_SBATicket&#160;e.g. would&#160;be&#160;then:&#160;<br/>
+ApplFblNvRead(FeeConf_FeeBlockConfiguration_FeeFbl_SBATicket, 0u,&#160;<br/>(buffer),FBL_NV_SBAT_FEE_LENGTH)&#160;<br/>
+&#160;<br/>
+<b>4.6&#160;&#160;Conclusion&#160;</b><br/>
+After these steps&#160;you are ready&#160;to&#160;read&#160;and&#160;write the&#160;shared&#160;blocks&#160;within&#160;both configurations.&#160;Please&#160;test and&#160;<br/>verify&#160;your configuration.&#160;<br/>
+<b>5.0&#160;&#160;Contacts&#160;</b><br/>
+For a full&#160;list&#160;with all&#160;Vector&#160;locations&#160;and&#160;addresses&#160;worldwide, please&#160;visi<a href="http://vector.com/contact/">t&#160;http://vector.com/contact/.</a>&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>15<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1173<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#1">1.0 Overview</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.0 Preconditions on the FEE Layout</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.1 MSR Module Precondition</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.2 Config Limitations</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#2">2.2.1 NvM Configuration in the Bootloader</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">2.2.2 Block Limitation</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#3">2.3 FEE Feature FeeFblConfig</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">2.3.1 Potential Problem with Regular AR Fee</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#4">2.3.2 Vector FEE Bootloader Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.0 FEE Configuration with the DaVinci Configurator Pro</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.1 Step 1 Configure the NvM/FEE on Application Side.</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#5">3.2 Step 2 Transfer the MEM Stack Configuration to the Bootloader</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#7">3.3 Step 3 Adapt the Imported Configuration to Your Needs</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#8">3.4 Step 4 Add the Standard Definition of the NvM</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">3.5 Special configuration Aspects in Non DaVinci Configurator Pro Environments</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#10">3.5.1 Further ASR Component Stubs required</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">3.5.2 Generation of the Fee Config for the Fbl</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.0 Usage of Fee Configuration in Flash Bootloader</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1 Modules Required in the Flash Bootloader</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1.1 Asr BSW Modules to Be Added to Flash Bootloader</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#11">4.1.2 Asr Stub Modules to Be Used by the Fbl</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.1.3 Generated Modules</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.2 Initialization in Fbl</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#12">4.2.1 Initialization Required</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">4.3 Synchronized Calls to Fee</a>
+<ul>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#13">4.3.1 Synchronized Read</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">4.3.2 Synchronized Write</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#14">4.4 Data elements to Be Read and Written by Fbl</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">4.5 Configure Existing Flash Bootloader NVM Data for Fee</a></li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">4.6 Conclusion</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1173_Share_FEE_Blocks_Between_Application_and_Bootloaders.html#15">5.0 Contacts</a></li>
+</ul>
+<hr/>
+</body>
+</html>

@@ -1,0 +1,1240 @@
+---
+title: TechnicalReference_NvWrappers
+linkTitle: TechnicalReference_NvWrappers
+weight: 38
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-1_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>NV-Wrapper&#160;<br/></b>Technical Reference&#160;<br/>&#160;<br/>Wrapper for non-volatile memory&#160;access&#160;<br/>Version&#160;2.1&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Authors&#160;<br/>
+Christian Bäuerle,&#160;Achim&#160;Strobelt,&#160;Marco&#160;Riedl&#160;<br/>
+Status&#160;<br/>
+Released&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-2_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-2_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Document&#160;Information&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Christian Bäuerle&#160;<br/>
+2009-09-19&#160;<br/>
+0.90&#160;<br/>
+Initial&#160;Draft&#160;<br/>
+Achim&#160;Strobelt&#160;<br/>
+2012-01-26&#160;<br/>
+1.00&#160;<br/>
+Configuration with GENy&#160;<br/>
+Marco&#160;Riedl&#160;<br/>
+2016-03-02&#160;<br/>
+2.00&#160;<br/>
+Added&#160;Fee/NvM&#160;<br/>
+Marco&#160;Riedl&#160;<br/>
+2016-03-20&#160;<br/>
+2.01&#160;<br/>
+Changed&#160;API&#160;<br/>
+<b>Reference&#160;Documents&#160;</b><br/>
+<b>No.&#160;</b><br/>
+<b>Source&#160;&#160;Title&#160;</b><br/>
+<b>Version&#160;</b><br/>
+[1]&#160;&#160;&#160;<br/>
+Vector&#160;<br/>
+Flash&#160;Bootloader&#160;User&#160;Manual&#160;<br/>
+2.7&#160;<br/>
+[2]&#160;&#160;&#160;<br/>
+Vector&#160;<br/>
+EEPROM&#160;Manager,&#160;Technical&#160;Reference&#160;<br/>
+1.3&#160;<br/>
+[3]&#160;&#160;&#160;<br/>
+Vector&#160;<br/>
+Flash&#160;Driver&#160;Wrapper,&#160;Technical&#160;Reference&#160;<br/>
+1.1&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;<br/></b>We&#160;have configured&#160;the&#160;programs&#160;in&#160;accordance&#160;with your&#160;specifications&#160;in the&#160;<br/>
+<b>&#160;&#160;</b>questionnaire.&#160;Whereas&#160;the&#160;programs&#160;do&#160;support&#160;other&#160;configurations&#160;than&#160;the&#160;one&#160;<br/>
+specified&#160;in your&#160;questionnaire,&#160;Vector´s&#160;release&#160;of&#160;the&#160;programs&#160;delivered to&#160;your&#160;<br/>company&#160;is&#160;expressly&#160;restricted&#160;to&#160;the&#160;configuration&#160;you&#160;have specified&#160;in&#160;the&#160;<br/>questionnaire.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+2&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=3></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-3_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TechnicalReference_NvWrappers.html#6"><b>1</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#6"><b>Introduction...................................................................................................................&#160;6</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#7"><b>2</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#7"><b>Functional&#160;Description&#160;.................................................................................................&#160;7</b>&#160;<br/>2.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#7">Architecture&#160;........................................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">2.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">Data&#160;structures&#160;..................................................................................................&#160;8&#160;<br/>2.2.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">Single&#160;.................................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">2.2.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">List&#160;.....................................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">2.2.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">Structure&#160;............................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">2.2.4&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">Table&#160;..................................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">2.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#8">NV-Wrapper&#160;in&#160;Application&#160;.................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10"><b>3</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10"><b>Integration&#160;...................................................................................................................&#160;10</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10">Scope of&#160;delivery&#160;.............................................................................................&#160;10&#160;<br/>3.1.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10">Core&#160;files&#160;..........................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10">3.1.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10">Application&#160;files&#160;................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">3.1.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Generated&#160;files&#160;.................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">3.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Include structure&#160;..............................................................................................&#160;11&#160;<br/>3.2.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Initialization&#160;......................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#12">3.2.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#12">Memory&#160;accesses&#160;............................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13"><b>4</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13"><b>API&#160;Description&#160;...........................................................................................................&#160;13</b>&#160;<br/>4.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">Function&#160;API&#160;....................................................................................................&#160;13&#160;<br/>4.1.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">Function Description&#160;........................................................................&#160;13&#160;<br/>4.1.1.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">WrapNv_Init&#160;...................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">4.1.1.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">Synchronous&#160;API&#160;...........................................................&#160;13&#160;<br/>4.1.1.2.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">WrapNv_ReadSync&#160;...................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">4.1.1.2.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">WrapNv_ReadPartialSync&#160;.........................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">4.1.1.2.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">WrapNv_WriteSync&#160;....................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">4.1.1.2.4&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">WrapNv_DeleteSync&#160;..................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">4.1.1.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">Asynchronous&#160;API&#160;.........................................................&#160;15&#160;<br/>4.1.1.3.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">WrapNv_ReadAsync&#160;..................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#16">4.1.1.3.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#16">WrapNv_ReadPartialAsync&#160;........................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">4.1.1.3.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">WrapNv_WriteAsync&#160;..................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">4.1.1.3.4&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">WrapNv_DeleteAsync&#160;................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#18">4.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#18">Naming conventions&#160;........................................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#19">4.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#19">Interface&#160;definitions&#160;..........................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22"><b>5</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22"><b>Configuration&#160;..............................................................................................................&#160;22</b>&#160;<br/>5.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">GENy&#160;configuration&#160;..........................................................................................&#160;22&#160;</a><br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+3&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=4></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-4_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<a href="TechnicalReference_NvWrappers.html#22">5.1.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">Basic&#160;settings&#160;...................................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">5.1.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">Tree&#160;view&#160;usage&#160;...............................................................................&#160;23&#160;<br/>5.1.2.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">Data&#160;node&#160;context&#160;menu&#160;................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">5.1.2.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">Data&#160;block/element&#160;context&#160;menu&#160;..................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">5.1.3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">Data&#160;configuration&#160;............................................................................&#160;23&#160;<br/></a><a href="TechnicalReference_NvWrappers.html#24">5.1.3.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#24">Data&#160;Blocks&#160;...................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">5.1.3.2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">Data&#160;Element&#160;Settings&#160;...................................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#26"><b>6</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#26"><b>Terminology&#160;................................................................................................................&#160;26</b>&#160;<br/>6.1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#26">Abbreviations&#160;...................................................................................................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#27"><b>7</b>&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#27"><b>Contact&#160;........................................................................................................................&#160;27</b>&#160;</a><br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+4&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=5></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-5_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="TechnicalReference_NvWrappers.html#7">Figure&#160;2-1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#7">NV-Wrapper&#160;in Flash&#160;Bootloader&#160;................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">Figure&#160;5-1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">Activation of&#160;NV-Wrapper&#160;in&#160;GENy&#160;...........................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">Figure&#160;5-2&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#22">NV-Wrapper&#160;GENy&#160;module&#160;.......................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#24">Figure&#160;5-3&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#24">Data&#160;Block&#160;configuration&#160;...........................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">Figure&#160;5-4&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">Data&#160;Element&#160;configuration&#160;.......................................................................&#160;25&#160;</a><br/>
+<b>&#160;</b><br/>
+<b>Tables&#160;<br/></b><a href="TechnicalReference_NvWrappers.html#10">Table&#160;3-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#10">Core&#160;files&#160;..................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Table&#160;3-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Application&#160;files&#160;.........................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Table&#160;3-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#11">Generted&#160;files&#160;...........................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">Table&#160;4-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#13">WrapNv_Init&#160;..............................................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">Table&#160;4-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">WrapNv_ReadSync&#160;..................................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">Table&#160;4-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#14">WrapNv_ReadPartialSync&#160;........................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">Table&#160;4-4&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">WrapNv_WriteSync&#160;..................................................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">Table&#160;4-5&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#15">WrapNv_DeleteSync&#160;................................................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#16">Table&#160;4-6&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#16">WrapNv_ReadAsync&#160;................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">Table&#160;4-7&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">WrapNv_ReadPartialAsync&#160;......................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">Table&#160;4-8&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#17">WrapNv_WriteAsync&#160;.................................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#18">Table&#160;4-9&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#18">WrapNv_DeleteAsync&#160;...............................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#19">Table&#160;4-10&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#19">Single&#160;.......................................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#20">Table&#160;4-11&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#20">List&#160;............................................................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#21">Table&#160;4-12&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#21">Structure&#160;...................................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#21">Table&#160;4-13&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#21">Table&#160;.........................................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">Table&#160;5-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#23">GENy&#160;configuration&#160;options&#160;for&#160;Nv-Wrapper&#160;.............................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#24">Table&#160;5-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#24">Data&#160;Block&#160;configuration&#160;...........................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">Table&#160;5-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#25">Data&#160;Block&#160;configuration&#160;...........................................................................&#160;25&#160;</a><br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+5&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-6_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>1&#160;&#160;Introduction&#160;</b><br/>
+The&#160;NV-Wrapper&#160;component&#160;provides&#160;an&#160;ID-based&#160;interface&#160;to&#160;access&#160;data&#160;in&#160;non-volatile&#160;<br/>memory.&#160;&#160;Based&#160;&#160;on&#160;&#160;this&#160;&#160;interface,&#160;&#160;data&#160;&#160;located&#160;&#160;in&#160;&#160;EEPROM&#160;&#160;devices&#160;&#160;with&#160;&#160;a&#160;&#160;HIS&#160;&#160;device&#160;<br/>driver&#160;&#160;interface&#160;&#160;(DrvEep),&#160;&#160;the&#160;&#160;EEPROM&#160;&#160;emulation&#160;&#160;by&#160;&#160;the&#160;&#160;Vector&#160;&#160;EEPROM&#160;&#160;manager&#160;<br/>(EepM), the&#160;Fee&#160;and&#160;the&#160;NvM&#160;can&#160;be&#160;accessed.&#160;<br/>Each&#160;data&#160;item&#160;is&#160;identified&#160;by&#160;a&#160;unique&#160;ID.&#160;When&#160;an&#160;address-based&#160;DrvEep&#160;is&#160;used,&#160;the&#160;<br/>NV-Wrapper&#160;performs&#160;a&#160;conversion&#160;from&#160;ID to&#160;address.&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+6&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=7></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-7_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-7_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>2&#160;&#160;Functional&#160;Description&#160;</b><br/>
+The&#160;&#160;NV-Wrapper&#160;&#160;module&#160;&#160;consists&#160;&#160;of&#160;&#160;a&#160;&#160;generated&#160;&#160;file&#160;&#160;which&#160;&#160;provides&#160;&#160;access&#160;&#160;macros.&#160;<br/>Those&#160;macros&#160;&#160;will&#160;&#160;then&#160;&#160;call&#160;&#160;the&#160;&#160;respective&#160;&#160;interface.&#160;&#160;In&#160;&#160;case&#160;&#160;the&#160;NV-Wrapper&#160;&#160;is&#160;&#160;used&#160;&#160;to&#160;<br/>access&#160;&#160;the&#160;&#160;Fee&#160;&#160;or&#160;&#160;NvM,&#160;&#160;a&#160;&#160;c-file&#160;&#160;which&#160;&#160;implements&#160;&#160;a&#160;&#160;synchronous&#160;&#160;and&#160;&#160;an&#160;asynchronous&#160;<br/>interface&#160;is&#160;used.&#160;For&#160;the&#160;DrvEep&#160;or&#160;the&#160;EepM&#160;the&#160;access&#160;macros&#160;are&#160;directly&#160;mapped&#160;to&#160;<br/>the&#160;respective&#160;module.&#160;<br/>
+<b>2.1&#160;</b><br/>
+<b>Architecture&#160;</b><br/>
+The&#160;NV-Wrapper&#160;is&#160;a&#160;layer&#160;between&#160;the&#160;application&#160;/&#160;&#160;FBL&#160;and&#160;the&#160;&#160;NV-memory&#160;(DrvEep,&#160;<br/>EepM,&#160;Fee&#160;or&#160;NvM).&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;2-1&#160;<br/>
+NV-Wrapper&#160;in&#160;Flash&#160;Bootloader&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+7&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=8></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-8_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<a href="TechnicalReference_NvWrappers.html#7">Figure&#160;2-1&#160;</a><br/>
+<a href="TechnicalReference_NvWrappers.html#7">&#160;</a>shows the&#160;usage&#160;of&#160;the&#160;NV-Wrapper with&#160;the&#160;EepM,&#160;DrvEep,&#160;Fee&#160;and&#160;NvM.&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Data structures&#160;</b><br/>
+This&#160;&#160;section&#160;&#160;gives&#160;&#160;a&#160;&#160;short&#160;&#160;overview&#160;&#160;about&#160;&#160;the&#160;&#160;supported&#160;&#160;data&#160;&#160;types.&#160;&#160;Each&#160;&#160;data&#160;&#160;element&#160;<br/>stored&#160;&#160;by&#160;&#160;the&#160;NV-Wrapper&#160;is&#160;either&#160;a&#160;single&#160;byte&#160;or&#160;a&#160;stream&#160;of&#160;bytes.&#160;&#160;The&#160;NV-Wrapper&#160;<br/>module&#160;generates&#160;access macros&#160;for 4&#160;types&#160;of&#160;data&#160;structures:&#160;<br/>
+<b>2.2.1&#160;</b><br/>
+<b>Single&#160;</b><br/>
+A&#160;single&#160;type&#160;data&#160;structure&#160;is&#160;the&#160;simplest&#160;data&#160;structure&#160;supported&#160;by&#160;NV-Wrapper.&#160;It&#160;can&#160;<br/>be&#160;compared&#160;to&#160;a&#160;single&#160;variable&#160;like&#160;an&#160;integer&#160;variable,&#160;e.g.&#160;the&#160;Security&#160;Access&#160;Delay&#160;<br/>flag&#160;used&#160;by&#160;the&#160;Bootloader.&#160;<br/>
+<b>&#160;&#160;</b>Data&#160;bock&#160;multiplicity&#160;equals one&#160;<br/>
+<b>&#160;&#160;</b>One&#160;data&#160;element&#160;configured&#160;<br/>
+&#160;<br/>
+<b>2.2.2&#160;</b><br/>
+<b>List&#160;</b><br/>
+A&#160;list can&#160;be&#160;used&#160;to&#160;store an&#160;array&#160;of&#160;one&#160;variable,&#160;e.g.&#160;a&#160;fingerprint&#160;history&#160;list.&#160;<br/>
+<b>&#160;&#160;</b>Data&#160;bock&#160;multiplicity&#160;is more&#160;than&#160;one&#160;<br/>
+<b>&#160;&#160;</b>One&#160;data&#160;element&#160;configured&#160;<br/>
+&#160;<br/>
+<b>2.2.3&#160;</b><br/>
+<b>Structure&#160;</b><br/>
+Structures&#160;are&#160;used&#160;to&#160;group&#160;several&#160;different&#160;members&#160;of&#160;a&#160;data&#160;structure.&#160;This&#160;data&#160;type&#160;<br/>can&#160;be&#160;compared&#160;to&#160;a&#160;C&#160;struct.&#160;One&#160;access&#160;macro&#160;is&#160;generated&#160;for&#160;every&#160;member&#160;of&#160;the&#160;<br/>structure.&#160;<br/>
+<b>&#160;&#160;</b>Data&#160;bock count&#160;equals one&#160;<br/>
+<b>&#160;&#160;</b>At&#160;least&#160;two&#160;data&#160;elements&#160;configured&#160;<br/>
+&#160;<br/>
+<b>2.2.4&#160;</b><br/>
+<b>Table&#160;</b><br/>
+A&#160;&#160;table&#160;&#160;is&#160;&#160;a&#160;&#160;list&#160;&#160;of&#160;&#160;structures.&#160;&#160;It&#160;&#160;represents&#160;&#160;an&#160;&#160;array&#160;&#160;of&#160;&#160;structures&#160;&#160;and&#160;&#160;can&#160;&#160;be&#160;&#160;used&#160;&#160;to&#160;<br/>access data&#160;elements&#160;like&#160;the&#160;meta&#160;data&#160;table&#160;stored&#160;for every&#160;logical block.&#160;<br/>
+<b>&#160;&#160;</b>Data&#160;bock&#160;multiplicity&#160;is more&#160;than&#160;one&#160;<br/>
+<b>&#160;&#160;</b>At&#160;least&#160;two&#160;data&#160;elements&#160;configured&#160;<br/>
+&#160;<br/>
+<b>2.3&#160;</b><br/>
+<b>NV-Wrapper&#160;in&#160;Application&#160;</b><br/>
+The&#160;&#160;NV-Wrapper&#160;&#160;can&#160;&#160;be&#160;&#160;used&#160;&#160;in&#160;&#160;the&#160;&#160;application&#160;&#160;as&#160;&#160;well.&#160;&#160;The&#160;&#160;architecture&#160;&#160;used&#160;&#160;there&#160;&#160;is&#160;<br/>basically&#160;the&#160;same&#160;compared&#160;to&#160;the&#160;architecture&#160;used&#160;in&#160;the&#160;Bootloader.&#160;However,&#160;special&#160;<br/>care&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;&#160;taken&#160;&#160;to&#160;&#160;ensure&#160;&#160;that&#160;&#160;the&#160;&#160;used&#160;&#160;memory&#160;&#160;access&#160;&#160;driver,&#160;&#160;e.g.&#160;&#160;EEPROM&#160;<br/>Manager,&#160;is integrated&#160;properly&#160;into&#160;the&#160;application&#160;environment.&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+8&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=9></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-9_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-9_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;<br/></b>If&#160;the&#160;NV-Wrapper&#160;is&#160;used within the&#160;application&#160;in connection&#160;with the&#160;EEPROM&#160;<br/>
+<b>&#160;&#160;</b>Manager,&#160;an&#160;additional&#160;wrapper&#160;layer&#160;has&#160;to be&#160;used&#160;between EEPROM&#160;Manager&#160;and&#160;<br/>
+Flash&#160;Driver&#160;Wrapper.&#160;Plea<a href="TechnicalReference_NvWrappers.html#2">se see&#160;[3]&#160;</a>for&#160;further&#160;hints.&#160;<br/>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+9&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=10></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-10_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-10_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-10_3.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>3&#160;&#160;Integration&#160;</b><br/>
+This&#160;&#160;chapter&#160;&#160;provides&#160;&#160;information&#160;&#160;how&#160;&#160;to&#160;&#160;integrate&#160;&#160;and&#160;&#160;configure&#160;&#160;the&#160;&#160;NV-Wrapper.&#160;&#160;The&#160;<br/>configuration&#160;&#160;is&#160;&#160;mainly&#160;&#160;done&#160;&#160;within&#160;&#160;the&#160;&#160;GENy&#160;&#160;module&#160;&#160;supplied&#160;&#160;with&#160;&#160;the&#160;&#160;NV-Wrapper&#160;<br/>module.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>Configurator5 does&#160;not&#160;support&#160;the&#160;configuration&#160;of&#160;the&#160;NV-Wrapper&#160;module.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>GENy&#160;does not&#160;support&#160;the&#160;configuration&#160;of&#160;the&#160;Fee/NvM.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Scope&#160;of&#160;delivery&#160;</b><br/>
+All&#160;&#160;files&#160;&#160;of&#160;&#160;the&#160;&#160;NV-Wrapper&#160;&#160;are&#160;&#160;located&#160;&#160;in&#160;&#160;the&#160;&#160;BSW\WrapNv&#160;&#160;folder&#160;&#160;of&#160;&#160;your&#160;&#160;delivery&#160;&#160;and&#160;<br/>consist&#160;of&#160;core&#160;files,&#160;adaptable&#160;application&#160;files&#160;as&#160;well&#160;as&#160;generated&#160;files.&#160;The&#160;application&#160;<br/>files&#160;are indicated&#160;by&#160;a&#160;leading&#160;underscore.&#160;<br/>Some&#160;files&#160;are&#160;only&#160;present&#160;if&#160;the&#160;NV-Wrapper&#160;is&#160;used&#160;in&#160;a&#160;special&#160;use&#160;case,&#160;e.g.&#160;Fee&#160;or&#160;<br/>NvM.&#160;<br/>
+<b>3.1.1&#160;</b><br/>
+<b>Core&#160;files&#160;</b><br/>
+The&#160;&#160;first&#160;&#160;group&#160;&#160;contains&#160;&#160;core&#160;&#160;files.&#160;&#160;Do&#160;&#160;not&#160;&#160;modify&#160;&#160;the&#160;&#160;contents&#160;&#160;of&#160;&#160;the&#160;&#160;files&#160;&#160;in&#160;&#160;this&#160;&#160;group&#160;<br/>without&#160;&#160;prior&#160;&#160;written&#160;&#160;permission&#160;&#160;from&#160;&#160;Vector&#160;&#160;(modification&#160;&#160;of&#160;&#160;these&#160;&#160;files&#160;&#160;will&#160;&#160;void&#160;&#160;your&#160;<br/>warranty).&#160;<br/>
+&#160;<br/>
+<b>File&#160;</b><br/>
+<b>Use&#160;Case&#160;</b><br/>
+<b>Description&#160;</b><br/>
+WrapNv.h&#160;<br/>
+DrvEep,&#160;EepM,&#160;Fee,&#160;&#160;Main module&#160;header&#160;file.&#160;It&#160;contains some&#160;<br/>NvM&#160;<br/>
+preprocessor&#160;macros&#160;needed&#160;by&#160;the&#160;generated&#160;files.&#160;<br/>
+WrapNv.c&#160;<br/>
+Fee,&#160;NvM&#160;<br/>
+Main module source&#160;file.&#160;It&#160;contains&#160;the&#160;abstraction&#160;<br/>of&#160;the&#160;Fee/NvM&#160;access&#160;to a&#160;<br/>synchronous/asynchronous&#160;API.&#160;The&#160;generated&#160;<br/>access&#160;macros use&#160;these&#160;function.&#160;<br/>
+Table&#160;3-1&#160;&#160;<br/>
+Core&#160;files&#160;<br/>
+<b>3.1.2&#160;</b><br/>
+<b>Application files&#160;</b><br/>
+The&#160;second&#160;group&#160;consists&#160;of&#160;components&#160;that&#160;must&#160;be&#160;customized&#160;for&#160;your&#160;configuration.&#160;<br/>You&#160;should&#160;copy&#160;these&#160;files&#160;to&#160;your&#160;bootloader&#160;project&#160;folder&#160;and&#160;rename&#160;them,&#160;removing&#160;<br/>the&#160;leading&#160;underscore&#160;from&#160;the&#160;filename.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+10&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=11></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-11_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>File&#160;</b><br/>
+<b>Use&#160;Case&#160;</b><br/>
+<b>Description&#160;</b><br/>
+_WrapNv_inc.h&#160;<br/>
+DrvEep,&#160;EepM,&#160;Fee,&#160;&#160;This&#160;is&#160;a&#160;template&#160;for&#160;the&#160;include&#160;file.&#160;The&#160;default&#160;<br/>NvM&#160;<br/>
+constant&#160;of&#160;this&#160;file is&#160;a collection of&#160;file&#160;includes that&#160;<br/>are&#160;necessary&#160;for&#160;the&#160;NV-Wrapper&#160;in&#160;the&#160;used&#160;<br/>scope.&#160;<br/>
+_WrapNv_Asr_Cfg.h&#160;&#160;Fee,&#160;NvM&#160;<br/>
+Configuration&#160;file&#160;for&#160;the&#160;NV-Wrapper&#160;<br/>
+Table&#160;3-2&#160;&#160;<br/>
+Application&#160;files&#160;<br/>
+&#160;<br/>
+<b>3.1.3&#160;</b><br/>
+<b>Generated&#160;files&#160;</b><br/>
+<b>File&#160;</b><br/>
+<b>Use&#160;Case&#160;</b><br/>
+<b>Description&#160;</b><br/>
+WrapNv_Cfg.c&#160;<br/>
+Fee,&#160;NvM&#160;<br/>
+This&#160;file&#160;consists&#160;of&#160;a&#160;look-up&#160;table,&#160;which the&#160;NV-<br/>Wrapper&#160;uses.&#160;This&#160;file is&#160;not&#160;used/present&#160;for&#160;<br/>DrvEep&#160;and EepM.&#160;<br/>
+WrapNv_Cfg.h&#160;<br/>
+DrvEep,&#160;EepM,&#160;Fee,&#160;&#160;Consists&#160;off&#160;all&#160;necessary&#160;access&#160;macros&#160;to&#160;read&#160;<br/>NvM&#160;<br/>
+from/write&#160;to&#160;the&#160;NV-memory.&#160;<br/>
+Table&#160;3-3&#160;&#160;<br/>
+Generted&#160;files&#160;<br/>
+&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Include&#160;structure&#160;</b><br/>
+The&#160;NV-Wrapper centralizes the&#160;import of&#160;all&#160;required&#160;header&#160;files in&#160;WrapNv_inc.h.&#160;<br/>
+&#160;<br/>
+<b>3.2.1&#160;</b><br/>
+<b>Initialization&#160;</b><br/>
+In&#160;case&#160;the&#160;NV-Wrapper&#160;is&#160;used&#160;with&#160;the&#160;DrvEep&#160;or&#160;the&#160;EepM,&#160;then&#160;the&#160;NV-Wrapper&#160;itself&#160;<br/>doesn’t&#160;require&#160;an&#160;explicit&#160;initialization,&#160;but&#160;the&#160;memory&#160;drivers&#160;or&#160;managers&#160;used&#160;by&#160;the&#160;<br/>NV-Wrapper&#160;&#160;normally&#160;&#160;do.&#160;&#160;Please&#160;&#160;make&#160;&#160;sure&#160;&#160;all&#160;&#160;modules&#160;&#160;needed&#160;&#160;to&#160;&#160;access&#160;&#160;the&#160;&#160;memory&#160;<br/>are initialized&#160;before the&#160;first&#160;memory&#160;access&#160;macro&#160;is&#160;used.&#160;<br/>If&#160;the&#160;NV-Wrapper&#160;is&#160;used&#160;to&#160;access&#160;the&#160;Fee&#160;or&#160;the&#160;NvM,&#160;the&#160;NV-Wrapper&#160;will&#160;initialize&#160;the&#160;<br/>respective&#160;memory&#160;drivers.&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+11&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=12></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-12_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-12_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-12_3.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Example&#160;<br/></b>Initialization if&#160;EepM&#160;is&#160;used:&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;/*&#160;Initialize&#160;EEPROM-Driver&#160;*/&#160;<br/>
+&#160;&#160;&#160;Flash_XDDriver_InitSync(NULL);&#160;<br/>&#160;&#160;&#160;(void)EepMgrInitPowerOn(kEepMgrInitFull);&#160;<br/>
+Initialization if&#160;a&#160;EEPROM&#160;driver&#160;is&#160;used&#160;<br/>&#160;&#160;&#160;/*&#160;Initialize&#160;EEPROM-Driver&#160;*/&#160;<br/>&#160;&#160;&#160;(void)EepromDriver_InitSync(NULL);&#160;<br/>
+Initialization if&#160;Fee&#160;or&#160;NvM&#160;is&#160;used:&#160;<br/>&#160;&#160;&#160;/*&#160;Initialize&#160;EEPROM-Driver&#160;*/&#160;<br/>&#160;&#160;&#160;WrapNv_Init();&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>After these&#160;initializations,&#160;the&#160;NV-Wrapper can&#160;be&#160;used.&#160;<br/>
+&#160;<br/>
+<b>3.2.2&#160;</b><br/>
+<b>Memory&#160;accesses&#160;</b><br/>
+The&#160;memory&#160;access&#160;macros&#160;normally&#160;use&#160;a&#160;&#160;pointer&#160;to&#160;a&#160;byte-array&#160;to&#160;hand&#160;over&#160;read&#160;or&#160;<br/>write&#160;buffers.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Example&#160;<br/></b>Read access&#160;to&#160;a single&#160;structure,&#160;1&#160;Byte:&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;vuint8&#160;buffer;&#160;<br/>
+&#160;<br/>&#160;&#160;&#160;/*&#160;Read&#160;security&#160;access&#160;delay&#160;flag&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*/&#160;<br/>&#160;&#160;&#160;/*&#160;Parameter&#160;is&#160;not&#160;used&#160;on&#160;a&#160;struct&#160;and&#160;set&#160;to&#160;0&#160;*/&#160;<br/>&#160;&#160;&#160;if&#160;(ApplFblNvReadSecAccessDelay(0,&#160;&amp;buffer)&#160;!=&#160;WRAPNV_E_OK)&#160;<br/>&#160;&#160;&#160;{&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;/*&#160;Read&#160;failed!&#160;Return&#160;kEepSecAccessDelayActive&#160;*/&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;return&#160;kEepSecAccessDelayActive;&#160;<br/>&#160;&#160;&#160;}&#160;<br/>&#160;&#160;&#160;else&#160;<br/>&#160;&#160;&#160;{&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;return&#160;buffer;&#160;<br/>&#160;&#160;&#160;}&#160;<br/>
+Write access&#160;to&#160;a&#160;member&#160;of&#160;a&#160;table,&#160;10&#160;Bytes:&#160;<br/>&#160;&#160;&#160;/*&#160;Write&#160;fingerprint&#160;(from&#160;RAM&#160;buffer)&#160;into&#160;meta&#160;data&#160;table&#160;*/&#160;<br/>&#160;&#160;&#160;returnCode&#160;=&#160;ApplFblNvWriteFingerprint(blockNr,&#160;blockFingerprint);&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+12&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=13></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-13_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>4&#160;&#160;API&#160;Description&#160;</b><br/>
+In&#160;case&#160;the&#160;NV-Wrapper&#160;is&#160;used&#160;with&#160;a&#160;Fee&#160;or&#160;NvM&#160;the&#160;following&#160;API&#160;description&#160;(chapter&#160;<br/><a href="TechnicalReference_NvWrappers.html#13">4.1) a</a>pplies.&#160;The&#160;naming&#160;conventions&#160;described&#160;in&#160;chapte<a href="TechnicalReference_NvWrappers.html#18">r&#160;4.2&#160;</a>apply&#160;to&#160;all&#160;use&#160;cases.&#160;<br/>
+<b>4.1&#160;</b><br/>
+<b>Function&#160;API&#160;</b><br/>
+Only&#160;the&#160;API&#160;of&#160;the&#160;global&#160;functions&#160;is&#160;listed&#160;here.&#160;The&#160;NV-Wrapper&#160;internal&#160;functions&#160;are&#160;<br/>not&#160;included.&#160;<br/>These&#160;functions&#160;are used&#160;by&#160;the&#160;generated&#160;access macros.&#160;<br/>
+<b>4.1.1&#160;</b><br/>
+<b>Function Description&#160;</b><br/>
+<b>4.1.1.1&#160;</b><br/>
+<b>WrapNv_Init&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+void&#160;WrapNv_Init( void )&#160;<br/>
+<b>Parameter&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;is&#160;called to&#160;initialize the&#160;NV-Wrapper&#160;module.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>This&#160;function&#160;should&#160;be&#160;called&#160;when&#160;the&#160;Application/FBL&#160;is&#160;started after reset.&#160;<br/>
+Table&#160;4-1&#160;&#160;<br/>
+WrapNv_Init&#160;<br/>
+&#160;<br/>
+<b>4.1.1.2&#160;</b><br/>
+<b>Synchronous&#160;API&#160;</b><br/>
+<b>4.1.1.2.1&#160;</b><br/>
+<b>WrapNv_ReadSync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_ReadSync(uint16 id, uint16 idx, tWrapNvRamData buffer)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the target&#160;buffer&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+13&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=14></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-14_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-2&#160;&#160;<br/>
+WrapNv_ReadSync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.2.2&#160;</b><br/>
+<b>WrapNv_ReadPartialSync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_ReadPartialSync(uint16&#160;id, uint16&#160;idx,&#160;&#160;<br/>tWrapNvRamData buffer&#160;, uint16 offset, uint16 length )&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the target&#160;buffer&#160;<br/>
+offset&#160;<br/>
+Offset&#160;in element from&#160;where to start&#160;to&#160;read&#160;<br/>
+length&#160;<br/>
+Length&#160;of&#160;the partial&#160;read operation&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-3&#160;&#160;<br/>
+WrapNv_ReadPartialSync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.2.3&#160;</b><br/>
+<b>WrapNv_WriteSync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_&#160;WriteSync( uint16 id, uint16 idx, tWrapNvRamData&#160;<br/>buffer)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+14&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=15></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-15_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the source&#160;buffer&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-4&#160;&#160;<br/>
+WrapNv_WriteSync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.2.4&#160;</b><br/>
+<b>WrapNv_DeleteSync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_DeleteSync( uint16 id, uint16 idx )&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Delete&#160;(invalidate) operation successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Delete&#160;(invalidate) operation failed&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-5&#160;&#160;<br/>
+WrapNv_DeleteSync&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>4.1.1.3&#160;</b><br/>
+<b>Asynchronous&#160;API&#160;</b><br/>
+<b>4.1.1.3.1&#160;</b><br/>
+<b>WrapNv_ReadAsync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_ReadAsync(uint16 id, uint16 idx, tWrapNvRamData&#160;<br/>buffer, tWrapNvOpStatus opStatus )&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+15&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=16></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-16_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the target&#160;buffer&#160;<br/>
+opStatus&#160;<br/>
+Operation&#160;status&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+WRAPNV_E_PENDING&#160;<br/>
+Operation&#160;is&#160;still&#160;in progress&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-6&#160;&#160;<br/>
+WrapNv_ReadAsync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.3.2&#160;</b><br/>
+<b>WrapNv_ReadPartialAsync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_ReadPartialAsync(uint16&#160;id, uint16&#160;idx,&#160;&#160;<br/>tWrapNvRamData buffer&#160;, uint16 offset, uint16 length, tWrapNvOpStatus opStatus&#160;<br/>)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the target&#160;buffer&#160;<br/>
+offset&#160;<br/>
+Offset&#160;in element from&#160;where to start&#160;to&#160;read&#160;<br/>
+length&#160;<br/>
+Length&#160;of&#160;the partial&#160;read operation&#160;<br/>
+opStatus&#160;<br/>
+Operation&#160;status&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+WRAPNV_E_PENDING&#160;<br/>
+Operation&#160;is&#160;still&#160;in progress&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+16&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=17></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-17_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-7&#160;&#160;<br/>
+WrapNv_ReadPartialAsync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.3.3&#160;</b><br/>
+<b>WrapNv_WriteAsync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_&#160;WriteAsync( uint16 id, uint16 idx, tWrapNvRamData&#160;<br/>buffer, tWrapNvOpStatus opStatus )&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+buffer&#160;<br/>
+Pointer&#160;to the source&#160;buffer&#160;<br/>
+opStatus&#160;<br/>
+Operation&#160;status&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Read&#160;operation&#160;successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Read&#160;operation&#160;failed&#160;<br/>
+WRAPNV_E_PENDING&#160;<br/>
+Operation&#160;is&#160;still&#160;in progress&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-8&#160;&#160;<br/>
+WrapNv_WriteAsync&#160;<br/>
+&#160;<br/>
+<b>4.1.1.3.4&#160;</b><br/>
+<b>WrapNv_DeleteAsync&#160;</b><br/>
+<b>Prototype&#160;</b><br/>
+WrapNv_ReturnType&#160;WrapNv_DeleteAsync( uint16 id, uint16 idx, tWrapNvOpStatus&#160;<br/>opStatus )&#160;<br/>
+<b>Parameter&#160;</b><br/>
+id&#160;<br/>
+ID of&#160;record&#160;<br/>
+idx&#160;<br/>
+Index&#160;of&#160;the dataset&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+17&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=18></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-18_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-18_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+opStatus&#160;<br/>
+Operation&#160;status&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WRAPNV_E_OK&#160;<br/>
+Delete&#160;(invalidate) operation successful&#160;<br/>
+WRAPNV_E_NOT_OK&#160;<br/>
+Delete&#160;(invalidate) operation failed&#160;<br/>
+WRAPNV_E_PENDING&#160;<br/>
+Operation&#160;is&#160;still&#160;in progress&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;reads&#160;the&#160;data from&#160;Fee/Nvm&#160;in the&#160;respective buffer.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>NV-Wrapper&#160;has&#160;to&#160;be initialized.&#160;<br/>
+Table&#160;4-9&#160;&#160;<br/>
+WrapNv_DeleteAsync&#160;<br/>
+&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Naming conventions&#160;</b><br/>
+The&#160;&#160;access&#160;&#160;macros&#160;&#160;generated&#160;&#160;by&#160;&#160;the&#160;&#160;configuration&#160;&#160;tool&#160;&#160;have&#160;&#160;the&#160;&#160;following&#160;&#160;naming&#160;<br/>conventions:&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Example&#160;<br/></b>ApplWrapNv&lt;operation&gt;&lt;mode&gt;&lt;variable-name&gt;()&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>&#160;&#160;</b>The&#160;prefix&#160;of&#160;ApplWrapNv&#160;is for every&#160;access macro&#160;the&#160;same.&#160;<br/>
+<b>&#160;&#160;</b>Operation&#160;can&#160;either be&#160;Read,&#160;ReadPartial,&#160;Write&#160;or Delete.&#160;<br/>
+<b>&#160;&#160;</b>Read:&#160;Reads&#160;a&#160;complete&#160;element&#160;from&#160;NV&#160;block&#160;<br/>
+<b>&#160;&#160;</b>ReadPartial:&#160;Reads only&#160;a&#160;part of&#160;the&#160;element&#160;from&#160;the&#160;NV&#160;block&#160;<br/>
+<b>&#160;&#160;</b>Write:&#160;Writes&#160;an&#160;element&#160;into&#160;the&#160;NV&#160;block&#160;<br/>
+<b>&#160;&#160;</b>Delete:&#160;Deletes/invalidates&#160;a&#160;complete&#160;NV&#160;block&#160;<br/>
+<b>&#160;&#160;</b>Mode&#160;is used&#160;to&#160;distinguish&#160;between&#160;the&#160;synchronous and&#160;asynchronous&#160;API.&#160;If&#160;no&#160;<br/>
+mode&#160;is given,&#160;by&#160;default this represents&#160;the&#160;synchronous interface.&#160;For asynchronous&#160;<br/>interface&#160;the&#160;access macro&#160;has&#160;the&#160;mode&#160;“Async”.&#160;<br/>
+<b>&#160;&#160;</b>The&#160;variable&#160;name&#160;is generated&#160;from&#160;the&#160;data&#160;element&#160;specified&#160;in&#160;the&#160;configuration&#160;<br/>
+tool.&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+18&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=19></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-19_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-19_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-19_3.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note</b>&#160;<br/>Not&#160;every&#160;NV&#160;module supports&#160;the&#160;Delete&#160;operation.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>In case&#160;the&#160;used&#160;NV&#160;driver&#160;can&#160;only&#160;be&#160;used&#160;synchronously,&#160;the&#160;asynchronous&#160;<br/>
+&#160;&#160;interface&#160;is&#160;mapped&#160;to&#160;the synchronous&#160;interface.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>Interface&#160;definitions&#160;</b><br/>
+<b>Single&#160;</b><br/>
+synchronous<br/>
+WrapNv_ReturnType&#160;<b>ApplWrapNv&lt;operation&gt;Single</b>(buf)&#160;<br/>
+&#160;<br/>
+asynchronous<br/>
+WrapNv_ReturnType&#160;<b>ApplWrapNv&lt;operation&gt;AsyncSingle</b>(buf,&#160;<br/>
+&#160;<br/>
+op)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+uint8&#160;*&#160;buf<br/>
+Pointer&#160;to the target&#160;buffer (read) or&#160;the source&#160;buffer (write).<br/>
+&#160;<br/>
+&#160;<br/>
+uint8 op<br/>
+Operation&#160;status<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WrapNv_ReturnType<br/>
+WRAPNV_E_OK&#160;if&#160;the memory&#160;access&#160;was&#160;successful,<br/>
+&#160;<br/>
+&#160;<br/>
+WRAPNV_E_NOT_OK&#160;if&#160;a&#160;failure occurred.&#160;<br/>WRAPNV_E_PENDING&#160;if&#160;operation is&#160;in progress&#160;(only&#160;in&#160;asynchronous&#160;<br/>mode)&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Reads&#160;or&#160;writes&#160;a&#160;single&#160;data&#160;structure from&#160;the configured&#160;memory&#160;device and&#160;address.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>There is&#160;no&#160;range check&#160;of&#160;the&#160;target&#160;buffer. Please&#160;make sure it is&#160;big enough,&#160;otherwise the buffer will&#160;<br/>
+overflow.&#160;<br/>
+Call&#160;context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Same call&#160;context as&#160;the&#160;used&#160;memory&#160;driver.&#160;<br/>
+Table&#160;4-10&#160;&#160;<br/>
+Single&#160;<br/>
+&#160;<br/>
+<b>List&#160;</b><br/>
+synchronous<br/>
+WrapNv_ReturnType&#160;<b>ApplWrapNv&lt;operation&gt;List</b>(idx, buf)&#160;<br/>
+&#160;<br/>
+asynchronous<br/>
+WrapNv_ReturnType&#160;<b>ApplWrapNv&lt;operation&gt;AsyncList</b>(idx,&#160;<br/>
+&#160;<br/>
+buf, op)&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+19&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=20></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-20_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Parameter&#160;</b><br/>
+uint8 idx<br/>
+Index&#160;of&#160;the desired&#160;element&#160;within the list.<br/>
+&#160;<br/>
+&#160;<br/>
+uint8*&#160;buf<br/>
+Pointer&#160;to the target&#160;buffer (read) or&#160;the&#160;source&#160;buffer (write).<br/>
+&#160;<br/>
+&#160;<br/>
+uint8 op<br/>
+Operation&#160;status<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WrapNv_ReturnType<br/>
+WRAPNV_E_OK&#160;if&#160;the memory&#160;access&#160;was&#160;successful,<br/>
+&#160;<br/>
+&#160;<br/>
+WRAPNV_E_NOT_OK&#160;if&#160;a&#160;failure occurred.&#160;<br/>WRAPNV_E_PENDING&#160;if&#160;operation is&#160;in progress&#160;(only&#160;in&#160;asynchronous&#160;<br/>mode)&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Reads&#160;or&#160;writes&#160;a&#160;list element from&#160;a&#160;list data structure.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;list index&#160;is&#160;not&#160;checked. Please&#160;make sure only&#160;valid list indexes&#160;are supplied.&#160;<br/><b>&gt;&#160;&#160;</b>There is&#160;no&#160;range check&#160;of&#160;the&#160;target&#160;buffer. Please&#160;make sure&#160;it is&#160;big enough,&#160;otherwise the buffer will&#160;<br/>
+overflow.&#160;<br/>
+Call&#160;context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Same call&#160;context as&#160;the&#160;used&#160;memory&#160;driver.&#160;<br/>
+Table&#160;4-11&#160;&#160;<br/>
+List&#160;<br/>
+&#160;<br/>
+<b>Structure&#160;</b><br/>
+synchronous<br/>
+WrapNv_ReturnType&#160;<br/>
+&#160;<br/>
+<b>ApplWrapNv&lt;operation&gt;StructureMember</b>(idx, buf)&#160;<br/>
+asynchronous<br/>
+WrapNv_ReturnType&#160;<br/>
+&#160;<br/>
+<b>ApplWrapNv&lt;operation&gt;AsyncStructureMember</b>(idx, buf, op)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+vuint8&#160;idx<br/>
+List index.&#160;This&#160;parameter&#160;is&#160;ignored for the&#160;actual&#160;memory&#160;driver call.<br/>
+&#160;<br/>
+&#160;<br/>
+vuint8*&#160;buf<br/>
+Pointer&#160;to the target&#160;buffer&#160;(read) or&#160;the source&#160;buffer (write).<br/>
+&#160;<br/>
+&#160;<br/>
+uint8 op<br/>
+Operation&#160;status<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WrapNv_ReturnType<br/>
+WRAPNV_E_OK&#160;if&#160;the memory&#160;access&#160;was&#160;successful,<br/>
+&#160;<br/>
+&#160;<br/>
+WRAPNV_E_NOT_OK&#160;if&#160;a&#160;failure occurred.&#160;<br/>WRAPNV_E_PENDING&#160;if&#160;operation is&#160;in progress&#160;(only&#160;in&#160;asynchronous&#160;<br/>mode)&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Reads&#160;or&#160;writes&#160;a&#160;single&#160;member&#160;from&#160;a&#160;structure data element.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+20&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=21></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-21_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;list index&#160;is&#160;ignored.&#160;<br/><b>&gt;&#160;&#160;</b>There is&#160;no&#160;range check&#160;of&#160;the&#160;target&#160;buffer. Please&#160;make sure it is&#160;big enough,&#160;otherwise the buffer will&#160;<br/>
+overflow.&#160;<br/>
+Call&#160;context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Same call&#160;context as&#160;the&#160;used&#160;memory&#160;driver.&#160;<br/>
+Table&#160;4-12&#160;&#160;<br/>
+Structure&#160;<br/>
+&#160;<br/>
+<b>Table&#160;</b><br/>
+synchronous<br/>
+WrapNv_ReturnType&#160;<b>ApplWrapNv&lt;operation&gt;TableMember</b>(idx,&#160;<br/>
+&#160;<br/>
+buf)&#160;<br/>
+asynchronous<br/>
+WrapNv_ReturnType&#160;<br/>
+&#160;<br/>
+<b>ApplWrapNv&lt;operation&gt;AsyncTableMember</b>(idx, buf, op)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+vuint8&#160;idx<br/>
+Index&#160;of&#160;the desired&#160;table row.<br/>
+&#160;<br/>
+&#160;<br/>
+vuint8*&#160;buf<br/>
+Pointer&#160;to the target&#160;buffer (read) or&#160;the source&#160;buffer (write).<br/>
+&#160;<br/>
+&#160;<br/>
+uint8 op<br/>
+Operation&#160;status<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+WrapNv_ReturnType<br/>
+WRAPNV_E_OK&#160;if&#160;the memory&#160;access&#160;was&#160;successful,<br/>
+&#160;<br/>
+&#160;<br/>
+WRAPNV_E_NOT_OK&#160;if&#160;a&#160;failure occurred.&#160;<br/>WRAPNV_E_PENDING&#160;if&#160;operation is&#160;in progress&#160;(only&#160;in&#160;asynchronous&#160;<br/>mode)&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Reads&#160;or&#160;writes&#160;a&#160;structure&#160;data&#160;element from&#160;the desired&#160;table row.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>The&#160;list index&#160;is&#160;not&#160;checked. Please&#160;make sure only&#160;valid list indexes&#160;are supplied.&#160;<br/><b>&gt;&#160;&#160;</b>There is&#160;no&#160;range check&#160;of&#160;the&#160;target&#160;buffer. Please&#160;make sure it is&#160;big enough,&#160;otherwise the buffer will&#160;<br/>
+overflow.&#160;<br/>
+Call&#160;context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Same&#160;call&#160;context as&#160;the&#160;used&#160;memory&#160;driver.&#160;<br/>
+Table&#160;4-13&#160;&#160;<br/>
+Table&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+21&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=22></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-22_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-22_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-22_3.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>5&#160;&#160;Configuration&#160;</b><br/>
+<b>5.1&#160;</b><br/>
+<b>GENy&#160;configuration&#160;</b><br/>
+To&#160;use&#160;the&#160;module&#160;in&#160;GENy,&#160;it has&#160;to&#160;be&#160;activated&#160;in&#160;GENy’s Component&#160;Selection:&#160;<br/>
+&#160;<br/>
+Figure&#160;5-1&#160;<br/>
+Activation&#160;of&#160;NV-Wrapper&#160;in&#160;GENy&#160;<br/>
+The&#160;&#160;NV-Wrapper&#160;&#160;module&#160;&#160;can&#160;&#160;be&#160;&#160;divided&#160;&#160;into&#160;&#160;the&#160;&#160;tree&#160;&#160;view&#160;&#160;which&#160;&#160;represents&#160;&#160;the&#160;&#160;data&#160;<br/>structure&#160;on&#160;the&#160;left&#160;side&#160;of&#160;the&#160;GENy&#160;window&#160;and&#160;the&#160;detail&#160;view&#160;on&#160;the&#160;right&#160;side:&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;5-2&#160;<br/>
+NV-Wrapper&#160;GENy&#160;module&#160;<br/>
+&#160;<br/>
+<b>5.1.1&#160;</b><br/>
+<b>Basic&#160;settings&#160;</b><br/>
+The&#160;&#160;basic&#160;&#160;settings&#160;&#160;(see&#160;&#160;the&#160;&#160;detail&#160;&#160;view&#160;&#160;on&#160;&#160;the&#160;&#160;right&#160;&#160;side&#160;&#160;of<a href="TechnicalReference_NvWrappers.html#22">&#160;&#160;Figure&#160;&#160;5-2)&#160;&#160;</a>configure&#160;&#160;some&#160;<br/>global options used&#160;for&#160;all&#160;data&#160;structures.&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+22&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=23></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-23_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-23_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>Configuration&#160;Option&#160;</b><br/>
+<b>Description&#160;</b><br/>
+User&#160;Config File&#160;<br/>
+Text&#160;file with additional&#160;includes into&#160;WrapNv_Cfg.h&#160;<br/>
+EEPROM&#160;Base&#160;Address&#160;<br/>
+Address offset&#160;added&#160;to&#160;EEPROM&#160;driver&#160;calls&#160;<br/>
+First&#160;Handle&#160;<br/>
+Start&#160;values&#160;of&#160;the&#160;generated&#160;IDs&#160;<br/>
+Restore&#160;default&#160;<br/>
+Restores&#160;defaults&#160;from&#160;preconfiguration&#160;<br/>
+Delete&#160;everything&#160;<br/>
+Delete&#160;all&#160;configured&#160;structures&#160;<br/>
+Import&#160;<br/>
+Read configuration&#160;from&#160;.xml&#160;file&#160;<br/>
+Export&#160;<br/>
+Write&#160;configuration&#160;to&#160;.xml&#160;file&#160;<br/>
+Import/Export&#160;file&#160;path&#160;<br/>
+Path&#160;for&#160;import&#160;and&#160;export.&#160;If&#160;a&#160;relative path is&#160;entered,&#160;the&#160;<br/>GENy&#160;generation directory&#160;is&#160;used as&#160;base&#160;directory.&#160;<br/>
+Table&#160;5-1&#160;&#160;<br/>
+GENy&#160;configuration&#160;options&#160;for&#160;Nv-Wrapper&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>It&#160;is&#160;recommended&#160;to&#160;use an&#160;absolute path&#160;for&#160;import&#160;and export&#160;to&#160;avoid confusion&#160;<br/>
+&#160;&#160;regarding&#160;the&#160;used&#160;directory.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>5.1.2&#160;</b><br/>
+<b>Tree&#160;view&#160;usage&#160;</b><br/>
+The&#160;data&#160;structure&#160;used&#160;by&#160;NV-Wrapper&#160;is&#160;configured&#160;with&#160;the&#160;tree&#160;view&#160;on&#160;the&#160;left&#160;part&#160;of&#160;<br/>the&#160;NV-Wrapper&#160;GENy&#160;module.&#160;To&#160;modify&#160;the&#160;data&#160;structure,&#160;the&#160;context&#160;menu&#160;accessed&#160;<br/>with&#160;the&#160;right&#160;mouse&#160;button&#160;is used.&#160;&#160;<br/>There&#160;&#160;are&#160;&#160;two&#160;&#160;types&#160;&#160;of&#160;&#160;context&#160;&#160;menus,&#160;&#160;the&#160;&#160;context&#160;&#160;menus&#160;&#160;of&#160;&#160;the&#160;&#160;Data&#160;&#160;nodes&#160;&#160;and&#160;&#160;the&#160;<br/>context&#160;menus of&#160;the&#160;actual blocks and&#160;elements:&#160;<br/>
+&#160;<br/>
+<b>5.1.2.1&#160;</b><br/>
+<b>Data&#160;node&#160;context menu&#160;</b><br/>
+The&#160;data&#160;node&#160;context&#160;menu&#160;includes&#160;an&#160;“Add”&#160;context&#160;menu.&#160;This&#160;context&#160;menu&#160;adds&#160;a&#160;<br/>new&#160;node&#160;as child&#160;element&#160;to&#160;the&#160;selected&#160;node.&#160;<br/>
+&#160;<br/>
+<b>5.1.2.2&#160;</b><br/>
+<b>Data&#160;block/element&#160;context menu&#160;</b><br/>
+The&#160;data&#160;block&#160;or data&#160;element&#160;context&#160;menus provide&#160;three&#160;possibilities:&#160;<br/>
+1.&#160;&#160;Delete:&#160;Removes the&#160;selected&#160;element.&#160;<br/>
+2.&#160;&#160;Move&#160;up:&#160;Changes the&#160;selected&#160;element’s position&#160;with&#160;the&#160;element&#160;placed&#160;in&#160;front&#160;of&#160;<br/>
+the&#160;selected&#160;element.&#160;<br/>
+3.&#160;&#160;Move&#160;down:&#160;Moves the&#160;selected&#160;element&#160;to&#160;a&#160;position&#160;behind&#160;the&#160;following&#160;element.&#160;<br/>
+&#160;<br/>
+<b>5.1.3&#160;</b><br/>
+<b>Data&#160;configuration&#160;</b><br/>
+The&#160;&#160;data&#160;&#160;identifiers&#160;&#160;and&#160;&#160;structure&#160;&#160;is&#160;&#160;configured&#160;&#160;starting&#160;&#160;with&#160;&#160;the&#160;&#160;“Memory&#160;&#160;Layout\Data&#160;<br/>Blocks”&#160;&#160;node&#160;&#160;of&#160;&#160;the&#160;&#160;GENy&#160;&#160;component.&#160;&#160;A&#160;&#160;data&#160;&#160;block&#160;&#160;is&#160;&#160;the&#160;&#160;base&#160;&#160;node&#160;&#160;of&#160;&#160;every&#160;&#160;data&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=24></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-24_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-24_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+structure and&#160;is set&#160;to&#160;one&#160;of&#160;the&#160;four&#160;possible&#160;types depending&#160;on&#160;the&#160;count&#160;of&#160;data&#160;blocks&#160;<br/>respective&#160;child&#160;elements:&#160;<br/>At&#160;least&#160;one&#160;data&#160;element&#160;is&#160;assigned&#160;to&#160;every&#160;data&#160;block.&#160;If&#160;one&#160;data&#160;element&#160;is&#160;assigned,&#160;<br/>a&#160;single&#160;or&#160;list&#160;data&#160;structure&#160;is&#160;generated,&#160;if&#160;more&#160;than&#160;one&#160;data&#160;element&#160;is&#160;assigned,&#160;a&#160;<br/>struct&#160;or&#160;table&#160;element&#160;is generated.&#160;&#160;<br/>The&#160;&#160;options&#160;&#160;of&#160;&#160;present&#160;&#160;objects&#160;&#160;are&#160;&#160;configured&#160;&#160;on&#160;&#160;the&#160;&#160;right&#160;&#160;side&#160;&#160;of&#160;&#160;the&#160;&#160;GENy&#160;&#160;window.&#160;<br/>Objects can&#160;be&#160;added,&#160;moved&#160;and&#160;removed&#160;by&#160;the&#160;context&#160;menu&#160;of&#160;the&#160;tree&#160;structure.&#160;<br/>
+&#160;<br/>
+<b>5.1.3.1&#160;</b><br/>
+<b>Data&#160;Blocks&#160;</b><br/>
+&#160;<br/>
+Figure&#160;5-3&#160;<br/>
+Data&#160;Block&#160;configuration&#160;<br/>
+Data&#160;&#160;blocks&#160;&#160;are&#160;&#160;used&#160;&#160;to&#160;&#160;group&#160;&#160;data&#160;&#160;elements.&#160;&#160;There&#160;&#160;are&#160;&#160;some&#160;&#160;settings&#160;&#160;valid&#160;&#160;for&#160;&#160;all&#160;<br/>members of&#160;this data&#160;block.&#160;Each&#160;field&#160;is described&#160;below:&#160;<br/>
+&#160;<br/>
+<b>Configuration&#160;Option&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Type&#160;<br/>
+Single,&#160;List,&#160;Struct&#160;or&#160;Table depending&#160;on&#160;the&#160;Count&#160;setting and&#160;<br/>the&#160;number&#160;of&#160;Data&#160;Elements&#160;<br/>
+Generate&#160;<br/>
+If&#160;checked,&#160;the&#160;data block&#160;will&#160;be&#160;included&#160;into&#160;the&#160;generated&#160;<br/>data structure.&#160;This&#160;includes reserved&#160;memory&#160;respective IDs&#160;<br/>and the&#160;access&#160;macros.&#160;Otherwise,&#160;the&#160;data&#160;blocks&#160;are&#160;not&#160;<br/>visible in&#160;the&#160;generated&#160;code&#160;<br/>
+Name&#160;<br/>
+Name&#160;of&#160;data block&#160;<br/>
+Count&#160;<br/>
+Specifies&#160;the&#160;number&#160;of&#160;instances&#160;of&#160;this&#160;data&#160;block.&#160;If&#160;Count&#160;is&#160;<br/>set&#160;to one,&#160;the&#160;Data&#160;Block&#160;will&#160;be&#160;type&#160;“Single”&#160;or&#160;“Struct”,&#160;<br/>otherwise it&#160;will&#160;be&#160;“List”&#160;or&#160;“Table”&#160;<br/>
+Description&#160;<br/>
+Description&#160;of&#160;the&#160;data block&#160;<br/>
+Table&#160;5-2&#160;&#160;<br/>
+Data&#160;Block&#160;configuration&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+24&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=25></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-25_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-25_2.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+&#160;<br/>
+<b>5.1.3.2&#160;</b><br/>
+<b>Data&#160;Element&#160;Settings&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;5-4&#160;<br/>
+Data&#160;Element&#160;configuration&#160;<br/>
+Data&#160;Elements&#160;contain&#160;&#160;the&#160;settings&#160;used&#160;by&#160;one&#160;member&#160;of&#160;&#160;a&#160;Data&#160;Block.&#160;The&#160;following&#160;<br/>settings can&#160;be&#160;configured:&#160;<br/>
+&#160;<br/>
+<b>Configuration&#160;Option&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Generate&#160;<br/>
+Check&#160;if&#160;the&#160;Data Element&#160;should be&#160;generated&#160;<br/>
+Name&#160;<br/>
+Name&#160;of&#160;data block&#160;<br/>
+Length&#160;<br/>
+Length of&#160;data block&#160;in bytes&#160;<br/>
+Default&#160;<br/>
+Not&#160;implemented&#160;yet&#160;<br/>
+Description&#160;<br/>
+Description&#160;of&#160;the&#160;data block&#160;<br/>
+Table&#160;5-3&#160;&#160;<br/>
+Data&#160;Block&#160;configuration&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+25&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=26></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-26_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>6&#160;&#160;Terminology&#160;</b><br/>
+<b>6.1&#160;</b><br/>
+<b>Abbreviations&#160;</b><br/>
+<b>Abbreviation&#160;</b><br/>
+<b>Description&#160;</b><br/>
+API&#160;<br/>
+Application Programming Interface&#160;<br/>
+DrvEep&#160;<br/>
+Eeprom&#160;Driver&#160;<br/>
+EepM&#160;<br/>
+Eeprom&#160;Manager&#160;<br/>
+FBL&#160;<br/>
+Flash&#160;Bootloader&#160;<br/>
+Fee&#160;<br/>
+Flash&#160;EEPROM&#160;Emulation Module&#160;<br/>
+FLIO&#160;<br/>
+Flash&#160;IO&#160;<br/>
+NV&#160;<br/>
+Non-Volatile&#160;<br/>
+NvM&#160;<br/>
+NVRAM&#160;Manager&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+26&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name=27></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_NvWrapper-27_1.png"/><br/>
+Technical&#160;Reference&#160;NV-Wrapper&#160;<br/>
+<b>7&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more&#160;information&#160;on&#160;<br/>
+&#160;<br/>
+<b>&gt;&#160;&#160;</b>News&#160;<br/>
+<b>&gt;&#160;&#160;</b>Products&#160;<br/>
+<b>&gt;&#160;&#160;</b>Demo&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Support&#160;<br/>
+<b>&gt;&#160;&#160;</b>Training&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Addresses&#160;<br/>
+&#160;<br/>
+<a href="http://www.vector.com/"><b>www.vector.com&#160;</b></a><br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.1&#160;<br/>
+27&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;4.11.3&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#6">1 Introduction</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#7">2 Functional Description</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#7">2.1 Architecture</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.2 Data structures</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.2.1 Single</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.2.2 List</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.2.3 Structure</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.2.4 Table</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#8">2.3 NV-Wrapper in Application</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#10">3 Integration</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#10">3.1 Scope of delivery</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#10">3.1.1 Core files</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#10">3.1.2 Application files</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#11">3.1.3 Generated files</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#11">3.2 Include structure</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#11">3.2.1 Initialization</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#12">3.2.2 Memory accesses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#13">4 API Description</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#13">4.1 Function API</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#13">4.1.1 Function Description</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#13">4.1.1.1 WrapNv_Init</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#13">4.1.1.2 Synchronous API</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#13">4.1.1.2.1 WrapNv_ReadSync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#14">4.1.1.2.2 WrapNv_ReadPartialSync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#14">4.1.1.2.3 WrapNv_WriteSync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#15">4.1.1.2.4 WrapNv_DeleteSync</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#15">4.1.1.3 Asynchronous API</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#15">4.1.1.3.1 WrapNv_ReadAsync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#16">4.1.1.3.2 WrapNv_ReadPartialAsync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#17">4.1.1.3.3 WrapNv_WriteAsync</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#17">4.1.1.3.4 WrapNv_DeleteAsync</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#18">4.2 Naming conventions</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#19">4.3 Interface definitions</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#22">5 Configuration</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#22">5.1 GENy configuration</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#22">5.1.1 Basic settings</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#23">5.1.2 Tree view usage</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#23">5.1.2.1 Data node context menu</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#23">5.1.2.2 Data block/element context menu</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#23">5.1.3 Data configuration</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#24">5.1.3.1 Data Blocks</a></li>
+<li><a href="TechnicalReference_NvWrappers.html#25">5.1.3.2 Data Element Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#26">6 Terminology</a>
+<ul>
+<li><a href="TechnicalReference_NvWrappers.html#26">6.1 Abbreviations</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_NvWrappers.html#27">7 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>

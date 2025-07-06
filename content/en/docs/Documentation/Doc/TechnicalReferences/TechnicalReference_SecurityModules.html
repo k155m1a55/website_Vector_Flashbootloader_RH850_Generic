@@ -1,0 +1,1407 @@
+---
+title: TechnicalReference_SecurityModules
+linkTitle: TechnicalReference_SecurityModules
+weight: 42
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-1_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Security&#160;Module Basic&#160;<br/></b>Technical Reference&#160;<br/>&#160;<br/>
+&#160;&#160;<br/>Version&#160;2.2.0&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Authors&#160;<br/>
+Markus Schneider&#160;<br/>
+Status&#160;<br/>
+Released&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-2_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Document&#160;Information&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Florian Hees&#160;<br/>
+2007-03-12&#160;<br/>
+1.0.0&#160;<br/>
+Initial&#160;creation&#160;<br/>
+Markus Schneider&#160;<br/>
+2013-11-27&#160;<br/>
+2.1.0&#160;<br/>
+Major&#160;rework&#160;<br/>
+André Caspari&#160;<br/>
+2016-08-02&#160;<br/>
+2.2.0&#160;<br/>
+Updated&#160;API&#160;description&#160;<br/>
+<b>Reference&#160;Documents&#160;</b><br/>
+<b>No.&#160;</b><br/>
+<b>Source&#160;</b><br/>
+<b>Title&#160;</b><br/>
+<b>Version&#160;</b><br/>
+[1]&#160;&#160;&#160;HIS&#160;<br/>
+API&#160;IO&#160;Library&#160;<br/>
+2.0.3&#160;<br/>
+[2]&#160;&#160;&#160;HIS&#160;<br/>
+Security&#160;Module Specification&#160;<br/>
+1.1&#160;<br/>
+[3]&#160;&#160;&#160;Vector&#160;<br/>
+HexView&#160;Reference&#160;Manual&#160;<br/>
+1.6&#160;<br/>
+<b>Scope&#160;of&#160;the&#160;Document</b>&#160;<br/>
+This technical reference&#160;describes the&#160;general use&#160;of&#160;the&#160;Security&#160;Module&#160;software.&#160;&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+2&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=3></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-3_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TechnicalReference_SecurityModules.html#6"><b>1</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#6"><b>Introduction...................................................................................................................&#160;6</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#7"><b>2</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#7"><b>Software&#160;Architecture&#160;...................................................................................................&#160;7</b>&#160;<br/>2.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#7">Security&#160;Module Components&#160;............................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8"><b>3</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8"><b>Integration&#160;.....................................................................................................................&#160;8</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8">Scope of&#160;Delivery&#160;...............................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8">3.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8">Include Structure&#160;................................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9"><b>4</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9"><b>Configuration&#160;................................................................................................................&#160;9</b>&#160;<br/>4.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">GENy&#160;.................................................................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">4.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">Security&#160;Module Configuration&#160;...........................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">4.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">Configuration Parameters&#160;..................................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">4.4&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">Running&#160;the&#160;Generator&#160;....................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11"><b>5</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11"><b>Preparation&#160;of&#160;the&#160;Application&#160;...................................................................................&#160;11</b>&#160;<br/>5.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11">HexView...........................................................................................................&#160;11&#160;<br/>5.1.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11">Fill&#160;and align the&#160;hex&#160;file&#160;with HexView&#160;.............................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11">5.1.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#11">Create a&#160;checksum&#160;/&#160;signature&#160;file with HexView&#160;.............................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12"><b>6</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12"><b>Functional&#160;Description&#160;...............................................................................................&#160;12</b>&#160;<br/>6.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12">Verification Module&#160;...........................................................................................&#160;12&#160;<br/>6.1.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12">Description&#160;of&#160;the&#160;verification process&#160;..............................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#13">6.1.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#13">Usage&#160;..............................................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">6.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">CRC&#160;Module&#160;....................................................................................................&#160;16&#160;<br/>6.2.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">Variants&#160;............................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">6.2.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">CRCTotal&#160;.........................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">6.2.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">Speed&#160;/&#160;size optimization&#160;.................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">6.2.4&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#16">Operation&#160;mode&#160;flags&#160;.......................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#17">6.2.5&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#17">Usage&#160;..............................................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#19">6.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#19">Seed /&#160;Key&#160;.......................................................................................................&#160;19&#160;<br/>6.3.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#19">Usage&#160;..............................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#20">6.4&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#20">Accessing&#160;the&#160;Security&#160;Module from&#160;within the&#160;Application&#160;..............................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21"><b>7</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21"><b>API&#160;Description&#160;...........................................................................................................&#160;21</b>&#160;<br/>7.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21">Type&#160;Definitions&#160;...............................................................................................&#160;21&#160;<br/>7.1.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21">General&#160;Types&#160;..................................................................................&#160;21&#160;</a><br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+3&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=4></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-4_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<a href="TechnicalReference_SecurityModules.html#21">7.1.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21">Structures&#160;used&#160;by&#160;Verification&#160;.........................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">7.1.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Structures&#160;used&#160;by&#160;CRC&#160;..................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">7.1.4&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Structures&#160;used&#160;by&#160;Seed /&#160;Key&#160;.........................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">7.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Common&#160;..........................................................................................................&#160;23&#160;<br/>7.2.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">SecM_InitPowerOn&#160;..........................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">7.2.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">SecM_Task&#160;......................................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">7.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">CRC&#160;.................................................................................................................&#160;24&#160;<br/>7.3.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">SecM_ComputeCRC&#160;........................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">7.4&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">Seed /&#160;Key&#160;Common&#160;........................................................................................&#160;25&#160;<br/>7.4.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">SecM_GenerateSeed&#160;.......................................................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">7.4.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">SecM_CompareKey&#160;(HIS&#160;Specification&#160;&lt;&#160;1.0.1)&#160;...............................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">7.4.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">SecM_CompareKey&#160;(HIS&#160;Specification&#160;&gt;=&#160;1.0.1)&#160;.............................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">7.5&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">Seed /&#160;Key&#160;default&#160;API&#160;.....................................................................................&#160;26&#160;<br/>7.5.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">SecM_ComputeKey&#160;.........................................................................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">7.6&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">Seed /&#160;Key&#160;extended&#160;API&#160;.................................................................................&#160;27&#160;<br/>7.6.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">SecM_ComputeKey&#160;.........................................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">7.7&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">Verification&#160;.......................................................................................................&#160;28&#160;<br/>7.7.1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">SecM_InitVerification&#160;........................................................................&#160;28&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">7.7.2&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">SecM_DeinitVerification&#160;...................................................................&#160;28&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#29">7.7.3&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#29">SecM_Verification&#160;............................................................................&#160;29&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#30"><b>8</b>&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#30"><b>Contact&#160;........................................................................................................................&#160;30</b>&#160;</a><br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+4&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=5></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-5_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="TechnicalReference_SecurityModules.html#9">Figure&#160;4-1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#9">Security&#160;Component&#160;configuration&#160;..............................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12">Figure&#160;6-1&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#12">Logical&#160;Blocks&#160;...........................................................................................&#160;12&#160;</a><br/>
+<b>&#160;</b><br/>
+<b>Tables&#160;<br/></b><a href="TechnicalReference_SecurityModules.html#7">Table&#160;2-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#7">Security&#160;Module Components&#160;.....................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8">Table&#160;3-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#8">Scope of&#160;Delivery&#160;.......................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">Table&#160;4-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">GENy&#160;configuration&#160;parameter&#160;.................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">Table&#160;4-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#10">Generated&#160;files&#160;.........................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#20">Table&#160;6-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#20">Function access&#160;macros&#160;for&#160;the&#160;FBL&#160;header&#160;structure&#160;..............................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21">Table&#160;7-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#21">Type&#160;definitions&#160;.........................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#22">Table&#160;7-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#22">SecM_VerifyParamType&#160;...........................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Table&#160;7-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">SecM_SignatureParamType&#160;.....................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Table&#160;7-4&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">SecM_CRCParamType&#160;............................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Table&#160;7-5&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">SecM_KeyType&#160;........................................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">Table 7-6&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#23">SecM_InitPowerOn&#160;...................................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">Table 7-7&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">SecM_Task&#160;...............................................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">Table 7-8&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#24">SecM_ComputeCRC&#160;................................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">Table&#160;7-9&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#25">SecM_GenerateSeed&#160;...............................................................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">Table 7-10&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">SecM_CompareKey&#160;..................................................................................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">Table 7-11&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#26">SecM_CompareKey&#160;..................................................................................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">Table 7-12&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">SecM_ComputeKey&#160;..................................................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">Table 7-13&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#27">SecM_ComputeKey&#160;..................................................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">Table 7-14&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">SecM_InitVerification&#160;................................................................................&#160;28&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">Table 7-15&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#28">SecM_DeinitVerification&#160;............................................................................&#160;28&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#29">Table 7-16&#160;&#160;</a><br/>
+<a href="TechnicalReference_SecurityModules.html#29">SecM_Verification&#160;.....................................................................................&#160;29&#160;</a><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+5&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=6></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-6_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>1&#160;&#160;Introduction&#160;</b><br/>
+The&#160;Bootloader&#160;comes&#160;along&#160;with&#160;a&#160;basic&#160;security&#160;module&#160;that&#160;supports&#160;the&#160;security&#160;class&#160;<br/>DDD&#160;&#160;(CRC-32).&#160;&#160;This&#160;&#160;document&#160;&#160;describes&#160;&#160;the&#160;&#160;functions&#160;&#160;and&#160;&#160;the&#160;&#160;configuration&#160;&#160;of&#160;&#160;this&#160;<br/>module.&#160;The&#160;security&#160;classes are standardized&#160;by&#160;the&#160;HIS&#160;(see<a href="TechnicalReference_SecurityModules.html#2">&#160;[2]).</a>&#160;<br/>
+&#160;<br/>
+The&#160;security&#160;module&#160;can&#160;be&#160;found&#160;in&#160;the&#160;folder&#160;\BSW\SecMod.&#160;<br/>
+&#160;<br/>
+This&#160;document&#160;covers&#160;only&#160;the&#160;basic&#160;security&#160;module.&#160;The&#160;Bootloader&#160;can&#160;also&#160;be&#160;ordered&#160;<br/>with&#160;&#160;security&#160;&#160;modules&#160;&#160;for&#160;&#160;the&#160;&#160;security&#160;&#160;classes&#160;&#160;C,&#160;&#160;CCC&#160;&#160;and&#160;&#160;AAA,&#160;&#160;depending&#160;&#160;on&#160;&#160;the&#160;<br/>contracts&#160;&#160;and&#160;&#160;level&#160;&#160;of&#160;&#160;purchases.&#160;&#160;These&#160;&#160;security&#160;&#160;modules&#160;&#160;are&#160;&#160;described&#160;&#160;in&#160;&#160;another&#160;<br/>document.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+6&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=7></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-7_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>2&#160;&#160;Software&#160;Architecture&#160;</b><br/>
+The&#160;Security&#160;Module&#160;delivery&#160;contains&#160;the&#160;following&#160;components:&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;security&#160;module&#160;itself (with&#160;its&#160;sub-packages)&#160;&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>Configuration&#160;tool&#160;GENy&#160;&#160;<br/>
+In&#160;addition,&#160;the&#160;following&#160;tool is delivered:&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;&#160;software&#160;&#160;tool&#160;&#160;HexView.&#160;&#160;It&#160;&#160;can&#160;&#160;be&#160;&#160;used&#160;&#160;to&#160;&#160;change&#160;&#160;and&#160;&#160;show&#160;&#160;the&#160;&#160;contents&#160;&#160;of&#160;&#160;a&#160;<br/>
+binary&#160;file.&#160;Also&#160;it&#160;can&#160;be&#160;used&#160;for&#160;signature&#160;and&#160;checksum&#160;calculation.&#160;Besides,&#160;the&#160;<br/>creation&#160;of&#160;encrypted&#160;download&#160;files is possible&#160;with&#160;HexView.&#160;<br/>
+<b>2.1&#160;</b><br/>
+<b>Security&#160;Module&#160;Components&#160;</b><br/>
+The&#160;&#160;functionalities&#160;&#160;of&#160;&#160;the&#160;&#160;Security&#160;&#160;Module&#160;&#160;are&#160;&#160;separated&#160;&#160;into&#160;&#160;several&#160;&#160;sub-packages.&#160;&#160;A&#160;<br/>functional description&#160;for the&#160;individual&#160;modules&#160;can&#160;be&#160;found&#160;in&#160;chapter<a href="TechnicalReference_SecurityModules.html#12">&#160;6.</a>&#160;<br/>Depending&#160;on&#160;your order the&#160;following&#160;modules can&#160;be&#160;provided&#160;with&#160;the&#160;Security&#160;Module:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Description&#160;</b><br/>
+CRC&#160;<br/>
+Implementation&#160;&#160;of&#160;&#160;the&#160;&#160;HIS&#160;&#160;security&#160;&#160;module&#160;&#160;-&#160;&#160;CRC&#160;&#160;calculation.&#160;&#160;Offers&#160;<br/>CRC&#160;calculation according&#160;to&#160;CRC-16&#160;CCITT&#160;or&#160;CRC-32&#160;(IEEE&#160;802.3).&#160;<br/>
+SeedKey&#160;<br/>
+Implementation&#160;&#160;of&#160;&#160;the&#160;&#160;HIS&#160;&#160;security&#160;&#160;module&#160;&#160;-&#160;&#160;Seed/key&#160;&#160;authentication.&#160;<br/>Offers&#160;challenge/response authentication interface.&#160;<br/>
+Verification&#160;<br/>
+Implementation&#160;of&#160;the&#160;verification&#160;component&#160;of&#160;the&#160;HIS&#160;security&#160;module&#160;<br/>-&#160;Signature verification.&#160;Offers&#160;signature/checksum&#160;verification&#160;interface.&#160;<br/>
+Sec&#160;<br/>
+Implementation&#160;of&#160;the&#160;HIS&#160;security&#160;module.&#160;&#160;<br/>
+Table&#160;2-1&#160;&#160;&#160;Security&#160;Module&#160;Components&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+7&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=8></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-8_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>3&#160;&#160;Integration&#160;</b><br/>
+This&#160;chapter&#160;gives&#160;necessary&#160;information&#160;for&#160;the&#160;integration&#160;of&#160;the&#160;Vector&#160;Security&#160;Module&#160;<br/>into&#160;an&#160;application&#160;environment&#160;of&#160;an&#160;ECU.&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Scope&#160;of&#160;Delivery&#160;</b><br/>
+The&#160;delivery&#160;of&#160;the&#160;Security&#160;Module&#160;contains&#160;the&#160;following&#160;files:&#160;<br/>
+<b>Module&#160;</b><br/>
+<b>Filename&#160;</b><br/>
+<b>Delivery&#160;Type&#160;&#160;Description&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Source&#160;&#160;Lib&#160;</b><br/>
+<b>&#160;</b><br/>
+CRC&#160;<br/>
+Sec_Crc.c&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Source&#160;file of&#160;the&#160;CRC&#160;Module.&#160;<br/>
+Sec_Crc.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Header&#160;file&#160;of&#160;the&#160;CRC&#160;Module.&#160;<br/>
+SeedKey&#160;<br/>
+Sec_SeedKey.c&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Source&#160;file of&#160;the&#160;Seed/Key&#160;Module.&#160;<br/>
+Sec_SeedKey.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Header&#160;file&#160;of&#160;the&#160;Seed/Key&#160;Module.&#160;<br/>
+Verification&#160;&#160;Sec_Verification.c&#160;&#160;&#160;<br/>
+&#160;<br/>
+Source&#160;file of&#160;the&#160;Verification&#160;Module.&#160;<br/>
+Sec_Verification.h&#160;&#160;&#160;<br/>
+&#160;<br/>
+Header&#160;file of&#160;the&#160;Verification Module.&#160;<br/>
+Common&#160;<br/>
+Sec_Inc.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Header&#160;file used&#160;internally.&#160;<br/>
+Sec_Types.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Defines&#160;&#160;types,&#160;&#160;constantans&#160;&#160;and&#160;&#160;configuration&#160;<br/>switches.&#160;<br/>
+Sec.c&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Source&#160;file of&#160;the&#160;Security&#160;Module.&#160;<br/>
+Sec.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Header&#160;file of&#160;the&#160;Security&#160;Module.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Table&#160;3-1&#160;&#160;&#160;Scope&#160;of&#160;Delivery&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Include&#160;Structure&#160;</b><br/>
+For usage&#160;of&#160;the&#160;Security&#160;Module&#160;within&#160;an&#160;application&#160;it&#160;is necessary&#160;to&#160;include&#160;the&#160;‘Sec.h’&#160;<br/>header&#160;file.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+8&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=9></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-9_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-9_2.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>4&#160;&#160;Configuration&#160;</b><br/>
+<b>4.1&#160;</b><br/>
+<b>GENy&#160;</b><br/>
+We&#160;&#160;recommend&#160;&#160;configuring&#160;&#160;the&#160;&#160;Security&#160;&#160;Module&#160;&#160;with&#160;&#160;the&#160;&#160;configuration&#160;&#160;tool&#160;&#160;GENy.&#160;<br/>Depending&#160;on&#160;your order the&#160;tool can&#160;be&#160;downloaded&#160;from&#160;our FTP&#160;and&#160;installed.&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Security&#160;Module&#160;Configuration&#160;</b><br/>
+The&#160;&#160;features&#160;&#160;of&#160;&#160;the&#160;&#160;security&#160;&#160;component&#160;&#160;are&#160;&#160;configured&#160;&#160;in&#160;&#160;the&#160;&#160;‘SysService_SecModHis’&#160;<br/>component.&#160;The&#160;available&#160;features&#160;or&#160;pre-set&#160;features&#160;are&#160;shown&#160;on&#160;the&#160;right&#160;side&#160;of&#160;the&#160;<br/>window.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;4-1&#160;&#160;Security&#160;Component&#160;configuration&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>Configuration Parameters&#160;</b><br/>
+Due&#160;&#160;to&#160;&#160;the&#160;&#160;OEM&#160;&#160;pre-configuration&#160;&#160;the&#160;&#160;following&#160;&#160;parameter&#160;&#160;may&#160;&#160;appear&#160;&#160;in&#160;&#160;the&#160;&#160;GENy&#160;<br/>configuration.&#160;Note&#160;that&#160;the&#160;default&#160;values may&#160;differ depending&#160;on&#160;the&#160;OEM.&#160;<br/>
+<b>Attribute Name&#160;</b><br/>
+<b>Default&#160;</b><br/>
+<b>Description&#160;</b><br/>
+<b>Values&#160;</b><br/>
+Constant&#160;for&#160;key&#160;<br/>
+0x0&#160;<br/>
+This&#160;&#160;is&#160;&#160;the&#160;&#160;key&#160;&#160;constant&#160;&#160;to&#160;&#160;adjust&#160;&#160;the&#160;<br/>authentication&#160;&#160;algorithm&#160;&#160;for&#160;&#160;a&#160;&#160;specific&#160;&#160;type&#160;&#160;of&#160;<br/>ECU.&#160;<br/>
+Timeout&#160;for&#160;key&#160;<br/>
+100 ms&#160;<br/>
+This&#160;parameter&#160;is&#160;currently&#160;not&#160;used and&#160;is&#160;only&#160;<br/>provided&#160;&#160;for&#160;&#160;compatibility&#160;&#160;reasons&#160;&#160;to&#160;&#160;the&#160;&#160;HIS&#160;<br/>specification.&#160;<br/>The&#160;&#160;timeout&#160;&#160;handling&#160;&#160;of&#160;&#160;the&#160;&#160;authorization&#160;&#160;is&#160;<br/>managed&#160;within&#160;the&#160;diagnostic&#160;layer,&#160;not&#160;in&#160;the&#160;<br/>security&#160;&#160;component&#160;&#160;according&#160;&#160;to&#160;&#160;OEM&#160;<br/>specification and&#160;cannot&#160;be&#160;adjusted.&#160;<br/>
+Call&#160;cycle&#160;<br/>
+10&#160;<br/>
+Specifies&#160;&#160;the&#160;&#160;call&#160;&#160;cycle&#160;&#160;to&#160;&#160;the&#160;&#160;function&#160;<br/>SecTask().&#160;Commonly&#160;SecTask()&#160;is&#160;not&#160;used.&#160;In&#160;<br/>most&#160;&#160;cases&#160;&#160;this&#160;&#160;parameter&#160;&#160;is&#160;&#160;only&#160;&#160;for&#160;&#160;HIS-<br/>conformance.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+9&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=10></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-10_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Attribute Name&#160;</b><br/>
+<b>Default&#160;</b><br/>
+<b>Description&#160;</b><br/>
+<b>Values&#160;</b><br/>
+CRC&#160;<br/>
+Size&#160;<br/>
+The&#160;&#160;CRC-module&#160;&#160;can&#160;&#160;run&#160;&#160;in&#160;&#160;two&#160;&#160;different&#160;<br/>
+optimized&#160;<br/>
+modes:&#160;SIZE&#160;optimized&#160;and&#160;SPEED&#160;optimized.&#160;<br/>When&#160;&#160;‘SPEED&#160;&#160;optimized’&#160;&#160;is&#160;&#160;selected,&#160;&#160;a&#160;&#160;RAM&#160;<br/>table&#160;&#160;will&#160;&#160;be&#160;&#160;generated.&#160;&#160;If&#160;&#160;the&#160;&#160;checksum&#160;<br/>calculation&#160;&#160;shall&#160;&#160;also&#160;&#160;been&#160;&#160;used&#160;&#160;within&#160;&#160;the&#160;<br/>application,&#160;&#160;we&#160;&#160;strongly&#160;&#160;recommend&#160;&#160;to&#160;&#160;use&#160;<br/>“SIZE&#160;optimized”.&#160;<br/>
+Enable CRC&#160;Total&#160;<br/>
+True&#160;<br/>
+The&#160;&#160;security&#160;&#160;component&#160;&#160;always&#160;&#160;calculates&#160;&#160;a&#160;<br/>CRCtotal&#160;&#160;for&#160;&#160;a&#160;&#160;logical&#160;&#160;block&#160;&#160;when&#160;&#160;enabled.&#160;<br/>Thus,&#160;the&#160;application is&#160;able to verify&#160;the&#160;values&#160;<br/>within the&#160;application.&#160;<br/>
+Table&#160;4-1&#160;&#160;&#160;GENy&#160;configuration&#160;parameter&#160;<br/>
+<b>4.4&#160;</b><br/>
+<b>Running the&#160;Generator&#160;</b><br/>
+When&#160;&#160;you&#160;&#160;have&#160;&#160;finished&#160;&#160;your&#160;&#160;configuration&#160;&#160;selections,&#160;&#160;you&#160;&#160;need&#160;&#160;to&#160;&#160;run&#160;&#160;the&#160;&#160;generator&#160;&#160;to&#160;<br/>produce&#160;the&#160;files&#160;needed&#160;to&#160;compile&#160;the&#160;FBL.&#160;To&#160;generate&#160;the&#160;files,&#160;click&#160;on&#160;the&#160;lightning-<br/>bolt&#160;button&#160;on&#160;the&#160;toolbar,&#160;or&#160;select&#160;“Generate&#160;System”&#160;from&#160;the&#160;Configuration&#160;menu.&#160;The&#160;<br/>following&#160;table&#160;describes the&#160;contents&#160;of&#160;the&#160;generated&#160;files:&#160;<br/>
+&#160;<br/>
+<b>File&#160;Name&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Secm_cfg.h&#160;<br/>
+The&#160;&#160;configuration&#160;&#160;file&#160;&#160;of&#160;&#160;the&#160;&#160;security&#160;&#160;module.&#160;<br/>For&#160;&#160;the&#160;&#160;most&#160;&#160;part&#160;&#160;the&#160;&#160;file&#160;&#160;defines&#160;&#160;switches&#160;&#160;in&#160;<br/>the&#160;&#160;form&#160;&#160;of&#160;&#160;SEC_ENABLE_&lt;feature&gt;&#160;&#160;or&#160;<br/>SEC_DISABLE_&lt;feature&gt;&#160;&#160;according&#160;&#160;to&#160;&#160;the&#160;<br/>settings&#160;in the&#160;dialog.&#160;<br/>
+Secmpar.c,&#160;Secmpar.h&#160;<br/>
+This&#160;&#160;file&#160;&#160;contains&#160;&#160;the&#160;&#160;secret&#160;&#160;key&#160;&#160;if&#160;&#160;security&#160;<br/>class&#160;&#160;C&#160;&#160;or&#160;&#160;the&#160;&#160;public&#160;&#160;key&#160;&#160;(on&#160;&#160;security&#160;&#160;class&#160;<br/>CCC)&#160;has&#160;been&#160;selected.&#160;<br/>The&#160;file&#160;is&#160;generated&#160;from&#160;the&#160;contents&#160;of&#160;the&#160;<br/>key&#160;given&#160;in the&#160;authenticity&#160;key&#160;file definition.&#160;<br/>You&#160;&#160;must&#160;&#160;compile&#160;&#160;and&#160;&#160;link&#160;&#160;these&#160;&#160;files&#160;&#160;with&#160;<br/>your&#160;security&#160;component.&#160;<br/>
+v_cfg.h&#160;<br/>
+Contains macro&#160;definitions to&#160;your&#160;hardware.&#160;<br/>
+v_inc.h&#160;<br/>
+Includes&#160;&#160;the&#160;&#160;generated&#160;&#160;headers,&#160;&#160;so&#160;&#160;that&#160;&#160;they&#160;<br/>may&#160;be&#160;obtained&#160;from&#160;a&#160;single source.&#160;<br/>
+v_par.c,&#160;v_par.h&#160;<br/>
+Contains&#160;&#160;information&#160;&#160;about&#160;&#160;your&#160;&#160;license.&#160;&#160;The&#160;<br/>files&#160;&#160;are&#160;&#160;not&#160;&#160;necessary&#160;&#160;for&#160;&#160;a&#160;&#160;successful&#160;<br/>compile/link&#160;&#160;procedure&#160;&#160;with&#160;&#160;the&#160;&#160;security&#160;<br/>component.&#160;<br/>
+Table&#160;4-2&#160;&#160;&#160;Generated&#160;files&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+10&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=11></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-11_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-11_2.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>5&#160;&#160;Preparation&#160;of&#160;the&#160;Application&#160;</b><br/>
+Before&#160;&#160;a&#160;&#160;download&#160;&#160;can&#160;&#160;be&#160;&#160;made&#160;&#160;preparing&#160;&#160;the&#160;&#160;download&#160;&#160;file&#160;&#160;is&#160;&#160;a&#160;&#160;necessary&#160;&#160;step.&#160;&#160;For&#160;<br/>bootloaders&#160;&#160;with&#160;&#160;logical&#160;&#160;block&#160;&#160;tables,&#160;&#160;the&#160;&#160;address&#160;&#160;space&#160;&#160;used&#160;&#160;by&#160;&#160;one&#160;&#160;single&#160;&#160;file&#160;&#160;has&#160;&#160;to&#160;<br/>match&#160;&#160;information&#160;&#160;of&#160;&#160;a&#160;&#160;single&#160;&#160;block&#160;&#160;stored&#160;&#160;in&#160;&#160;the&#160;&#160;logical&#160;&#160;block&#160;&#160;table.&#160;&#160;It&#160;&#160;is&#160;&#160;possible&#160;&#160;to&#160;<br/>download&#160;multi region&#160;files,&#160;but&#160;the&#160;region&#160;count&#160;is limited&#160;by&#160;the&#160;Bootloader.&#160;<br/>Each&#160;download&#160;file&#160;requires&#160;a&#160;signature&#160;or&#160;resp.&#160;a&#160;checksum&#160;file,&#160;which&#160;is&#160;created&#160;out&#160;of&#160;<br/>the&#160;file&#160;contents.&#160;&#160;<br/>For&#160;&#160;Security&#160;&#160;class&#160;&#160;DDD,&#160;&#160;the&#160;&#160;checksum&#160;&#160;file&#160;&#160;contains&#160;&#160;4&#160;&#160;bytes,&#160;&#160;which&#160;&#160;reflects&#160;&#160;the&#160;&#160;CRC-32&#160;<br/>checksum&#160;from&#160;the&#160;download&#160;file&#160;or 2&#160;bytes in&#160;case&#160;of&#160;CRC-16.&#160;<br/>
+&#160;<br/>
+To&#160;&#160;support&#160;&#160;you&#160;&#160;in&#160;&#160;the&#160;&#160;development&#160;&#160;process,&#160;&#160;the&#160;&#160;Bootloader&#160;&#160;product&#160;&#160;comes&#160;&#160;along&#160;&#160;with&#160;<br/>some&#160;tools to&#160;support&#160;you&#160;to&#160;create&#160;these&#160;checksum&#160;and&#160;signature&#160;files.&#160;<br/>
+<b>5.1&#160;</b><br/>
+<b>HexView&#160;</b><br/>
+HexView&#160;is&#160;a&#160;software&#160;tool&#160;from&#160;Vector&#160;Informatik.&#160;It&#160;can&#160;be&#160;used&#160;to&#160;change&#160;and&#160;show&#160;the&#160;<br/>contents&#160;&#160;of&#160;&#160;a&#160;&#160;binary&#160;&#160;file,&#160;&#160;an&#160;&#160;Intel&#160;&#160;Hex&#160;&#160;file&#160;&#160;or&#160;&#160;a&#160;&#160;Motorola&#160;&#160;S-Record&#160;&#160;file.&#160;&#160;HexView&#160;&#160;has&#160;&#160;an&#160;<br/>extensive&#160;list of&#160;features.&#160;These&#160;features&#160;are&#160;important&#160;for the&#160;application:&#160;<br/>
+<b>&gt;&#160;&#160;</b>HexView&#160;can&#160;be&#160;used&#160;to&#160;fill&#160;the&#160;gaps&#160;of&#160;your&#160;application&#160;hex&#160;file&#160;and&#160;align&#160;the&#160;data&#160;to&#160;<br/>
+the&#160;memory&#160;segment&#160;size.&#160;<br/>
+<b>&gt;&#160;&#160;</b>HexView&#160;can&#160;be&#160;used&#160;to&#160;calculate&#160;the&#160;checksum&#160;or signature&#160;of&#160;your application.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>For&#160;detailed&#160;information&#160;about&#160;HexView&#160;please refer&#160;to&#160;the&#160;‘HexView&#160;Reference&#160;<br/>
+&#160;&#160;Manual’<a href="TechnicalReference_SecurityModules.html#2">&#160;[3].</a>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>5.1.1&#160;</b><br/>
+<b>Fill&#160;and&#160;align the&#160;hex&#160;file&#160;with HexView&#160;</b><br/>
+These&#160;are the&#160;command&#160;line&#160;arguments&#160;to&#160;fill and&#160;align&#160;a&#160;hex&#160;file:&#160;<br/>
+<b>&gt;&#160;&#160;</b>hexview.exe demo.hex&#160;–S&#160;–e:error.txt&#160;–ad:0x08&#160;–fa&#160;–xi&#160;–o&#160;<br/>
+demo_out.hex&#160;<br/>The&#160;hex&#160;file&#160;regions&#160;are&#160;aligned&#160;to&#160;8&#160;bytes addresses,&#160;the&#160;gaps are&#160;filled&#160;and&#160;the&#160;<br/>output&#160;is written&#160;into&#160;the&#160;file&#160;demo_out.hex&#160;<br/>
+<b>5.1.2&#160;</b><br/>
+<b>Create a&#160;checksum&#160;/&#160;signature&#160;file&#160;with HexView&#160;</b><br/>
+These&#160;are the&#160;command&#160;line&#160;arguments&#160;for the&#160;signature&#160;and&#160;checksum&#160;calculation.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Security&#160;Class&#160;DDD:&#160;<br/>
+hexview.exe demo.hex&#160;–S&#160;–e:error.txt&#160;–cs9:demo.crc&#160;<br/>The&#160;4-byte&#160;CRC-32&#160;value&#160;is directly&#160;written&#160;into&#160;the&#160;file&#160;demo.crc&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+11&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=12></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-12_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-12_2.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>6&#160;&#160;Functional&#160;Description&#160;</b><br/>
+This&#160;&#160;chapter&#160;&#160;describes&#160;&#160;the&#160;&#160;security&#160;&#160;modules,&#160;&#160;their&#160;&#160;variants&#160;&#160;and&#160;&#160;provides&#160;&#160;implementation&#160;<br/>samples&#160;for some&#160;common&#160;use-cases.&#160;<br/>
+<b>6.1&#160;</b><br/>
+<b>Verification Module&#160;</b><br/>
+In&#160;the&#160;Bootloader&#160;case&#160;the&#160;security&#160;component&#160;is&#160;used&#160;to&#160;verify&#160;one&#160;or&#160;more&#160;sections&#160;of&#160;<br/>data.&#160;&#160;Depending&#160;on&#160;the&#160;security&#160;class,&#160;it&#160;consists&#160;of&#160;more&#160;or&#160;less&#160;&#160;complex&#160;mathematical&#160;<br/>routines&#160;that&#160;create&#160;a&#160;set&#160;of&#160;data&#160;with&#160;fixed&#160;length&#160;out&#160;of&#160;these&#160;sections&#160;of&#160;data.&#160;This&#160;fixed&#160;<br/>length&#160;data&#160;is called&#160;the&#160;signature&#160;or checksum.&#160;<br/>It&#160;&#160;is&#160;&#160;specific&#160;&#160;to&#160;&#160;the&#160;&#160;mathematical&#160;&#160;routines&#160;&#160;that&#160;&#160;the&#160;&#160;signature&#160;&#160;changes&#160;&#160;drastically&#160;&#160;even&#160;<br/>though&#160;just&#160;a&#160;small&#160;portion&#160;or&#160;even&#160;a&#160;bit&#160;in&#160;the&#160;data&#160;stream&#160;has&#160;changed.&#160;It&#160;is&#160;also&#160;specific,&#160;<br/>that&#160;a&#160;key&#160;is necessary&#160;to&#160;create&#160;this signature.&#160;&#160;<br/>
+<b>6.1.1&#160;</b><br/>
+<b>Description of&#160;the&#160;verification process&#160;</b><br/>
+As&#160;&#160;mentioned&#160;&#160;above,&#160;&#160;the&#160;&#160;signature&#160;&#160;is&#160;&#160;created&#160;&#160;on&#160;&#160;a&#160;&#160;set&#160;&#160;of&#160;&#160;data.&#160;&#160;This&#160;&#160;is&#160;&#160;usually&#160;&#160;a&#160;&#160;data&#160;<br/>stream&#160;that&#160;shall&#160;be&#160;downloaded&#160;and&#160;programmed&#160;into&#160;the&#160;memory&#160;of&#160;an&#160;ECU.&#160;<br/>For&#160;this&#160;purpose,&#160;the&#160;flash&#160;memory&#160;is&#160;partitioned&#160;into&#160;logical&#160;blocks.&#160;Each&#160;logical&#160;block&#160;can&#160;<br/>store a&#160;program&#160;or other code&#160;that&#160;consists of&#160;one&#160;or&#160;more sections.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-1&#160;&#160;Logical&#160;Blocks&#160;<br/>
+The&#160;CRC&#160;is&#160;created&#160;over&#160;the&#160;segments&#160;of&#160;a&#160;logical&#160;block.&#160;Thus,&#160;for&#160;the&#160;module&#160;of&#160;logical&#160;<br/>block&#160;#1,&#160;there&#160;are two&#160;segments&#160;available.&#160;&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+12&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=13></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-13_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>6.1.2&#160;</b><br/>
+<b>Usage&#160;</b><br/>
+The&#160;following&#160;sample&#160;demonstrates&#160;how&#160;to&#160;use&#160;the&#160;verification&#160;module&#160;in&#160;monolithic&#160;use&#160;<br/>for verification&#160;on&#160;two&#160;sections&#160;and&#160;a&#160;logical block.&#160;<br/>/* Function to read the data from memory */&#160;<br/>
+SecM_SizeType ReadMemoryFct(SecM_AddrType address, vuint8 *buffer, SecM_SizeType length)&#160;<br/>
+{&#160;<br/>
+&#160; &#160;memcpy(buffer, (void *)address, length);&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+/*&#160;Function is called frequently during the verification. */&#160;<br/>
+/* At least in a shorter time distance than 1 ms. &#160; &#160; &#160; &#160; */&#160;<br/>
+void WatchdogFct( void )&#160;<br/>
+{&#160;<br/>
+&#160; &#160;return 0u;&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+/* Verification parameters */&#160;<br/>
+SecM_VerifyParamType verifyParam;&#160;<br/>
+&#160;<br/>
+/* Signature to be verified&#160;*/&#160;<br/>
+vuint8 signature[128u];&#160;<br/>
+&#160;<br/>
+/* List of memory segments */&#160;<br/>
+FL_SegmentListType&#160;segmentList;&#160;<br/>
+&#160;<br/>
+/* Setup section information of section #1 */&#160;<br/>
+segmentList.segmentInfo[0].targetAddress &#160; &#160; &#160;= FLASH_SECTION1_MEMORY_ADDRESS;&#160;<br/>
+segmentList.segmentInfo[0].transferredAddress = FLASH_SECTION1_DOWNLOAD_ADDRESS;&#160;<br/>
+segmentList.segmentInfo[0].length &#160; &#160; &#160; &#160; &#160; &#160; = FLASH_SECTION1_LENGTH;&#160;<br/>
+&#160;<br/>
+/* Setup section information of section #2 */&#160;<br/>
+segmentList.segmentInfo[1].targetAddress &#160; &#160; &#160;= FLASH_SECTION2_MEMORY_ADDRESS;&#160;<br/>
+segmentList.segmentInfo[1].transferredAddress = FLASH_SECTION2_DOWNLOAD_ADDRESS;&#160;<br/>
+segmentList.segmentInfo[1].length &#160; &#160; &#160; &#160; &#160; &#160; = FLASH_SECTION2_LENGTH;&#160;<br/>
+&#160;<br/>
+/* Number of memory segments */&#160;<br/>
+segmentList.nrOfSegments &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;= 2u;&#160;<br/>
+&#160;<br/>
+/* Initialize verification structure&#160;*/&#160;<br/>
+/* Start address of full block */&#160;<br/>
+verifyParam.blockStartAddress = FLASHREGION_LBT0_ADDRESS;&#160;<br/>
+/* Length of full block */&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+13&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=14></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-14_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+verifyParam.blockLength &#160; &#160; &#160; = FLASHREGION_LBT0_LENGTH;&#160;<br/>
+/* Pass segment list */&#160;<br/>
+verifyParam.segmentList &#160; &#160; &#160; = &amp;segmentList;&#160;<br/>
+/* Function to read memory at given address */&#160;<br/>
+verifyParam.readMemory &#160; &#160; &#160; &#160;= ReadMemoryFct;&#160;<br/>
+/* Cyclically called function */&#160;<br/>
+verifyParam.wdTriggerFct &#160; &#160; &#160;= WatchdogFct;&#160;<br/>
+/* Pass signature */&#160;<br/>
+verifyParam.verificationData &#160;= (SecM_VerifyDataType)signature;&#160;<br/>
+/* Use internal workspace */&#160;<br/>
+verifyParam.workspace.size &#160; &#160;=&#160;SEC_DEFAULT_WORKSPACE_SIZE;&#160;<br/>
+&#160;<br/>
+/* Perform signature verification */&#160;<br/>
+if ( (SECM_OK == SecM_InitVerification(V_NULL))&#160;<br/>
+&#160;&#160;&amp;&amp; (SECM_VER_OK == SecM_Verification(&amp;verifyParam))&#160;<br/>
+&#160;&#160;&amp;&amp; (SECM_OK == SecM_DeinitVerification(V_NULL)) )&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Verification successful */&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+The&#160;example&#160;below&#160;shows the&#160;verification&#160;with&#160;the&#160;streaming&#160;use-case.&#160;<br/>
+&#160;<br/>
+/* Verification parameters */&#160;<br/>
+SecM_SignatureParamType sigParam;&#160;<br/>
+/* Buffer for data to be verified */&#160;<br/>
+vuint8 inputData[0x100u];&#160;<br/>
+/* Control variable */&#160;<br/>
+SecM_LengthType inputLength;&#160;<br/>&#160;<br/>/* Read and hash input data */&#160;<br/>
+SecM_AddrType inputAddress &#160; = 0x10000u;&#160;<br/>
+SecM_SizeType inputRemainder = 0x1000u;&#160;<br/>
+&#160;<br/>
+/* Cyclically called function */&#160;<br/>
+sigParam.wdTriggerFct = WatchdogFct;&#160;<br/>
+/* Pass input buffer (not relevant for initialization) */&#160;<br/>
+sigParam.sigSourceBuffer = inputData;&#160;<br/>
+&#160;<br/>
+/* Initialize signature verification */&#160;<br/>
+sigParam.sigState&#160;= SEC_HASH_INIT;&#160;<br/>
+sigParam.sigByteCount = 0u;&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+14&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=15></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-15_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+if (SECM_VER_OK != SecM_VerifySignature(&amp;sigParam))&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Initialization failed */&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+/* Proceed computation */&#160;<br/>
+while (inputRemainder &gt; 0u)&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Truncate input length */&#160;<br/>
+&#160; &#160;inputLength = sizeof(inputData);&#160;<br/>
+&#160; &#160;if (inputLength &gt; inputRemainder)&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;inputLength = (SecM_LengthType)inputRemainder;&#160;<br/>
+&#160; &#160;}&#160;<br/>
+&#160;<br/>
+&#160; &#160;/* Read data into temporary buffer */&#160;<br/>
+&#160; &#160;sigParam.sigByteCount = (SecM_LengthType)ReadMemoryFct(inputAddress, inputData,&#160;<br/>inputLength);&#160;<br/>
+&#160;<br/>
+&#160; &#160;if (SECM_VER_OK != SecM_VerifySignature(&amp;sigParam))&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;/* Computation has failed */&#160;<br/>
+&#160; &#160; &#160;&#160;break;&#160;<br/>
+&#160; &#160;}&#160;<br/>
+&#160;<br/>
+&#160; &#160;/* Update control variables */&#160;<br/>
+&#160; &#160;inputRemainder&#160;-= inputLength;&#160;<br/>
+&#160; &#160;inputAddress &#160; += inputLength;&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+/* Finalize hash calculation */&#160;<br/>
+sigParam.sigState &#160; &#160; &#160; = SEC_HASH_FINALIZE;&#160;<br/>
+sigParam.sigByteCount &#160; = 0u;&#160;<br/>
+&#160;<br/>
+if (SECM_VER_OK == SecM_VerifySignature(&amp;sigParam))&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Verify signature */&#160;<br/>
+&#160; &#160;sigParam.sigState &#160; &#160; &#160; &#160; &#160;= SEC_SIG_VERIFY;&#160;<br/>
+&#160; &#160;/* Pass signature */&#160;<br/>
+&#160; &#160;sigParam.sigSourceBuffer &#160; = signature;&#160;<br/>
+&#160; &#160;sigParam.sigByteCount &#160; &#160; &#160;= sizeof(signature);&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+15&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=16></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-16_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-16_2.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-16_3.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+&#160; &#160;if (SECM_VER_OK == SecM_VerifySignature(&amp;sigParam))&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;/* Verification successful */&#160;<br/>
+&#160; &#160;}&#160;<br/>
+}&#160;<br/>
+<b>6.2&#160;</b><br/>
+<b>CRC Module&#160;</b><br/>
+The&#160;CRC&#160;is&#160;an&#160;error-detecting&#160;code&#160;which&#160;can&#160;be&#160;used&#160;to&#160;build&#160;a&#160;checksum&#160;over&#160;a&#160;defined&#160;<br/>segment.&#160;If&#160;this&#160;module&#160;was&#160;ordered&#160;a&#160;16&#160;or&#160;32&#160;Bit&#160;CRC&#160;implementation&#160;is&#160;included&#160;in&#160;the&#160;<br/>delivery.&#160;&#160;The&#160;&#160;SecM_ComputeCRC&#160;&#160;function&#160;&#160;can&#160;&#160;be&#160;&#160;called&#160;&#160;multiple&#160;&#160;times.&#160;&#160;The&#160;&#160;so&#160;&#160;called&#160;<br/>streaming&#160;approach&#160;can&#160;be&#160;used&#160;for&#160;the&#160;verification&#160;of&#160;a&#160;data&#160;stream.&#160;It&#160;can&#160;be&#160;necessary&#160;<br/>to&#160;verify&#160;the&#160;integrity&#160;of&#160;a&#160;logical block.&#160;<br/>
+<b>6.2.1&#160;</b><br/>
+<b>Variants&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>CRC-16&#160;(CCITT)&#160;or&#160;CRC-32&#160;(IEEE&#160;802.3)&#160;<br/>
+<b>&gt;&#160;&#160;</b>CRCTotal&#160;<br/>
+<b>&gt;&#160;&#160;</b>Speed/Size&#160;optimized&#160;<br/>
+<b>6.2.2&#160;</b><br/>
+<b>CRCTotal&#160;</b><br/>
+To&#160;&#160;avoid&#160;&#160;storing&#160;&#160;the&#160;&#160;whole&#160;&#160;segment&#160;&#160;information&#160;&#160;with&#160;&#160;the&#160;&#160;resulting&#160;signature,&#160;&#160;the&#160;&#160;security&#160;<br/>module&#160;&#160;calculates&#160;&#160;a&#160;&#160;CRCTotal.&#160;&#160;This&#160;&#160;CRCTotal&#160;&#160;is&#160;&#160;generated&#160;&#160;internally&#160;&#160;by&#160;&#160;the&#160;&#160;security&#160;<br/>component&#160;&#160;during&#160;&#160;the&#160;&#160;verification&#160;&#160;process&#160;&#160;by&#160;&#160;the&#160;&#160;function&#160;&#160;SecM_Verification().&#160;&#160;It&#160;&#160;is&#160;&#160;only&#160;<br/>necessary&#160;&#160;to&#160;&#160;pass&#160;&#160;the&#160;&#160;blockStartAddress&#160;&#160;and&#160;&#160;the&#160;&#160;blockLength&#160;&#160;of&#160;&#160;the&#160;&#160;logical&#160;&#160;block.&#160;&#160;The&#160;<br/>results&#160;will&#160;be&#160;placed&#160;into&#160;the&#160;CRCtotal&#160;field&#160;by&#160;the&#160;security&#160;module.&#160;If&#160;the&#160;CRCTotal&#160;option&#160;<br/>is activated&#160;in&#160;GENy&#160;it is always calculated,&#160;regardless of&#160;the&#160;security&#160;class.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>The&#160;CRCWritten&#160;is&#160;the&#160;CRC-value&#160;as&#160;the&#160;signature&#160;value&#160;calculated&#160;over&#160;the&#160;segments&#160;<br/>
+&#160;&#160;for&#160;the&#160;security&#160;class DDD.&#160;&#160;<br/>
+The&#160;CRCwritten&#160;is&#160;not&#160;available for&#160;the&#160;Security&#160;Class C or&#160;CCC.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>6.2.3&#160;</b><br/>
+<b>Speed /&#160;size&#160;optimization&#160;</b><br/>
+In&#160;the&#160;GENy&#160;configuration&#160;the&#160;CRC&#160;module&#160;can&#160;be&#160;switched&#160;between&#160;two&#160;different&#160;modes:&#160;<br/>Speed&#160;or&#160;size&#160;optimized.&#160;When&#160;‘SPEED&#160;optimized’&#160;is&#160;chosen,&#160;a&#160;1024&#160;byte&#160;look-up&#160;table&#160;<br/>will&#160;be&#160;generated&#160;in&#160;case&#160;of&#160;CRC-32&#160;or 256&#160;byte&#160;for CRC-16.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Caution&#160;<br/></b>If&#160;the&#160;checksum&#160;calculation shall&#160;also be&#160;used&#160;within the&#160;application,&#160;we strongly&#160;<br/>
+<b>&#160;&#160;</b>recommend&#160;to&#160;use&#160;‘SIZE&#160;optimized’&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>6.2.4&#160;</b><br/>
+<b>Operation mode&#160;flags&#160;</b><br/>
+These&#160;operation&#160;mode&#160;flags are valid&#160;and&#160;can&#160;be&#160;set&#160;by&#160;using&#160;the&#160;‘crcState’.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+16&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=17></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-17_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>&gt;&#160;&#160;</b>SEC_CRC_INIT&#160;<br/>
+Sets&#160;the&#160;initial CRC&#160;value&#160;and&#160;initialize&#160;the&#160;look-up&#160;table.&#160;<br/>
+<b>&gt;&#160;&#160;</b>SEC_CRC_COMPUTE&#160;<br/>
+Update&#160;the&#160;CRC&#160;calculation&#160;using&#160;the&#160;provided&#160;data.&#160;<br/>
+<b>&gt;&#160;&#160;</b>SEC_CRC_FINALIZE&#160;<br/>
+Optional: Complete&#160;the&#160;CRC&#160;value&#160;<br/>
+<b>6.2.5&#160;</b><br/>
+<b>Usage&#160;</b><br/>
+The&#160;following&#160;sample&#160;shows&#160;the&#160;usage&#160;of&#160;the&#160;CRC&#160;calculation.&#160;The&#160;usage&#160;of&#160;the&#160;module&#160;is&#160;<br/>similar to&#160;the&#160;stream&#160;verification.&#160;<br/>The&#160;initialization&#160;sets&#160;up&#160;the&#160;environment:&#160;<br/>/* CRC parameters */&#160;<br/>
+SecM_CRCParamType crcParam;&#160;<br/>
+/* Buffer for data to be verified */&#160;<br/>
+vuint8 &#160; &#160; &#160; &#160; &#160; &#160;inputData[0x100u];&#160;<br/>
+&#160;<br/>/* Cyclically called function */&#160;<br/>
+crcParam.wdTriggerFct &#160; &#160; &#160;= WatchdogFct;&#160;<br/>
+/* Pass input buffer (not relevant for initialization) */&#160;<br/>
+crcParam.crcSourceBuffer &#160; = inputData;&#160;<br/>
+&#160; &#160;&#160;<br/>
+/* Initialize signature verification */&#160;<br/>
+crcParam.crcState &#160; &#160; &#160; &#160; &#160;= SEC_CRC_INIT;&#160;<br/>
+crcParam.crcByteCount &#160; &#160; &#160;= 0u;&#160;<br/>
+&#160;<br/>
+if (SECM_OK ==&#160;SecM_ComputeCRC(&amp;crcParam))&#160;<br/>
+{&#160;<br/>
+&#160; &#160;...&#160;<br/>
+}&#160;<br/>
+In&#160;the&#160;computation&#160;phase&#160;the&#160;processing&#160;will&#160;be&#160;done.&#160;Addresses&#160;and&#160;length&#160;information&#160;<br/>are&#160;&#160;typically&#160;&#160;not&#160;&#160;included&#160;&#160;in&#160;&#160;the&#160;&#160;CRC.&#160;&#160;The&#160;&#160;CRC&#160;&#160;Module&#160;&#160;doesn’t&#160;&#160;have&#160;&#160;access&#160;&#160;to&#160;&#160;the&#160;<br/>memory&#160;in&#160;&#160;the&#160;function.&#160;Therefore&#160;&#160;a&#160;function&#160;to&#160;&#160;read&#160;from&#160;the&#160;memory&#160;is&#160;needed&#160;(in&#160;the&#160;<br/>example&#160;represented&#160;as ‘ReadMemoryFct’).&#160;<br/>/* Control variable */&#160;<br/>
+SecM_AddrType &#160; &#160; inputAddress &#160; = 0x10000u;&#160;<br/>
+SecM_SizeType &#160; &#160; inputRemainder = 0x1000u;&#160;<br/>
+SecM_LengthType &#160; inputLength;&#160;<br/>&#160;<br/>
+/* Read input data and update&#160;checksum */&#160;<br/>
+crcParam.crcState = SEC_HASH_COMPUTE;&#160;<br/>
+while (inputRemainder &gt; 0u)&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+17&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=18></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-18_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Truncate input length */&#160;<br/>
+&#160; &#160;inputLength = sizeof(inputData);&#160;<br/>
+&#160; &#160;if (inputLength &gt; inputRemainder)&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;inputLength = (SecM_LengthType)inputRemainder;&#160;<br/>
+&#160; &#160;}&#160;<br/>
+&#160;<br/>
+&#160; &#160;/* Read data into temporary buffer */&#160;<br/>
+&#160; &#160;crcParam.crcByteCount = (SecM_LengthType)ReadMemoryFct(&#160;<br/>&#160; &#160; &#160;&#160;inputAddress, inputData, inputLength);&#160;<br/>
+&#160;<br/>
+&#160; &#160;if (SECM_VER_OK != SecM_ComputeCRC(&amp;crcParam))&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;break;&#160;<br/>
+&#160; &#160;}&#160;<br/>
+&#160;<br/>
+&#160; &#160;/* Update control variables */&#160;<br/>
+&#160; &#160;inputRemainder&#160;-= inputLength;&#160;<br/>
+&#160; &#160;inputAddress &#160; += inputLength;&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+During&#160;&#160;the&#160;&#160;finalization&#160;&#160;no&#160;&#160;additional&#160;&#160;data&#160;&#160;are&#160;&#160;required.&#160;&#160;The&#160;&#160;checksum&#160;&#160;is&#160;&#160;provided&#160;&#160;in&#160;&#160;the&#160;<br/>member currentCRC.&#160;<br/>/* Checksum to be verified */&#160;<br/>
+SecM_CRCType &#160; &#160; &#160;checksum;&#160;<br/>
+&#160;<br/>
+/* Finalize&#160;CRC calculation */&#160;<br/>
+crcParam.crcState &#160; &#160; &#160; = SECM_CRC_FINALIZE;&#160;<br/>
+crcParam.crcByteCount &#160; = 0u;&#160;<br/>
+&#160;<br/>
+if (SECM_VER_OK == SecM_ComputeCRC(&amp;crcParam))&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Compare checksum */&#160;<br/>
+&#160; &#160;if (crcParam.currentCRC == checksum)&#160;<br/>
+&#160; &#160;{&#160;<br/>
+&#160; &#160; &#160;&#160;/* Checksum comparison successful&#160;*/&#160;<br/>
+&#160; &#160;}&#160;<br/>
+}&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+18&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=19></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-19_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>6.3&#160;</b><br/>
+<b>Seed /&#160;Key&#160;</b><br/>
+The&#160;Seed/Key&#160;interface&#160;provides&#160;the&#160;generation&#160;of&#160;a&#160;pseudo&#160;random&#160;seed,&#160;the&#160;generation&#160;<br/>of&#160;a&#160;key&#160;and&#160;a&#160;comparison&#160;function.&#160;<br/>
+&#160;<br/>
+<b>6.3.1&#160;</b><br/>
+<b>Usage&#160;&#160;</b><br/>
+This&#160;demonstration&#160;generates&#160;a&#160;seed&#160;and&#160;computes&#160;a&#160;key.&#160;The&#160;usage&#160;of&#160;the&#160;module&#160;can&#160;<br/>vary&#160;&#160;between&#160;&#160;the&#160;&#160;OEMs.&#160;&#160;If&#160;the&#160;Security&#160;&#160;Module&#160;&#160;comes&#160;along&#160;&#160;with&#160;&#160;a&#160;&#160;Bootloader&#160;&#160;delivery&#160;<br/>the&#160;OEM&#160;related&#160;demo&#160;implementation&#160;can&#160;be&#160;found&#160;in&#160;the&#160;‘fbl_ap.c’&#160;file.&#160;<br/>Seed&#160;generation:&#160;<br/>SecM_WordType EntropySource( void )&#160;<br/>
+{&#160;<br/>
+&#160; &#160;return &lt;random value&gt;;&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+/* Generate seed value */&#160;<br/>
+SecM_SeedType seed;&#160;<br/>
+&#160;<br/>
+/* Provide initial seed for pseudo random number generator */&#160;<br/>
+seed.seedX = EntropySource();&#160;<br/>
+seed.seedY = EntropySource();&#160;<br/>
+&#160;<br/>
+/* Generate seed */&#160;<br/>
+if (SECM_OK == SecM_GenerateSeed(&amp;seed))&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Seed successfully generated in seed.seedX */&#160;<br/>
+}&#160;<br/>
+&#160;<br/>
+The&#160;provided&#160;key&#160;can&#160;be&#160;send&#160;to&#160;the&#160;tester.&#160;The&#160;tester&#160;has&#160;to&#160;generate&#160;a&#160;key&#160;and&#160;send&#160;it&#160;<br/>back&#160;to&#160;the&#160;ECU.&#160;The&#160;ECU&#160;has&#160;to&#160;generate&#160;with&#160;the&#160;seed&#160;value&#160;an&#160;own&#160;key&#160;and&#160;compare&#160;<br/>the&#160;received&#160;key&#160;from&#160;the&#160;tester with&#160;the&#160;generated&#160;one:&#160;<br/>/* Check key from tester */&#160;<br/>
+#if ( SECM_HIS_SECURITY_MODULE_VERSION &lt; 0x010002u )&#160;<br/>
+if (SECM_OK == SecM_CompareKey(key))&#160;<br/>
+#else&#160;<br/>
+if (SECM_OK == SecM_CompareKey(key, seed)&#160;<br/>
+#endif&#160;<br/>
+{&#160;<br/>
+&#160; &#160;/* Security access granted */&#160;<br/>
+}&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+19&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=20></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-20_1.png"/><br/>
+<img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-20_2.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;<br/>Note&#160;<br/></b>The&#160;API&#160;varies&#160;depending on&#160;the&#160;version of&#160;the&#160;HIS&#160;specification.&#160;In&#160;case&#160;of&#160;HIS&#160;<br/>
+&#160;&#160;specification 1.0.1&#160;or&#160;earlier&#160;the&#160;last&#160;seed is&#160;stored&#160;in an&#160;internal&#160;structure.&#160;Later&#160;<br/>
+versions do&#160;use&#160;an&#160;additional&#160;parameter&#160;for&#160;the&#160;seed.&#160;However&#160;the&#160;Security&#160;Module&#160;<br/>supports&#160;both&#160;variants.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>6.4&#160;</b><br/>
+<b>Accessing the&#160;Security&#160;Module&#160;from&#160;within the&#160;Application&#160;</b><br/>
+This chapter is only&#160;relevant&#160;if&#160;the&#160;security&#160;component&#160;comes&#160;along&#160;with&#160;the&#160;Bootloader.&#160;&#160;<br/>There&#160;&#160;might&#160;&#160;be&#160;&#160;the&#160;&#160;necessity&#160;&#160;to&#160;&#160;use&#160;&#160;the&#160;&#160;features&#160;&#160;of&#160;&#160;the&#160;&#160;security&#160;&#160;module,&#160;&#160;located&#160;&#160;in&#160;&#160;the&#160;<br/>Bootloader,&#160;&#160;also&#160;&#160;within&#160;&#160;the&#160;&#160;application.&#160;&#160;This&#160;&#160;can&#160;&#160;be&#160;&#160;useful&#160;&#160;if&#160;&#160;functions&#160;&#160;of&#160;&#160;the&#160;&#160;Security&#160;<br/>Module&#160;&#160;shall&#160;&#160;be&#160;&#160;used&#160;&#160;in&#160;&#160;a&#160;&#160;consistent&#160;&#160;way,&#160;&#160;or&#160;&#160;ROM&#160;&#160;memory&#160;&#160;shall&#160;&#160;be&#160;&#160;saved.&#160;&#160;For&#160;&#160;this,&#160;&#160;a&#160;<br/>user-interface&#160;&#160;is&#160;&#160;available&#160;&#160;to&#160;&#160;call&#160;&#160;some&#160;&#160;routines&#160;&#160;of&#160;&#160;the&#160;&#160;security&#160;&#160;module&#160;&#160;from&#160;&#160;within&#160;&#160;the&#160;<br/>application.&#160;The&#160;file&#160;“fbl_def.h”&#160;contains&#160;the&#160;necessary&#160;definitions&#160;for&#160;the&#160;security&#160;module&#160;<br/>interface.&#160;<br/>The&#160;usage&#160;of&#160;the&#160;definitions is&#160;equivalent&#160;to&#160;the&#160;API&#160;(chapte<a href="TechnicalReference_SecurityModules.html#21">r&#160;7).</a>&#160;<br/>
+<b>Definition&#160;</b><br/>
+<b>Description&#160;</b><br/>
+ApplSecComputeKey&#160;<br/>
+Definition&#160;for&#160;the&#160;key&#160;computation&#160;function.&#160;<br/>
+ApplSecComputeCRC&#160;<br/>
+Definition&#160;for&#160;the&#160;CRC&#160;computation&#160;function.&#160;<br/>
+ApplSecVerifySignatureFct&#160;<br/>
+Definition&#160;for&#160;the&#160;signature verification&#160;<br/>function.&#160;<br/>
+ApplSecGenerateSeed&#160;<br/>
+Definition&#160;for&#160;the&#160;seed&#160;generation&#160;function.&#160;<br/>
+Table&#160;6-1&#160;&#160;&#160;Function&#160;access&#160;macros&#160;for&#160;the&#160;FBL&#160;header&#160;structure&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+20&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=21></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-21_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>7&#160;&#160;API&#160;Description&#160;</b><br/>
+<b>7.1&#160;</b><br/>
+<b>Type&#160;Definitions&#160;</b><br/>
+This chapter describes&#160;the&#160;types used&#160;by&#160;the&#160;interface&#160;functions&#160;of&#160;the&#160;security&#160;module.&#160;<br/>
+<b>7.1.1&#160;</b><br/>
+<b>General&#160;Types&#160;</b><br/>
+<b>Typedef&#160;</b><br/>
+<b>Elements&#160;</b><br/>
+<b>Basetype&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+Not&#160;particularly&#160;<br/>
+vuint8&#160;<br/>
+Return value&#160;from&#160;any&#160;<br/>
+defined.&#160;Typically,&#160;<br/>
+function&#160;of&#160;the&#160;security&#160;<br/>
+returns SECM_OK&#160;or&#160;<br/>
+module&#160;<br/>
+SECM_NOT_OK.&#160;See&#160;<br/>function&#160;description&#160;for&#160;<br/>details.&#160;<br/>
+SecM_WordType&#160;<br/>
+-&#160;<br/>
+vuint32&#160;<br/>
+Typically&#160;used by&#160;the&#160;<br/>seed/key&#160;functions&#160;for&#160;seed&#160;<br/>and&#160;key&#160;values.&#160;<br/>
+SecM_KeyType&#160;<br/>
+-&#160;<br/>
+SecM_Word&#160;The&#160;length&#160;of&#160;the&#160;key&#160;for&#160;<br/>Type&#160;<br/>
+seed/key&#160;calculation.&#160;<br/>
+SecM_CRCType&#160;<br/>
+-&#160;<br/>
+SecM_Word&#160;Used&#160;to&#160;store&#160;the&#160;CRC&#160;<br/>Type&#160;<br/>
+SecM_LengthType&#160;<br/>
+-&#160;<br/>
+vuint32&#160;<br/>
+Used&#160;to&#160;store length&#160;<br/>information&#160;for&#160;CRC&#160;<br/>calculation and decryption&#160;<br/>
+SecM_AddrType&#160;<br/>
+-&#160;<br/>
+vuint32&#160;<br/>
+Used&#160;to&#160;store address&#160;<br/>information&#160;for&#160;segments&#160;<br/>
+SecM_SizeType&#160;<br/>
+-&#160;<br/>
+vuint32&#160;<br/>
+Used&#160;to&#160;store&#160;length&#160;<br/>information&#160;of&#160;segments&#160;<br/>
+SecM_VerifyInitType&#160;<br/>
+-&#160;<br/>
+void *&#160;<br/>
+-&#160;<br/>
+SecM_VerifyDeinitType&#160;<br/>
+-&#160;<br/>
+void *&#160;<br/>
+-&#160;<br/>
+SecM_VerifyDataType&#160;<br/>
+-&#160;<br/>
+vuint8&#160;*&#160;<br/>
+-&#160;<br/>
+FL_WDTriggerFctType&#160;<br/>
+typedef&#160;void&#160;(*)(void);&#160;<br/>
+&#160;<br/>
+Pointer&#160;to a&#160;function&#160;that&#160;is&#160;<br/>frequently&#160;called&#160;from&#160;the&#160;<br/>security&#160;module&#160;on&#160;long-<br/>lasting mathematical&#160;<br/>functions.&#160;<br/>
+FL_ReadMemoryFctType&#160;&#160;typedef&#160;<br/>
+&#160;<br/>
+Function is used&#160;by&#160;<br/>
+SecM_SizeType&#160;<br/>
+SecM_Verification()&#160;to&#160;read&#160;<br/>
+(*)(SecM_AddrType,&#160;<br/>
+data&#160;from&#160;memory.&#160;<br/>
+vuint8&#160;*,&#160;<br/>SecM_SizeType);&#160;<br/>
+Table&#160;7-1&#160;&#160;&#160;Type&#160;definitions&#160;<br/>
+<b>7.1.2&#160;</b><br/>
+<b>Structures&#160;used by&#160;Verification&#160;</b><br/>
+<b>Structure&#160;</b><br/>
+<b>Element&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SecM_Verify&#160;<br/>
+segmentList&#160;<br/>
+FL_SegmentListType&#160;/&#160;&#160;Address and&#160;length&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+21&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=22></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-22_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Structure&#160;</b><br/>
+<b>Element&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+ParamType&#160;<br/>
+FL_SegmentListType*&#160;1&#160;&#160;information&#160;of&#160;download&#160;<br/>
+segments&#160;<br/>
+blockStartAddress&#160;&#160;SecM_AddrType&#160;<br/>
+Start&#160;address&#160;of&#160;logical&#160;block&#160;<br/>
+blockLength&#160;<br/>
+SecM_SizeType&#160;<br/>
+Length of&#160;logical&#160;block&#160;<br/>
+verificationData&#160;<br/>
+SecM_VerifyDataType&#160;<br/>
+Pointer&#160;to verification&#160;data&#160;<br/>(e.g.&#160;checksum&#160;and/or&#160;<br/>signature)&#160;<br/>
+crcTotal&#160;<br/>
+SecM_CRCType&#160;<br/>
+CRC&#160;total&#160;calculated&#160;over&#160;<br/>full&#160;logical&#160;block&#160;<br/>
+wdTriggerFct&#160;<br/>
+FL_WDTriggerFctType&#160;&#160;Pointer&#160;to watchdog&#160;trigger&#160;<br/>
+function&#160;<br/>
+workspace&#160;<br/>
+SecM_WorkspaceType&#160;&#160;Reference&#160;to&#160;workspace&#160;<br/>
+(extension&#160;of&#160;the&#160;HIS&#160;<br/>specification)&#160;<br/>
+key&#160;<br/>
+SecM_VerifyKeyType&#160;<br/>
+Pointer&#160;to verification&#160;key&#160;<br/>(extension&#160;of&#160;the&#160;HIS&#160;<br/>specification)&#160;<br/>
+Table&#160;7-2&#160;&#160;&#160;SecM_VerifyParamType&#160;<br/>
+<b>Structure&#160;</b><br/>
+<b>Element&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SecM_Signature&#160;<br/>
+currentHash&#160;<br/>
+SecM_SignatureType&#160;<br/>
+Reference&#160;to&#160;current&#160;hash&#160;<br/>
+ParamType&#160;<br/>
+value&#160;(also used to&#160;pass&#160;<br/>workspace)&#160;<br/>
+currentDataLength&#160;&#160;SecM_SizeType&#160;*&#160;<br/>
+Pointer&#160;to&#160;the&#160;current&#160;length&#160;<br/>of&#160;the&#160;hashed&#160;data.&#160;Is&#160;only&#160;<br/>set&#160;when&#160;<br/>SEC_ENABLE_VERIFICATI<br/>ON_DATA_LENGTH&#160;is&#160;<br/>activated.&#160;<br/>
+sigState&#160;<br/>
+SecM_StatusType&#160;<br/>
+Signature state&#160;/&#160;operation&#160;<br/>to be&#160;executed&#160;<br/>
+sigSourceBuffer&#160;<br/>
+SecM_VerifyDataType&#160;<br/>
+Pointer&#160;to&#160;input&#160;or&#160;<br/>verification data&#160;<br/>
+sigByteCount&#160;<br/>
+SecM_LengthType&#160;<br/>
+Size of&#160;input&#160;or&#160;verification&#160;<br/>data&#160;<br/>
+wdTriggerFct&#160;<br/>
+FL_WDTriggerFctType&#160;&#160;Pointer&#160;to watchdog&#160;trigger&#160;<br/>
+function&#160;<br/>
+key&#160;<br/>
+SecM_VerifyKeyType&#160;<br/>
+Pointer&#160;to verification&#160;key&#160;<br/>(extension&#160;of&#160;the&#160;HIS&#160;<br/>specification)&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>
+1&#160;As&#160;an&#160;extension&#160;to&#160;the&#160;HIS&#160;specification&#160;the&#160;segment&#160;list&#160;can&#160;be&#160;used&#160;as&#160;a&#160;pointer.&#160;This&#160;depends&#160;on&#160;the&#160;<br/>OEM.&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+22&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=23></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-23_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+Table&#160;7-3&#160;&#160;&#160;SecM_SignatureParamType&#160;<br/>
+<b>7.1.3&#160;</b><br/>
+<b>Structures&#160;used by&#160;CRC&#160;</b><br/>
+<b>Structure&#160;</b><br/>
+<b>Element&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SecM_CRCParam&#160;&#160;currentCRC&#160;<br/>
+SecM_CRCType&#160;<br/>
+Current&#160;CRC-value&#160;<br/>
+Type&#160;<br/>
+crcState&#160;<br/>
+SecM_ByteType&#160;<br/>
+Operation&#160;state&#160;to&#160;be&#160;carried&#160;<br/>out&#160;<br/>
+crcSourceBuffer&#160;<br/>
+SecM_ConstRamDataT&#160;Pointer&#160;to source&#160;data&#160;<br/>ype&#160;<br/>
+crcByteCount&#160;<br/>
+SecM_LengthType&#160;<br/>
+Number&#160;of&#160;bytes in&#160;source&#160;<br/>buffer&#160;<br/>
+wdTriggerFct&#160;<br/>
+FL_WDTriggerFctType&#160;&#160;Watchdog&#160;trigger&#160;function&#160;<br/>
+Table&#160;7-4&#160;&#160;&#160;SecM_CRCParamType&#160;<br/>
+<b>7.1.4&#160;</b><br/>
+<b>Structures&#160;used by&#160;Seed /&#160;Key&#160;&#160;</b><br/>
+<b>Structure&#160;</b><br/>
+<b>Element&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SecM_KeyType&#160;<br/>
+data&#160;<br/>
+SecM_KeyBaseType&#160;*&#160;&#160;Pointer&#160;to actual&#160;key&#160;data&#160;<br/>
+context&#160;<br/>
+SecM_VoidPtrType&#160;<br/>
+Additional&#160;context&#160;<br/>information,&#160;e.g.&#160;workspace&#160;<br/>
+Table&#160;7-5&#160;&#160;&#160;SecM_KeyType&#160;<br/>
+<b>7.2&#160;</b><br/>
+<b>Common&#160;</b><br/>
+<b>7.2.1&#160;</b><br/>
+<b>SecM_InitPowerOn&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_InitPowerOn&#160;</b>(SecM_InitType initParam)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_InitType&#160;initParam&#160;<br/>
+Initialization&#160;parameters&#160;(unused&#160;-&#160;reserved&#160;for future use)&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;initialization&#160;successful&#160;<br/>SECM_NOT_OK&#160;otherwise&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Initialize security&#160;module&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-6&#160;&#160;&#160;SecM_InitPowerOn&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+23&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=24></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-24_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>7.2.2&#160;</b><br/>
+<b>SecM_Task&#160;</b><br/>
+<b>Prototype&#160;<br/></b>void&#160;<b>SecM_Task&#160;</b>(void)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+void&#160;<br/>
+none&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+void&#160;<br/>
+none&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Cyclic&#160;task&#160;of&#160;security&#160;module&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-7&#160;&#160;&#160;SecM_Task&#160;<br/>
+<b>7.3&#160;</b><br/>
+<b>CRC&#160;</b><br/>
+<b>7.3.1&#160;</b><br/>
+<b>SecM_ComputeCRC&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_ComputeCRC&#160;</b>(V_MEMRAM1&#160;SecM_CRCParamType V_MEMRAM2&#160;<br/>V_MEMRAM3 *crcParam)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_CRCParamType&#160;<br/>
+Pointer&#160;to parameter&#160;structure&#160;<br/>
+crcParam&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;operation&#160;was&#160;successful&#160;<br/>SECM_NOT_OK&#160;otherwise&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Function that&#160;manages&#160;the&#160;state of&#160;CRC computation&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-8&#160;&#160;&#160;SecM_ComputeCRC&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+24&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=25></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-25_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>7.4&#160;</b><br/>
+<b>Seed&#160;/&#160;Key&#160;Common&#160;</b><br/>
+<b>7.4.1&#160;</b><br/>
+<b>SecM_GenerateSeed&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_GenerateSeed&#160;</b>(V_MEMRAM1 SecM_SeedType V_MEMRAM2&#160;<br/>V_MEMRAM3 *seed)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_SeedType seed&#160;<br/>
+Pointer&#160;to seed,&#160;where the&#160;random&#160;values&#160;shall&#160;be&#160;stored&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Uses&#160;a&#160;pseudo&#160;random&#160;number&#160;generator&#160;and&#160;an&#160;initial&#160;seed to&#160;generate a&#160;seed&#160;value.&#160;In&#160;case&#160;of&#160;HIS&#160;<br/>specification 1.0.1&#160;or earlier&#160;the&#160;last seed is&#160;stored&#160;in an internal&#160;structure.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+The&#160;values&#160;of&#160;seedX&#160;and&#160;seedY&#160;(default&#160;API)&#160;or&#160;seed[0]&#160;(extended&#160;API)&#160;should have&#160;a&#160;random&#160;start value.&#160;<br/>Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-9&#160;&#160;&#160;SecM_GenerateSeed&#160;<br/>
+<b>7.4.2&#160;</b><br/>
+<b>SecM_CompareKey&#160;(HIS&#160;Specification &lt;&#160;1.0.12)&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_CompareKey&#160;</b>(SecM_KeyType&#160;key)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_KeyType key&#160;<br/>
+Key&#160;for the&#160;authorisation&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;key&#160;calculation and comparison&#160;was&#160;successful&#160;<br/>SECM_FAILED&#160;if&#160;key&#160;calculation&#160;failed or&#160;key&#160;mismatch&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Runs&#160;the key&#160;calculation&#160;and&#160;compares&#160;the calculated&#160;key&#160;against the received key&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Function SecM_GenerateSeed must have been called&#160;before.&#160;<br/>Call&#160;Context&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>
+2&#160;Depending&#160;on&#160;the&#160;OEM&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+25&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=26></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-26_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+none&#160;<br/>
+Table&#160;7-10&#160;&#160;&#160;SecM_CompareKey&#160;<br/>
+<b>7.4.3&#160;</b><br/>
+<b>SecM_CompareKey&#160;(HIS&#160;Specification&#160;&gt;=&#160;1.0.1)&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_CompareKey&#160;</b>(SecM_KeyType key, SecM_SeedType&#160;<br/>lastSeed)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_KeyType key&#160;<br/>
+Key&#160;for the&#160;authorization&#160;contains&#160;additional&#160;parameters&#160;(workspace,&#160;secret&#160;<br/>key)&#160;in&#160;case of&#160;extended&#160;API&#160;<br/>
+SecM_SeedType lastSeed&#160;&#160;Start&#160;value&#160;(seed) for the&#160;authorisation&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+none&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Runs&#160;the key&#160;calculation&#160;and compares&#160;the calculated&#160;key&#160;against the received key&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Function SecM_GenerateSeed must have been called&#160;before.&#160;<br/>Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-11&#160;&#160;&#160;SecM_CompareKey&#160;<br/>
+<b>7.5&#160;</b><br/>
+<b>Seed /&#160;Key&#160;default&#160;API&#160;</b><br/>
+<b>7.5.1&#160;</b><br/>
+<b>SecM_ComputeKey&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_ComputeKey&#160;</b>(SecM_SeedType inputSeed,&#160;<br/>SecM_ConstType constant, V_MEMRAM1 SecM_KeyStorageType V_MEMRAM2&#160;<br/>V_MEMRAM3 *computedKey)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_SeedType&#160;<br/>
+The&#160;random&#160;seed the&#160;key&#160;calculation&#160;shall&#160;be based on&#160;<br/>
+inputSeed&#160;<br/>
+SecM_ConstType constant&#160;&#160;A&#160;fixed&#160;constant&#160;used&#160;by&#160;the key&#160;calculation&#160;algorithm&#160;contains&#160;additional&#160;<br/>
+parameters&#160;(workspace,&#160;secret&#160;key)&#160;in case of&#160;extended&#160;API&#160;<br/>
+SecM_KeyStorageType&#160;<br/>
+Pointer&#160;to resulting&#160;key&#160;data as&#160;a&#160;formula of&#160;key&#160;=&#160;f(seed,k)&#160;<br/>
+computedKey&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;calculation&#160;was&#160;successful&#160;<br/>SECM_FAILED&#160;if&#160;calculation has&#160;failed&#160;(e.g.&#160;wrong&#160;parameters)&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+26&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=27></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-27_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Calculates&#160;a key&#160;value based&#160;on the provided&#160;seed&#160;and constant value&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Function SecM_GenerateSeed must have been called&#160;at&#160;least once.&#160;<br/>Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-12&#160;&#160;&#160;SecM_ComputeKey&#160;<br/>
+<b>7.6&#160;</b><br/>
+<b>Seed /&#160;Key&#160;extended&#160;API&#160;</b><br/>
+<b>7.6.1&#160;</b><br/>
+<b>SecM_ComputeKey&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_ComputeKey&#160;</b>(SecM_KeyType inputKey, SecM_ConstType&#160;<br/>constant, V_MEMRAM1 SecM_SeedType V_MEMRAM2 V_MEMRAM3 *computedSeed)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_KeyType inputKey&#160;<br/>
+The&#160;received key&#160;on&#160;which&#160;calculation shall&#160;be&#160;based&#160;<br/>
+SecM_ConstType constant&#160;&#160;A&#160;fixed&#160;constant&#160;used&#160;by&#160;the key&#160;calculation&#160;algorithm&#160;contains&#160;additional&#160;<br/>
+parameters&#160;(workspace,&#160;secret&#160;key)&#160;in case of&#160;extended&#160;API&#160;<br/>
+SecM_SeedType&#160;<br/>
+Pointer&#160;to resulting&#160;seed as&#160;a&#160;formula of&#160;seed&#160;=&#160;f(key,k)&#160;<br/>
+computedSeed&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;calculation&#160;was&#160;successful&#160;<br/>SECM_FAILED&#160;if&#160;calculation has&#160;failed&#160;(e.g.&#160;wrong&#160;parameters)&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+API&#160;is&#160;a&#160;deviation&#160;from&#160;the HIS&#160;specification.&#160;Modified&#160;to&#160;support asymmetric&#160;key&#160;calculation&#160;where only&#160;the&#160;<br/>tester is&#160;able&#160;to&#160;generate&#160;the key&#160;from&#160;the original&#160;seed&#160;value,&#160;e.g.&#160;using&#160;a&#160;private&#160;key.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Function SecM_GenerateSeed must have been called&#160;at&#160;least once.&#160;<br/>Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-13&#160;&#160;&#160;SecM_ComputeKey&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+27&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=28></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-28_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>7.7&#160;</b><br/>
+<b>Verification&#160;</b><br/>
+<b>7.7.1&#160;</b><br/>
+<b>SecM_InitVerification&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_InitVerification&#160;</b>(SecM_VerifyInitType init)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_VerifyInitType init&#160;<br/>
+Dummy&#160;pointer&#160;(currently&#160;not&#160;used)&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;initalization successful&#160;<br/>SECM_NOT_OK&#160;if&#160;error occured during&#160;initalization&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Initializes&#160;the&#160;verification&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-14&#160;&#160;&#160;SecM_InitVerification&#160;<br/>
+<b>7.7.2&#160;</b><br/>
+<b>SecM_DeinitVerification&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_DeinitVerification&#160;</b>(SecM_VerifyDeinitType deinit)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_VerifyDeinitType&#160;<br/>
+Dummy&#160;pointer&#160;(currently&#160;not&#160;used)&#160;<br/>
+deinit&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_OK&#160;if&#160;deinitalization&#160;successful&#160;<br/>SECM_NOT_OK&#160;if&#160;error occured during&#160;deinitalization&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Deinitializes&#160;the verification&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-15&#160;&#160;&#160;SecM_DeinitVerification&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+28&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=29></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-29_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>7.7.3&#160;</b><br/>
+<b>SecM_Verification&#160;</b><br/>
+<b>Prototype&#160;<br/></b>SecM_StatusType&#160;<b>SecM_Verification&#160;</b>(V_MEMRAM1 SecM_VerifyParamType&#160;<br/>V_MEMRAM2 V_MEMRAM3 *pVerifyParam)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+SecM_VerifyParamType&#160;<br/>
+Pointer&#160;to parameter&#160;structure for signature&#160;verification crcTotal.&#160;<br/>
+pVerifyParam&#160;<br/>
+<b>Return&#160;Code&#160;</b><br/>
+SecM_StatusType&#160;<br/>
+SECM_VER_OK&#160;if&#160;signature verification&#160;successful&#160;<br/>SECM_VER_ERROR if&#160;error occured during verification&#160;<br/>SECM_VER_CRC&#160;if&#160;CRC&#160;verification failed&#160;<br/>SECM_VER_SIG&#160;if&#160;HMAC/Signature&#160;verification&#160;failed&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Calculates&#160;the&#160;checksum&#160;or&#160;signature of&#160;all&#160;segments&#160;present&#160;in the&#160;verification parameter&#160;function&#160;passed&#160;<br/>in readMemory&#160;is&#160;used&#160;to access&#160;memory.&#160;Afterwards&#160;the&#160;calculated&#160;value is&#160;used&#160;to&#160;verify&#160;the&#160;<br/>checksum/signature&#160;provided&#160;in&#160;verificationData.&#160;If&#160;configured&#160;a CRC&#160;over the complete&#160;block, defined by&#160;<br/>blockStartAddress&#160;and&#160;blockLength,&#160;including all&#160;readable&#160;gaps&#160;between&#160;the&#160;actual&#160;segments&#160;is&#160;calculated&#160;<br/>too&#160;and&#160;returned in parameter&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+none&#160;<br/>Pre-Conditions&#160;<br/>
+Call&#160;Context&#160;<br/>
+none&#160;<br/>
+Table&#160;7-16&#160;&#160;&#160;SecM_Verification&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+29&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name=30></a><img src="website_Vector_Flashbootloader_RH850_Generic/content/en/docs/Doc/TechnicalReferences/TechnicalReference_SecurityModule-30_1.png"/><br/>
+Technical&#160;Reference&#160;Security&#160;Module&#160;Basic&#160;<br/>
+<b>8&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more information&#160;on&#160;<br/>
+&#160;<br/>
+<b>&gt;&#160;&#160;</b>News&#160;<br/>
+<b>&gt;&#160;&#160;</b>Products&#160;<br/>
+<b>&gt;&#160;&#160;</b>Demo&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Support&#160;<br/>
+<b>&gt;&#160;&#160;</b>Training&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Addresses&#160;<br/>
+&#160;<br/>
+www.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©&#160;2016&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version&#160;2.2.0&#160;<br/>
+30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.6.0&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#6">1 Introduction</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#7">2 Software Architecture</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#7">2.1 Security Module Components</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#8">3 Integration</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#8">3.1 Scope of Delivery</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#8">3.2 Include Structure</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#9">4 Configuration</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#9">4.1 GENy</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#9">4.2 Security Module Configuration</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#9">4.3 Configuration Parameters</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#10">4.4 Running the Generator</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#11">5 Preparation of the Application</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#11">5.1 HexView</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#11">5.1.1 Fill and align the hex file with HexView</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#11">5.1.2 Create a checksum / signature file with HexView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#12">6 Functional Description</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#12">6.1 Verification Module</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#12">6.1.1 Description of the verification process</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#13">6.1.2 Usage</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#16">6.2 CRC Module</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#16">6.2.1 Variants</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#16">6.2.2 CRCTotal</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#16">6.2.3 Speed / size optimization</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#16">6.2.4 Operation mode flags</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#17">6.2.5 Usage</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#19">6.3 Seed / Key</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#19">6.3.1 Usage</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#20">6.4 Accessing the Security Module from within the Application</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#21">7 API Description</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#21">7.1 Type Definitions</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#21">7.1.1 General Types</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#21">7.1.2 Structures used by Verification</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#23">7.1.3 Structures used by CRC</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#23">7.1.4 Structures used by Seed / Key</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#23">7.2 Common</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#23">7.2.1 SecM_InitPowerOn</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#24">7.2.2 SecM_Task</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#24">7.3 CRC</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#24">7.3.1 SecM_ComputeCRC</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#25">7.4 Seed / Key Common</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#25">7.4.1 SecM_GenerateSeed</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#25">7.4.2 SecM_CompareKey (HIS Specification &lt; 1.0.1 )</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#26">7.4.3 SecM_CompareKey (HIS Specification &gt;= 1.0.1)</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#26">7.5 Seed / Key default API</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#26">7.5.1 SecM_ComputeKey</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#27">7.6 Seed / Key extended API</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#27">7.6.1 SecM_ComputeKey</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#28">7.7 Verification</a>
+<ul>
+<li><a href="TechnicalReference_SecurityModules.html#28">7.7.1 SecM_InitVerification</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#28">7.7.2 SecM_DeinitVerification</a></li>
+<li><a href="TechnicalReference_SecurityModules.html#29">7.7.3 SecM_Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_SecurityModules.html#30">8 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>
